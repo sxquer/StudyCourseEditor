@@ -1,0 +1,40 @@
+﻿@model IEnumerable<StudyCourseEditor.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @if (ViewBag.isUserAdmin)
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+   
+</p>
+<table>
+    <tr>
+        <th>
+            Название
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+           @Html.RouteLink(item.Name, "Courses", new { courseName = item.Name })
+        </td>
+    @if (ViewBag.isUserAdmin)
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
+            @Html.ActionLink("Details", "Details", new {id = item.ID}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.ID})
+        </td>
+    }
+    </tr>
+}
+
+</table>

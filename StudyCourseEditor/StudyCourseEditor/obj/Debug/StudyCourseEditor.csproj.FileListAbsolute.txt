@@ -1,0 +1,7 @@
+D:\Dropbox\Projects\StudyCourseEditor\StudyCourseEditor\StudyCourseEditor\bin\StudyCourseEditor.dll
+D:\Dropbox\Projects\StudyCourseEditor\StudyCourseEditor\StudyCourseEditor\bin\StudyCourseEditor.pdb
+D:\Dropbox\Projects\StudyCourseEditor\StudyCourseEditor\StudyCourseEditor\bin\EntityFramework.dll
+D:\Dropbox\Projects\StudyCourseEditor\StudyCourseEditor\StudyCourseEditor\bin\EntityFramework.xml
+D:\Dropbox\Projects\StudyCourseEditor\StudyCourseEditor\StudyCourseEditor\obj\Debug\ResolveAssemblyReference.cache
+D:\Dropbox\Projects\StudyCourseEditor\StudyCourseEditor\StudyCourseEditor\obj\Debug\StudyCourseEditor.dll
+D:\Dropbox\Projects\StudyCourseEditor\StudyCourseEditor\StudyCourseEditor\obj\Debug\StudyCourseEditor.pdb

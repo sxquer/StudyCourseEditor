@@ -1,0 +1,37 @@
+<Configuration>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Shared/f:_Layout.cshtml" caret="520" fromTop="13" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="307" fromTop="12" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Global.asax.cs" caret="0" fromTop="0" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:Index.cshtml" caret="203" fromTop="8" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:AccountController.cs" caret="2234" fromTop="17" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="208" fromTop="7" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Shared/f:_Layout.cshtml" caret="520" fromTop="13" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="307" fromTop="12" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:Index.cshtml" caret="171" fromTop="6" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="387" fromTop="9" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="1643" fromTop="0" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="481" fromTop="13" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False" />
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+</Configuration>

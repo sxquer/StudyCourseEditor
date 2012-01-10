@@ -1,0 +1,43 @@
+﻿@model IEnumerable<StudyCourseEditor.Models.Subject>
+
+@{
+    ViewBag.Title = ViewBag.CourseName;
+}
+
+<h2>@ViewBag.CourseName</h2>
+<p>
+    @ViewBag.CourseDescription
+</p>
+
+<p>
+    @if (ViewBag.isUserAdmin)
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+    
+</p>
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+    @if (ViewBag.isUserAdmin)
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
+            @Html.ActionLink("Details", "Details", new {id = item.ID}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.ID})
+        </td>
+    }
+    </tr>
+}
+
+</table>
