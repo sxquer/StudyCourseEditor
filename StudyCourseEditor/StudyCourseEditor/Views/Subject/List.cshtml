@@ -12,14 +12,14 @@
 <p>
     @if (ViewBag.isUserAdmin)
     {
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Создать новую тему", "Create")
     }
     
 </p>
 <table>
     <tr>
         <th>
-            Name
+            Название
         </th>
     </tr>
 
@@ -32,9 +32,9 @@
     @if (ViewBag.isUserAdmin)
     {
         <td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
-            @Html.ActionLink("Details", "Details", new {id = item.ID}) |
-            @Html.ActionLink("Delete", "Delete", new {id = item.ID})
+            @Html.ActionLink("Редактировать", "Edit", new {id = item.ID}) |
+            @Html.ActionLink("Подробнее", "Details", new {id = item.ID}) |
+            @Html.ActionLink("Удалить", "Delete", new {id = item.ID})
         </td>
     }
     </tr>

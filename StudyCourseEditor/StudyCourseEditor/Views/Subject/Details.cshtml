@@ -1,0 +1,30 @@
+﻿@model StudyCourseEditor.Models.Subject
+
+@{
+    ViewBag.Title = "Детали";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+    <legend>Тема</legend>
+
+    <div class="display-label">Название</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Содержание</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Body)
+    </div>
+
+    <div class="display-label">CourseID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CourseID)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("К списку", "Index")
+</p>

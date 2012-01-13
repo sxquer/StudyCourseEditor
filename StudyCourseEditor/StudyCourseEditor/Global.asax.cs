@@ -47,7 +47,7 @@ namespace StudyCourseEditor
         {
             AreaRegistration.RegisterAllAreas();
 
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<StudyCourseDB>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<StudyCourseDB>());
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
