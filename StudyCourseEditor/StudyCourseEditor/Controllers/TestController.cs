@@ -69,7 +69,9 @@ namespace StudyCourseEditor.Controllers
             if (CalculateError(data) < 0.3)
                 return RedirectToAction("FinishExam", data);
 
-            return View();
+            var model = GetTest(data);
+
+            return View(model);
         }
 
         /// <summary>
@@ -152,6 +154,17 @@ namespace StudyCourseEditor.Controllers
         private double CalculateError(TestData data)
         {
             return CalculateError(data.ItemsTaken, data.RightAnswersCount);
+        }
+
+
+        /// <summary>
+        /// Возвращает сгенерированый по шаблону случайный тест, заданного уровня сложности
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        private GeneratedTest GetTest(TestData data)
+        {
+            throw new NotImplementedException();
         }
     }
 }
