@@ -9,6 +9,7 @@ namespace StudyCourseEditor.Models
 {
     public class Course
     {
+    
         public int ID { get; set; }
 
         [Required]

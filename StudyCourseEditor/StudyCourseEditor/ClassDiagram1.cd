@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StudyCourseEditor.Controllers.AccountController">
+    <Position X="8.5" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAEAAAgAAAAAAAAAAAAAABAAAEAAAAAAQAIAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Controllers.CourseController">
+    <Position X="6.5" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\CourseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Controllers.HomeController">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Controllers.SubjectController">
+    <Position X="2.25" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAAAAAAAAAAAAEAAEACAAEAAAAAAAI=</HashCode>
+      <FileName>Controllers\SubjectController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Controllers.TestController">
+    <Position X="4.5" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\TestController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.MvcApplication">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAIQAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.ChangePasswordModel">
+    <Position X="6.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.LogOnModel">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAgAAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.RegisterModel">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAQAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.Course">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAggAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.Definition">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAABAAQAAAAAAAAAAgAAQAAAAAA=</HashCode>
+      <FileName>Models\Definition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.DefTagRelation">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgiAAAAAAAAAAAAAEAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DefTagRelation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.Example">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAiAAAAAAAAAAAAAEAAAAAAAAgAAAAAIA=</HashCode>
+      <FileName>Models\Example.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.StudyCourseDB">
+    <Position X="0.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEAAAAAAAAAAAAAAAAAAAAAABEAAAgAAQBAAAAA=</HashCode>
+      <FileName>Models\StudyCourseDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.Subject">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAgAAAAIABAAQAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Subject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.Tag">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Models\Tag.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StudyCourseEditor.Models.Test">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Test.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

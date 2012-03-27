@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 @19 @24 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="AccountController" />
+    <Node Id="(@1 @19 @24 Member=ChangePassword)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="ChangePassword" />
+    <Node Id="(@1 @19 @24 Member=ChangePasswordSuccess)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="ChangePasswordSuccess" />
+    <Node Id="(@1 @19 @24 Member=LogOff)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="LogOff" />
+    <Node Id="(@1 @19 @24 Member=LogOn)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="LogOn" />
+    <Node Id="(@1 @19 @24 Member=Register)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Register" />
+    <Node Id="(@1 @19 @31 Member=Create)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Create" />
+    <Node Id="(@1 @19 @39 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="HomeController" />
+    <Node Id="(@1 @19 @39 Member=About)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="About" />
+    <Node Id="(@1 @19 @52 Member=(Name=Index OverloadingParameters=[@8,@8]))" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Index" />
+    <Node Id="(@1 @19 @52 Member=Create)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Create" />
+    <Node Id="(@1 @2 Member=GetHashCode)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="GetHashCode" />
+    <Node Id="(@1 @2 Member=ToString)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="ToString" />
+    <Node Id="(@1 @2 Member=get_action)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_action" />
+    <Node Id="(@1 @2 Member=get_controller)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_controller" />
+    <Node Id="(@1 @26 @27 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="ChangePasswordModel" />
+    <Node Id="(@1 @26 @27 Member=(Name=set_ConfirmPassword @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_ConfirmPassword" />
+    <Node Id="(@1 @26 @27 Member=(Name=set_NewPassword @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_NewPassword" />
+    <Node Id="(@1 @26 @27 Member=(Name=set_OldPassword @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_OldPassword" />
+    <Node Id="(@1 @26 @27 Member=get_ConfirmPassword)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ConfirmPassword" />
+    <Node Id="(@1 @26 @29 @77)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_ID" />
+    <Node Id="(@1 @26 @29 Member=(Name=set_Subjects OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@51]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Subjects" />
+    <Node Id="(@1 @26 @29 Member=get_Subjects)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Subjects" />
+    <Node Id="(@1 @26 @33 @111)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ID" />
+    <Node Id="(@1 @26 @33 @113)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Name" />
+    <Node Id="(@1 @26 @33 @77)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_ID" />
+    <Node Id="(@1 @26 @33 @86)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Name" />
+    <Node Id="(@1 @26 @33 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Definition" />
+    <Node Id="(@1 @26 @33 Member=(Name=set_Body @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Body" />
+    <Node Id="(@1 @26 @33 Member=(Name=set_DefTagRelations OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@36]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_DefTagRelations" />
+    <Node Id="(@1 @26 @33 Member=(Name=set_Examples OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@38]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Examples" />
+    <Node Id="(@1 @26 @33 Member=get_Body)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Body" />
+    <Node Id="(@1 @26 @33 Member=get_DefTagRelations)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_DefTagRelations" />
+    <Node Id="(@1 @26 @33 Member=get_Examples)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Examples" />
+    <Node Id="(@1 @26 @35 @111)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ID" />
+    <Node Id="(@1 @26 @35 @77)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_ID" />
+    <Node Id="(@1 @26 @35 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="DefTagRelation" />
+    <Node Id="(@1 @26 @35 Member=(Name=set_Definition OverloadingParameters=[@34]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Definition" />
+    <Node Id="(@1 @26 @35 Member=(Name=set_DefinitionID @69))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_DefinitionID" />
+    <Node Id="(@1 @26 @35 Member=(Name=set_Tag OverloadingParameters=[@55]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Tag" />
+    <Node Id="(@1 @26 @35 Member=(Name=set_TagID @69))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_TagID" />
+    <Node Id="(@1 @26 @35 Member=get_DefinitionID)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_DefinitionID" />
+    <Node Id="(@1 @26 @35 Member=get_TagID)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_TagID" />
+    <Node Id="(@1 @26 @37 @111)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ID" />
+    <Node Id="(@1 @26 @37 @77)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_ID" />
+    <Node Id="(@1 @26 @37 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Example" />
+    <Node Id="(@1 @26 @37 Member=(Name=set_Definition OverloadingParameters=[@34]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Definition" />
+    <Node Id="(@1 @26 @37 Member=(Name=set_DefinitionID @69))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_DefinitionID" />
+    <Node Id="(@1 @26 @37 Member=(Name=set_IsAntiExample OverloadingParameters=[(@6 @7 Type=Boolean)]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_IsAntiExample" />
+    <Node Id="(@1 @26 @37 Member=(Name=set_Value @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Value" />
+    <Node Id="(@1 @26 @37 Member=get_DefinitionID)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_DefinitionID" />
+    <Node Id="(@1 @26 @37 Member=get_IsAntiExample)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_IsAntiExample" />
+    <Node Id="(@1 @26 @37 Member=get_Value)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Value" />
+    <Node Id="(@1 @26 @41 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="LogOnModel" />
+    <Node Id="(@1 @26 @41 Member=(Name=set_Password @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Password" />
+    <Node Id="(@1 @26 @41 Member=(Name=set_RememberMe OverloadingParameters=[(@6 @7 Type=Boolean)]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_RememberMe" />
+    <Node Id="(@1 @26 @41 Member=(Name=set_UserName @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_UserName" />
+    <Node Id="(@1 @26 @46 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="RegisterModel" />
+    <Node Id="(@1 @26 @46 Member=(Name=set_ConfirmPassword @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_ConfirmPassword" />
+    <Node Id="(@1 @26 @46 Member=(Name=set_Email @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Email" />
+    <Node Id="(@1 @26 @46 Member=(Name=set_Password @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Password" />
+    <Node Id="(@1 @26 @46 Member=(Name=set_UserName @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_UserName" />
+    <Node Id="(@1 @26 @46 Member=get_ConfirmPassword)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ConfirmPassword" />
+    <Node Id="(@1 @26 @48 Member=(Name=set_Courses OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@30]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Courses" />
+    <Node Id="(@1 @26 @48 Member=(Name=set_DefTagRelations OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@36]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_DefTagRelations" />
+    <Node Id="(@1 @26 @48 Member=(Name=set_Definitions OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@34]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Definitions" />
+    <Node Id="(@1 @26 @48 Member=(Name=set_Examples OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@38]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Examples" />
+    <Node Id="(@1 @26 @48 Member=(Name=set_Subjects OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@51]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Subjects" />
+    <Node Id="(@1 @26 @48 Member=(Name=set_Tags OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@55]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Tags" />
+    <Node Id="(@1 @26 @48 Member=(Name=set_Tests OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@57]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Tests" />
+    <Node Id="(@1 @26 @48 Member=get_DefTagRelations)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_DefTagRelations" />
+    <Node Id="(@1 @26 @48 Member=get_Definitions)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Definitions" />
+    <Node Id="(@1 @26 @48 Member=get_Examples)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Examples" />
+    <Node Id="(@1 @26 @48 Member=get_Tags)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Tags" />
+    <Node Id="(@1 @26 @48 Member=get_Tests)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Tests" />
+    <Node Id="(@1 @26 @50 @111)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ID" />
+    <Node Id="(@1 @26 @50 @113)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Name" />
+    <Node Id="(@1 @26 @50 @77)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_ID" />
+    <Node Id="(@1 @26 @50 Member=(Name=set_Body @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Body" />
+    <Node Id="(@1 @26 @50 Member=(Name=set_Course OverloadingParameters=[@30]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Course" />
+    <Node Id="(@1 @26 @50 Member=(Name=set_Tests OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@57]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Tests" />
+    <Node Id="(@1 @26 @50 Member=get_Body)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Body" />
+    <Node Id="(@1 @26 @50 Member=get_CourseID)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_CourseID" />
+    <Node Id="(@1 @26 @50 Member=get_Tests)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Tests" />
+    <Node Id="(@1 @26 @54 @111)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ID" />
+    <Node Id="(@1 @26 @54 @113)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Name" />
+    <Node Id="(@1 @26 @54 @77)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_ID" />
+    <Node Id="(@1 @26 @54 @86)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Name" />
+    <Node Id="(@1 @26 @54 Member=(Name=set_DefTagRelations OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@36]))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_DefTagRelations" />
+    <Node Id="(@1 @26 @56 @111)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ID" />
+    <Node Id="(@1 @26 @56 @77)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_ID" />
+    <Node Id="(@1 @26 @56 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Test" />
+    <Node Id="(@1 @26 @56 Member=(Name=set_Body @83))" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Body" />
+    <Node Id="(@1 @26 @56 Member=get_Body)" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Body" />
+    <Node Id="(@1 @4 Member=GetHashCode)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="GetHashCode" />
+    <Node Id="(@1 @4 Member=ToString)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="ToString" />
+    <Node Id="(@1 @4 Member=get_action)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_action" />
+    <Node Id="(@1 @4 Member=get_controller)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_controller" />
+    <Node Id="(@1 @4 Member=get_id)" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_id" />
+    <Node Id="(@1 @43 @44 @93)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="MvcApplication" />
+    <Node Id="@100" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Tag" />
+    <Node Id="@101" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="TestController" />
+    <Node Id="@102" Category="CodeSchema_Method" CodeSchemaProperty_IsProtected="True" Label="Application_Start" />
+    <Node Id="@103" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="CreateDummyData" />
+    <Node Id="@104" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Course" />
+    <Node Id="@105" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Courses" />
+    <Node Id="@106" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Definition" />
+    <Node Id="@107" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Definition" />
+    <Node Id="@108" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_DefTagRelations" />
+    <Node Id="@109" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Description" />
+    <Node Id="@11" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsGenericInstance="True" CodeSchemaProperty_IsPrivate="True" Group="Collapsed" Label="&lt;&gt;f__AnonymousType1&lt;String,String,UrlParameter&gt;" />
+    <Node Id="@110" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Email" />
+    <Node Id="@112" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ID" />
+    <Node Id="@114" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Name" />
+    <Node Id="@115" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_NewPassword" />
+    <Node Id="@116" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_OldPassword" />
+    <Node Id="@117" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Password" />
+    <Node Id="@118" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Password" />
+    <Node Id="@119" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_RememberMe" />
+    <Node Id="@12" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Equals" />
+    <Node Id="@120" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Subjects" />
+    <Node Id="@121" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Tag" />
+    <Node Id="@122" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_UserName" />
+    <Node Id="@123" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_UserName" />
+    <Node Id="@124" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Index" />
+    <Node Id="@125" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Index" />
+    <Node Id="@126" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="isUserAdmin" />
+    <Node Id="@13" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Equals" />
+    <Node Id="@15" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;f__AnonymousType0" />
+    <Node Id="@16" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsExternal="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;f__AnonymousType0" />
+    <Node Id="@17" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;f__AnonymousType1" />
+    <Node Id="@18" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsExternal="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;f__AnonymousType1" />
+    <Node Id="@20" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Collapsed" Label="CourseController.&lt;Index&gt;o__SiteContainer0" />
+    <Node Id="@21" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Collapsed" Label="HomeController.&lt;Index&gt;o__SiteContainer0" />
+    <Node Id="@22" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Collapsed" Label="SubjectController.&lt;&gt;c__DisplayClass4" />
+    <Node Id="@23" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Collapsed" Label="SubjectController.&lt;List&gt;o__SiteContainer0" />
+    <Node Id="@25" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="AccountController" />
+    <Node Id="@28" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="ChangePasswordModel" />
+    <Node Id="@3" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Collapsed" Label="&lt;&gt;f__AnonymousType0&lt;&lt;controller&gt;j__TPar,&lt;action&gt;j__TPar&gt;" />
+    <Node Id="@30" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="Course" />
+    <Node Id="@32" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="CourseController" />
+    <Node Id="@34" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="Definition" />
+    <Node Id="@36" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="DefTagRelation" />
+    <Node Id="@38" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="Example" />
+    <Node Id="@40" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="HomeController" />
+    <Node Id="@42" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="LogOnModel" />
+    <Node Id="@45" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="MvcApplication" />
+    <Node Id="@47" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="RegisterModel" />
+    <Node Id="@49" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="StudyCourseDB" />
+    <Node Id="@5" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Collapsed" Label="&lt;&gt;f__AnonymousType1&lt;&lt;controller&gt;j__TPar,&lt;action&gt;j__TPar,&lt;id&gt;j__TPar&gt;" />
+    <Node Id="@51" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="Subject" />
+    <Node Id="@53" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="SubjectController" />
+    <Node Id="@55" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="Tag" />
+    <Node Id="@57" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="Test" />
+    <Node Id="@58" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="TestController" />
+    <Node Id="@65" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="ChangePassword" />
+    <Node Id="@66" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Create" />
+    <Node Id="@67" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Label="&lt;Index&gt;b__2" />
+    <Node Id="@68" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="RegisterGlobalFilters" />
+    <Node Id="@70" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Delete" />
+    <Node Id="@71" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Delete" />
+    <Node Id="@72" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Details" />
+    <Node Id="@73" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Details" />
+    <Node Id="@74" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Edit" />
+    <Node Id="@75" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Edit" />
+    <Node Id="@76" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_CourseID" />
+    <Node Id="@79" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="ErrorCodeToString" />
+    <Node Id="@80" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Register" />
+    <Node Id="@82" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="RegisterRoutes" />
+    <Node Id="@84" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="List" />
+    <Node Id="@85" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Description" />
+    <Node Id="@87" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Name" />
+    <Node Id="@88" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Name" />
+    <Node Id="@89" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Create" />
+    <Node Id="@9" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsGenericInstance="True" CodeSchemaProperty_IsPrivate="True" Group="Collapsed" Label="&lt;&gt;f__AnonymousType0&lt;String,String&gt;" />
+    <Node Id="@90" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Edit" />
+    <Node Id="@91" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="Edit" />
+    <Node Id="@92" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="LogOn" />
+    <Node Id="@94" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;c__DisplayClass4" />
+    <Node Id="@95" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Course" />
+    <Node Id="@96" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="CourseController" />
+    <Node Id="@97" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="StudyCourseDB" />
+    <Node Id="@98" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Subject" />
+    <Node Id="@99" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="SubjectController" />
+    <Node Id="_standardGraphGenericsGroup" Category="Generics" Group="Collapsed" Label="Generics" />
+  </Nodes>
+  <Links>
+    <Link Source="@101" Target="@97" Category="CodeSchema_Calls" />
+    <Link Source="@102" Target="@68" Category="CodeSchema_Calls" />
+    <Link Source="@102" Target="@82" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@105" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@112" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@120" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@30" Category="References" />
+    <Link Source="@103" Target="@51" Category="References" />
+    <Link Source="@103" Target="@76" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@85" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@87" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@88" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@95" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@98" Category="CodeSchema_Calls" />
+    <Link Source="@104" Target="@30" Category="References">
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@106" Target="@34" Category="References">
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@107" Target="@34" Category="References">
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@11" Target="@18" Category="Contains" />
+    <Link Source="@11" Target="@5" Category="CodeSchema_GenericTypeUse" />
+    <Link Source="@12" Target="@3" Category="References" />
+    <Link Source="@121" Target="@55" Category="References">
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@124" Target="@105" Category="CodeSchema_Calls" />
+    <Link Source="@124" Target="@20" Category="References" />
+    <Link Source="@124" Target="@32" Category="References" />
+    <Link Source="@125" Target="@100" Category="CodeSchema_Calls" />
+    <Link Source="@125" Target="@108" Category="CodeSchema_Calls" />
+    <Link Source="@125" Target="@21" Category="References" />
+    <Link Source="@125" Target="@40" Category="References" />
+    <Link Source="@125" Target="@55" Category="References" />
+    <Link Source="@125" Target="@67" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@13" Target="@5" Category="References" />
+    <Link Source="@16" Target="@15" Category="CodeSchema_GenericMemberUse" />
+    <Link Source="@18" Target="@17" Category="CodeSchema_GenericMemberUse" />
+    <Link Source="@22" Target="@94" Category="Contains" />
+    <Link Source="@25" Target="(@1 @19 @24 @93)" Category="Contains" />
+    <Link Source="@25" Target="(@1 @19 @24 Member=ChangePassword)" Category="Contains" />
+    <Link Source="@25" Target="(@1 @19 @24 Member=ChangePasswordSuccess)" Category="Contains" />
+    <Link Source="@25" Target="(@1 @19 @24 Member=LogOff)" Category="Contains" />
+    <Link Source="@25" Target="(@1 @19 @24 Member=LogOn)" Category="Contains" />
+    <Link Source="@25" Target="(@1 @19 @24 Member=Register)" Category="Contains" />
+    <Link Source="@25" Target="@126" Category="Contains" />
+    <Link Source="@25" Target="@65" Category="Contains" />
+    <Link Source="@25" Target="@79" Category="Contains" />
+    <Link Source="@25" Target="@80" Category="Contains" />
+    <Link Source="@25" Target="@92" Category="Contains" />
+    <Link Source="@28" Target="(@1 @26 @27 @93)" Category="Contains" />
+    <Link Source="@28" Target="(@1 @26 @27 Member=(Name=set_ConfirmPassword @83))" Category="Contains" />
+    <Link Source="@28" Target="(@1 @26 @27 Member=(Name=set_NewPassword @83))" Category="Contains" />
+    <Link Source="@28" Target="(@1 @26 @27 Member=(Name=set_OldPassword @83))" Category="Contains" />
+    <Link Source="@28" Target="(@1 @26 @27 Member=get_ConfirmPassword)" Category="Contains" />
+    <Link Source="@28" Target="@115" Category="Contains" />
+    <Link Source="@28" Target="@116" Category="Contains" />
+    <Link Source="@3" Target="(@1 @2 Member=GetHashCode)" Category="Contains" />
+    <Link Source="@3" Target="(@1 @2 Member=ToString)" Category="Contains" />
+    <Link Source="@3" Target="(@1 @2 Member=get_action)" Category="Contains" />
+    <Link Source="@3" Target="(@1 @2 Member=get_controller)" Category="Contains" />
+    <Link Source="@3" Target="@12" Category="Contains" />
+    <Link Source="@3" Target="@15" Category="Contains" />
+    <Link Source="@30" Target="(@1 @26 @29 @77)" Category="Contains" />
+    <Link Source="@30" Target="(@1 @26 @29 Member=(Name=set_Subjects OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@51]))]))" Category="Contains" />
+    <Link Source="@30" Target="(@1 @26 @29 Member=get_Subjects)" Category="Contains" />
+    <Link Source="@30" Target="@109" Category="Contains" />
+    <Link Source="@30" Target="@112" Category="Contains" />
+    <Link Source="@30" Target="@114" Category="Contains" />
+    <Link Source="@30" Target="@85" Category="Contains" />
+    <Link Source="@30" Target="@87" Category="Contains" />
+    <Link Source="@30" Target="@95" Category="Contains" />
+    <Link Source="@32" Target="(@1 @19 @31 Member=Create)" Category="Contains" />
+    <Link Source="@32" Target="@124" Category="Contains" />
+    <Link Source="@32" Target="@20" Category="Contains" />
+    <Link Source="@32" Target="@49" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@32" Target="@66" Category="Contains" />
+    <Link Source="@32" Target="@70" Category="Contains" />
+    <Link Source="@32" Target="@72" Category="Contains" />
+    <Link Source="@32" Target="@74" Category="Contains" />
+    <Link Source="@32" Target="@90" Category="Contains" />
+    <Link Source="@32" Target="@96" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 @111)" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 @113)" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 @77)" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 @86)" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 @93)" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 Member=(Name=set_Body @83))" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 Member=(Name=set_DefTagRelations OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@36]))]))" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 Member=(Name=set_Examples OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@38]))]))" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 Member=get_Body)" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 Member=get_DefTagRelations)" Category="Contains" />
+    <Link Source="@34" Target="(@1 @26 @33 Member=get_Examples)" Category="Contains" />
+    <Link Source="@36" Target="(@1 @26 @35 @111)" Category="Contains" />
+    <Link Source="@36" Target="(@1 @26 @35 @77)" Category="Contains" />
+    <Link Source="@36" Target="(@1 @26 @35 @93)" Category="Contains" />
+    <Link Source="@36" Target="(@1 @26 @35 Member=(Name=set_Definition OverloadingParameters=[@34]))" Category="Contains" />
+    <Link Source="@36" Target="(@1 @26 @35 Member=(Name=set_DefinitionID @69))" Category="Contains" />
+    <Link Source="@36" Target="(@1 @26 @35 Member=(Name=set_Tag OverloadingParameters=[@55]))" Category="Contains" />
+    <Link Source="@36" Target="(@1 @26 @35 Member=(Name=set_TagID @69))" Category="Contains" />
+    <Link Source="@36" Target="(@1 @26 @35 Member=get_DefinitionID)" Category="Contains" />
+    <Link Source="@36" Target="(@1 @26 @35 Member=get_TagID)" Category="Contains" />
+    <Link Source="@36" Target="@106" Category="Contains" />
+    <Link Source="@36" Target="@121" Category="Contains" />
+    <Link Source="@36" Target="@34" Category="References">
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@36" Target="@55" Category="References">
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@38" Target="(@1 @26 @37 @111)" Category="Contains" />
+    <Link Source="@38" Target="(@1 @26 @37 @77)" Category="Contains" />
+    <Link Source="@38" Target="(@1 @26 @37 @93)" Category="Contains" />
+    <Link Source="@38" Target="(@1 @26 @37 Member=(Name=set_Definition OverloadingParameters=[@34]))" Category="Contains" />
+    <Link Source="@38" Target="(@1 @26 @37 Member=(Name=set_DefinitionID @69))" Category="Contains" />
+    <Link Source="@38" Target="(@1 @26 @37 Member=(Name=set_IsAntiExample OverloadingParameters=[(@6 @7 Type=Boolean)]))" Category="Contains" />
+    <Link Source="@38" Target="(@1 @26 @37 Member=(Name=set_Value @83))" Category="Contains" />
+    <Link Source="@38" Target="(@1 @26 @37 Member=get_DefinitionID)" Category="Contains" />
+    <Link Source="@38" Target="(@1 @26 @37 Member=get_IsAntiExample)" Category="Contains" />
+    <Link Source="@38" Target="(@1 @26 @37 Member=get_Value)" Category="Contains" />
+    <Link Source="@38" Target="@107" Category="Contains" />
+    <Link Source="@38" Target="@34" Category="References">
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@40" Target="(@1 @19 @39 @93)" Category="Contains" />
+    <Link Source="@40" Target="(@1 @19 @39 Member=About)" Category="Contains" />
+    <Link Source="@40" Target="@125" Category="Contains" />
+    <Link Source="@40" Target="@21" Category="Contains" />
+    <Link Source="@40" Target="@67" Category="Contains" />
+    <Link Source="@42" Target="(@1 @26 @41 @93)" Category="Contains" />
+    <Link Source="@42" Target="(@1 @26 @41 Member=(Name=set_Password @83))" Category="Contains" />
+    <Link Source="@42" Target="(@1 @26 @41 Member=(Name=set_RememberMe OverloadingParameters=[(@6 @7 Type=Boolean)]))" Category="Contains" />
+    <Link Source="@42" Target="(@1 @26 @41 Member=(Name=set_UserName @83))" Category="Contains" />
+    <Link Source="@42" Target="@117" Category="Contains" />
+    <Link Source="@42" Target="@119" Category="Contains" />
+    <Link Source="@42" Target="@122" Category="Contains" />
+    <Link Source="@45" Target="(@1 @43 @44 @93)" Category="Contains" />
+    <Link Source="@45" Target="@102" Category="Contains" />
+    <Link Source="@45" Target="@68" Category="Contains" />
+    <Link Source="@45" Target="@82" Category="Contains" />
+    <Link Source="@47" Target="(@1 @26 @46 @93)" Category="Contains" />
+    <Link Source="@47" Target="(@1 @26 @46 Member=(Name=set_ConfirmPassword @83))" Category="Contains" />
+    <Link Source="@47" Target="(@1 @26 @46 Member=(Name=set_Email @83))" Category="Contains" />
+    <Link Source="@47" Target="(@1 @26 @46 Member=(Name=set_Password @83))" Category="Contains" />
+    <Link Source="@47" Target="(@1 @26 @46 Member=(Name=set_UserName @83))" Category="Contains" />
+    <Link Source="@47" Target="(@1 @26 @46 Member=get_ConfirmPassword)" Category="Contains" />
+    <Link Source="@47" Target="@110" Category="Contains" />
+    <Link Source="@47" Target="@118" Category="Contains" />
+    <Link Source="@47" Target="@123" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=(Name=set_Courses OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@30]))]))" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=(Name=set_DefTagRelations OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@36]))]))" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=(Name=set_Definitions OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@34]))]))" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=(Name=set_Examples OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@38]))]))" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=(Name=set_Subjects OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@51]))]))" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=(Name=set_Tags OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@55]))]))" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=(Name=set_Tests OverloadingParameters=[(@59 @60 Type=(@61 @62 GenericArguments=[@57]))]))" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=get_DefTagRelations)" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=get_Definitions)" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=get_Examples)" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=get_Tags)" Category="Contains" />
+    <Link Source="@49" Target="(@1 @26 @48 Member=get_Tests)" Category="Contains" />
+    <Link Source="@49" Target="@105" Category="Contains" />
+    <Link Source="@49" Target="@120" Category="Contains" />
+    <Link Source="@49" Target="@97" Category="Contains" />
+    <Link Source="@5" Target="(@1 @4 Member=GetHashCode)" Category="Contains" />
+    <Link Source="@5" Target="(@1 @4 Member=ToString)" Category="Contains" />
+    <Link Source="@5" Target="(@1 @4 Member=get_action)" Category="Contains" />
+    <Link Source="@5" Target="(@1 @4 Member=get_controller)" Category="Contains" />
+    <Link Source="@5" Target="(@1 @4 Member=get_id)" Category="Contains" />
+    <Link Source="@5" Target="@13" Category="Contains" />
+    <Link Source="@5" Target="@17" Category="Contains" />
+    <Link Source="@51" Target="(@1 @26 @50 @111)" Category="Contains" />
+    <Link Source="@51" Target="(@1 @26 @50 @113)" Category="Contains" />
+    <Link Source="@51" Target="(@1 @26 @50 @77)" Category="Contains" />
+    <Link Source="@51" Target="(@1 @26 @50 Member=(Name=set_Body @83))" Category="Contains" />
+    <Link Source="@51" Target="(@1 @26 @50 Member=(Name=set_Course OverloadingParameters=[@30]))" Category="Contains" />
+    <Link Source="@51" Target="(@1 @26 @50 Member=(Name=set_Tests OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@57]))]))" Category="Contains" />
+    <Link Source="@51" Target="(@1 @26 @50 Member=get_Body)" Category="Contains" />
+    <Link Source="@51" Target="(@1 @26 @50 Member=get_CourseID)" Category="Contains" />
+    <Link Source="@51" Target="(@1 @26 @50 Member=get_Tests)" Category="Contains" />
+    <Link Source="@51" Target="@104" Category="Contains" />
+    <Link Source="@51" Target="@30" Category="References">
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@51" Target="@76" Category="Contains" />
+    <Link Source="@51" Target="@88" Category="Contains" />
+    <Link Source="@51" Target="@98" Category="Contains" />
+    <Link Source="@53" Target="(@1 @19 @52 Member=(Name=Index OverloadingParameters=[@8,@8]))" Category="Contains" />
+    <Link Source="@53" Target="(@1 @19 @52 Member=Create)" Category="Contains" />
+    <Link Source="@53" Target="@22" Category="Contains" />
+    <Link Source="@53" Target="@23" Category="Contains" />
+    <Link Source="@53" Target="@49" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@53" Target="@71" Category="Contains" />
+    <Link Source="@53" Target="@73" Category="Contains" />
+    <Link Source="@53" Target="@75" Category="Contains" />
+    <Link Source="@53" Target="@84" Category="Contains" />
+    <Link Source="@53" Target="@89" Category="Contains" />
+    <Link Source="@53" Target="@91" Category="Contains" />
+    <Link Source="@53" Target="@99" Category="Contains" />
+    <Link Source="@55" Target="(@1 @26 @54 @111)" Category="Contains" />
+    <Link Source="@55" Target="(@1 @26 @54 @113)" Category="Contains" />
+    <Link Source="@55" Target="(@1 @26 @54 @77)" Category="Contains" />
+    <Link Source="@55" Target="(@1 @26 @54 @86)" Category="Contains" />
+    <Link Source="@55" Target="(@1 @26 @54 Member=(Name=set_DefTagRelations OverloadingParameters=[(@6 @63 Type=(@64 @62 GenericArguments=[@36]))]))" Category="Contains" />
+    <Link Source="@55" Target="@100" Category="Contains" />
+    <Link Source="@55" Target="@108" Category="Contains" />
+    <Link Source="@57" Target="(@1 @26 @56 @111)" Category="Contains" />
+    <Link Source="@57" Target="(@1 @26 @56 @77)" Category="Contains" />
+    <Link Source="@57" Target="(@1 @26 @56 @93)" Category="Contains" />
+    <Link Source="@57" Target="(@1 @26 @56 Member=(Name=set_Body @83))" Category="Contains" />
+    <Link Source="@57" Target="(@1 @26 @56 Member=get_Body)" Category="Contains" />
+    <Link Source="@58" Target="@101" Category="Contains" />
+    <Link Source="@58" Target="@103" Category="Contains" />
+    <Link Source="@58" Target="@49" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@65" Target="@115" Category="CodeSchema_Calls" />
+    <Link Source="@65" Target="@116" Category="CodeSchema_Calls" />
+    <Link Source="@66" Target="@105" Category="CodeSchema_Calls" />
+    <Link Source="@67" Target="@106" Category="CodeSchema_Calls" />
+    <Link Source="@67" Target="@34" Category="References">
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@70" Target="@105" Category="CodeSchema_Calls" />
+    <Link Source="@71" Target="@120" Category="CodeSchema_Calls" />
+    <Link Source="@72" Target="@105" Category="CodeSchema_Calls" />
+    <Link Source="@72" Target="@30" Category="References" />
+    <Link Source="@73" Target="@120" Category="CodeSchema_Calls" />
+    <Link Source="@73" Target="@51" Category="References" />
+    <Link Source="@74" Target="@105" Category="CodeSchema_Calls" />
+    <Link Source="@74" Target="@30" Category="References" />
+    <Link Source="@75" Target="@120" Category="CodeSchema_Calls" />
+    <Link Source="@75" Target="@51" Category="References" />
+    <Link Source="@80" Target="@110" Category="CodeSchema_Calls" />
+    <Link Source="@80" Target="@118" Category="CodeSchema_Calls" />
+    <Link Source="@80" Target="@123" Category="CodeSchema_Calls" />
+    <Link Source="@80" Target="@79" Category="CodeSchema_Calls" />
+    <Link Source="@82" Target="@16" Category="CodeSchema_Calls" />
+    <Link Source="@82" Target="@18" Category="CodeSchema_Calls" />
+    <Link Source="@84" Target="@105" Category="CodeSchema_Calls" />
+    <Link Source="@84" Target="@109" Category="CodeSchema_Calls" />
+    <Link Source="@84" Target="@114" Category="CodeSchema_Calls" />
+    <Link Source="@84" Target="@120" Category="CodeSchema_Calls" />
+    <Link Source="@84" Target="@126" Category="CodeSchema_Calls" />
+    <Link Source="@84" Target="@22" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@84" Target="@23" Category="References" />
+    <Link Source="@84" Target="@30" Category="References" />
+    <Link Source="@84" Target="@51" Category="References" />
+    <Link Source="@84" Target="@53" Category="References" />
+    <Link Source="@84" Target="@94" Category="CodeSchema_Calls" />
+    <Link Source="@89" Target="@120" Category="CodeSchema_Calls" />
+    <Link Source="@9" Target="@16" Category="Contains" />
+    <Link Source="@9" Target="@3" Category="CodeSchema_GenericTypeUse" />
+    <Link Source="@90" Target="@105" Category="CodeSchema_Calls" />
+    <Link Source="@90" Target="@30" Category="References" />
+    <Link Source="@91" Target="@120" Category="CodeSchema_Calls" />
+    <Link Source="@91" Target="@51" Category="References" />
+    <Link Source="@92" Target="@117" Category="CodeSchema_Calls" />
+    <Link Source="@92" Target="@119" Category="CodeSchema_Calls" />
+    <Link Source="@92" Target="@122" Category="CodeSchema_Calls" />
+    <Link Source="@96" Target="@97" Category="CodeSchema_Calls" />
+    <Link Source="@99" Target="@97" Category="CodeSchema_Calls" />
+    <Link Source="_standardGraphGenericsGroup" Target="@11" Category="Contains" />
+    <Link Source="_standardGraphGenericsGroup" Target="@9" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Block" Label="Block" BasedOn="CodeSchema_Statement" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Blocks" />
+    <Category Id="CodeSchema_Calls" Label="Calls" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Called By" OutgoingActionLabel="Calls" />
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_FunctionPointer" Label="Function Pointer" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Function Pointers" OutgoingActionLabel="Function Pointers" />
+    <Category Id="CodeSchema_GenericMemberUse" Label="Generic Member Use" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Generic Member Definition" OutgoingActionLabel="Generic Member Uses" />
+    <Category Id="CodeSchema_GenericTypeUse" Label="Generic Type Use" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Generic Type Definition" OutgoingActionLabel="Generic Type Uses" />
+    <Category Id="CodeSchema_Member" Label="Member" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" IsProviderRoot="False" NavigationActionLabel="Members" />
+    <Category Id="CodeSchema_Method" Label="Method" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" IsProviderRoot="False" NavigationActionLabel="Methods" />
+    <Category Id="CodeSchema_ReturnTypeLink" Label="Return" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Return types" OutgoingActionLabel="Return types" />
+    <Category Id="CodeSchema_Statement" Label="Statement" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Statement" />
+    <Category Id="CodeSchema_Type" Label="Type" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Types" />
+    <Category Id="Contains" Label="Contains" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="Generics" Label="Generics" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Generics" />
+    <Category Id="References" Label="References" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Referenced By" OutgoingActionLabel="References" />
+  </Categories>
+  <Properties>
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsCompilerGenerated" Label="IsCompilerGenerated" Description="IsCompilerGenerated" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsConstructor" Label="IsConstructor" Description="IsConstructor" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsExternal" Label="IsExternal" Description="IsExternal" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsGenericInstance" Label="IsGenericInstance" Description="IsGenericInstance" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="IsPrivate" Description="IsPrivate" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsProtected" Label="IsProtected" Description="IsProtected" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="IsPublic" Description="IsPublic" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsSpecialName" Label="IsSpecialName" Description="IsSpecialName" DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.Progression.GraphModel.GroupStyle" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="GenericArguments" Label="Generic Arguments" ValueType="Microsoft.VisualStudio.Progression.GraphModel.QualifiedIdentifierArrayCollection" />
+    <Name Id="GenericParameterCount" Label="Generic Parameter Count" ValueType="System.String" />
+    <Name Id="Member" Label="Member" ValueType="System.Object" />
+    <Name Id="Name" Label="Name" ValueType="System.String" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="Parameter" ValueType="Microsoft.VisualStudio.Progression.GraphModel.QualifiedIdentifierArrayCollection" Formatter="NameValueNoEscape" />
+    <Name Id="ParentType" Label="Parent Type" ValueType="System.Object" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Assembly" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Assembly')" />
+      <Setter Property="Background" Value="#1C3068" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Namespace" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Namespace')" />
+      <Setter Property="Background" Value="#4A65A0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Type" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Type')" />
+      <Setter Property="Background" Value="#D3DCEF" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Method" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Method')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Generics" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Generics')" />
+      <Setter Property="Background" Value="#FFA080A0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Externals" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Externals')" />
+      <Setter Property="Background" Value="#FFA08080" />
+    </Style>
+  </Styles>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(f3ac2a23-d52f-460b-92ef-d19220f0893b.OutputPathUri)" />
+    <Alias n="2" Id="Type=(Name=&lt;&gt;f__AnonymousType0 GenericParameterCount=2)" />
+    <Alias n="3" Id="(@1 @2)" />
+    <Alias n="4" Id="Type=(Name=&lt;&gt;f__AnonymousType1 GenericParameterCount=3)" />
+    <Alias n="5" Id="(@1 @4)" />
+    <Alias n="6" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.0/mscorlib.dll" />
+    <Alias n="7" Id="Namespace=System" />
+    <Alias n="8" Id="(@6 @7 Type=String)" />
+    <Alias n="9" Id="(@1 Type=(Name=&lt;&gt;f__AnonymousType0 GenericParameterCount=2 GenericArguments=[@8,@8]))" />
+    <Alias n="10" Uri="Assembly=$(ProgramFilesUri)/Microsoft ASP.NET/ASP.NET MVC 3/Assemblies/System.Web.Mvc.dll" />
+    <Alias n="11" Id="(@1 Type=(Name=&lt;&gt;f__AnonymousType1 GenericParameterCount=3 GenericArguments=[@8,@8,(@10 Namespace=System.Web.Mvc Type=UrlParameter)]))" />
+    <Alias n="12" Id="(@1 @2 Member=(Name=Equals OverloadingParameters=[(@6 @7 Type=Object)]))" />
+    <Alias n="13" Id="(@1 @4 Member=(Name=Equals OverloadingParameters=[(@6 @7 Type=Object)]))" />
+    <Alias n="14" Id="Name=.ctor" />
+    <Alias n="15" Id="(@1 @2 Member=(@14 OverloadingParameters=[(@1 Type=&lt;controller&gt;j__TPar),(@1 Type=&lt;action&gt;j__TPar)]))" />
+    <Alias n="16" Id="(@1 Type=(Name=&lt;&gt;f__AnonymousType0 GenericParameterCount=2 GenericArguments=[@8,@8]) Member=(@14 OverloadingParameters=[@8,@8]))" />
+    <Alias n="17" Id="(@1 @4 Member=(@14 OverloadingParameters=[(@1 Type=&lt;controller&gt;j__TPar),(@1 Type=&lt;action&gt;j__TPar),(@1 Type=&lt;id&gt;j__TPar)]))" />
+    <Alias n="18" Id="(@1 Type=(Name=&lt;&gt;f__AnonymousType1 GenericParameterCount=3 GenericArguments=[@8,@8,(@10 Namespace=System.Web.Mvc Type=UrlParameter)]) Member=(@14 OverloadingParameters=[@8,@8,(@10 Namespace=System.Web.Mvc Type=UrlParameter)]))" />
+    <Alias n="19" Id="Namespace=StudyCourseEditor.Controllers" />
+    <Alias n="20" Id="(@1 @19 Type=(Name=&lt;Index&gt;o__SiteContainer0 ParentType=CourseController))" />
+    <Alias n="21" Id="(@1 @19 Type=(Name=&lt;Index&gt;o__SiteContainer0 ParentType=HomeController))" />
+    <Alias n="22" Id="(@1 @19 Type=(Name=&lt;&gt;c__DisplayClass4 ParentType=SubjectController))" />
+    <Alias n="23" Id="(@1 @19 Type=(Name=&lt;List&gt;o__SiteContainer0 ParentType=SubjectController))" />
+    <Alias n="24" Id="Type=AccountController" />
+    <Alias n="25" Id="(@1 @19 @24)" />
+    <Alias n="26" Id="Namespace=StudyCourseEditor.Models" />
+    <Alias n="27" Id="Type=ChangePasswordModel" />
+    <Alias n="28" Id="(@1 @26 @27)" />
+    <Alias n="29" Id="Type=Course" />
+    <Alias n="30" Id="(@1 @26 @29)" />
+    <Alias n="31" Id="Type=CourseController" />
+    <Alias n="32" Id="(@1 @19 @31)" />
+    <Alias n="33" Id="Type=Definition" />
+    <Alias n="34" Id="(@1 @26 @33)" />
+    <Alias n="35" Id="Type=DefTagRelation" />
+    <Alias n="36" Id="(@1 @26 @35)" />
+    <Alias n="37" Id="Type=Example" />
+    <Alias n="38" Id="(@1 @26 @37)" />
+    <Alias n="39" Id="Type=HomeController" />
+    <Alias n="40" Id="(@1 @19 @39)" />
+    <Alias n="41" Id="Type=LogOnModel" />
+    <Alias n="42" Id="(@1 @26 @41)" />
+    <Alias n="43" Id="Namespace=StudyCourseEditor" />
+    <Alias n="44" Id="Type=MvcApplication" />
+    <Alias n="45" Id="(@1 @43 @44)" />
+    <Alias n="46" Id="Type=RegisterModel" />
+    <Alias n="47" Id="(@1 @26 @46)" />
+    <Alias n="48" Id="Type=StudyCourseDB" />
+    <Alias n="49" Id="(@1 @26 @48)" />
+    <Alias n="50" Id="Type=Subject" />
+    <Alias n="51" Id="(@1 @26 @50)" />
+    <Alias n="52" Id="Type=SubjectController" />
+    <Alias n="53" Id="(@1 @19 @52)" />
+    <Alias n="54" Id="Type=Tag" />
+    <Alias n="55" Id="(@1 @26 @54)" />
+    <Alias n="56" Id="Type=Test" />
+    <Alias n="57" Id="(@1 @26 @56)" />
+    <Alias n="58" Id="(@1 @19 Type=TestController)" />
+    <Alias n="59" Uri="Assembly=$(VsSolutionUri)/packages/EntityFramework.4.1.10331.0/lib/EntityFramework.dll" />
+    <Alias n="60" Id="Namespace=System.Data.Entity" />
+    <Alias n="61" Id="Name=DbSet" />
+    <Alias n="62" Id="GenericParameterCount=1" />
+    <Alias n="63" Id="Namespace=System.Collections.Generic" />
+    <Alias n="64" Id="Name=ICollection" />
+    <Alias n="65" Id="(@1 @19 @24 Member=(Name=ChangePassword OverloadingParameters=[@28]))" />
+    <Alias n="66" Id="(@1 @19 @31 Member=(Name=Create OverloadingParameters=[@30]))" />
+    <Alias n="67" Id="(@1 @19 @39 Member=(Name=&lt;Index&gt;b__2 OverloadingParameters=[@36]))" />
+    <Alias n="68" Id="(@1 @43 @44 Member=(Name=RegisterGlobalFilters OverloadingParameters=[(@10 Namespace=System.Web.Mvc Type=GlobalFilterCollection)]))" />
+    <Alias n="69" Id="OverloadingParameters=[(@6 @7 Type=Int32)]" />
+    <Alias n="70" Id="(@1 @19 @31 Member=(Name=Delete @69))" />
+    <Alias n="71" Id="(@1 @19 @52 Member=(Name=Delete @69))" />
+    <Alias n="72" Id="(@1 @19 @31 Member=(Name=Details @69))" />
+    <Alias n="73" Id="(@1 @19 @52 Member=(Name=Details @69))" />
+    <Alias n="74" Id="(@1 @19 @31 Member=(Name=Edit @69))" />
+    <Alias n="75" Id="(@1 @19 @52 Member=(Name=Edit @69))" />
+    <Alias n="76" Id="(@1 @26 @50 Member=(Name=set_CourseID @69))" />
+    <Alias n="77" Id="Member=(Name=set_ID @69)" />
+    <Alias n="78" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.0/System.Web.ApplicationServices.dll" />
+    <Alias n="79" Id="(@1 @19 @24 Member=(Name=ErrorCodeToString OverloadingParameters=[(@78 Namespace=System.Web.Security Type=MembershipCreateStatus)]))" />
+    <Alias n="80" Id="(@1 @19 @24 Member=(Name=Register OverloadingParameters=[@47]))" />
+    <Alias n="81" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.0/System.Web.dll" />
+    <Alias n="82" Id="(@1 @43 @44 Member=(Name=RegisterRoutes OverloadingParameters=[(@81 Namespace=System.Web.Routing Type=RouteCollection)]))" />
+    <Alias n="83" Id="OverloadingParameters=[@8]" />
+    <Alias n="84" Id="(@1 @19 @52 Member=(Name=List @83))" />
+    <Alias n="85" Id="(@1 @26 @29 Member=(Name=set_Description @83))" />
+    <Alias n="86" Id="Member=(Name=set_Name @83)" />
+    <Alias n="87" Id="(@1 @26 @29 @86)" />
+    <Alias n="88" Id="(@1 @26 @50 @86)" />
+    <Alias n="89" Id="(@1 @19 @52 Member=(Name=Create OverloadingParameters=[@51]))" />
+    <Alias n="90" Id="(@1 @19 @31 Member=(Name=Edit OverloadingParameters=[(@6 @7 Type=Int32),(@10 Namespace=System.Web.Mvc Type=FormCollection)]))" />
+    <Alias n="91" Id="(@1 @19 @52 Member=(Name=Edit OverloadingParameters=[(@6 @7 Type=Int32),(@10 Namespace=System.Web.Mvc Type=FormCollection)]))" />
+    <Alias n="92" Id="(@1 @19 @24 Member=(Name=LogOn OverloadingParameters=[@42,@8]))" />
+    <Alias n="93" Id="Member=.ctor" />
+    <Alias n="94" Id="(@1 @19 Type=(Name=&lt;&gt;c__DisplayClass4 ParentType=SubjectController) @93)" />
+    <Alias n="95" Id="(@1 @26 @29 @93)" />
+    <Alias n="96" Id="(@1 @19 @31 @93)" />
+    <Alias n="97" Id="(@1 @26 @48 @93)" />
+    <Alias n="98" Id="(@1 @26 @50 @93)" />
+    <Alias n="99" Id="(@1 @19 @52 @93)" />
+    <Alias n="100" Id="(@1 @26 @54 @93)" />
+    <Alias n="101" Id="(@1 @19 Type=TestController @93)" />
+    <Alias n="102" Id="(@1 @43 @44 Member=Application_Start)" />
+    <Alias n="103" Id="(@1 @19 Type=TestController Member=CreateDummyData)" />
+    <Alias n="104" Id="(@1 @26 @50 Member=get_Course)" />
+    <Alias n="105" Id="(@1 @26 @48 Member=get_Courses)" />
+    <Alias n="106" Id="(@1 @26 @35 Member=get_Definition)" />
+    <Alias n="107" Id="(@1 @26 @37 Member=get_Definition)" />
+    <Alias n="108" Id="(@1 @26 @54 Member=get_DefTagRelations)" />
+    <Alias n="109" Id="(@1 @26 @29 Member=get_Description)" />
+    <Alias n="110" Id="(@1 @26 @46 Member=get_Email)" />
+    <Alias n="111" Id="Member=get_ID" />
+    <Alias n="112" Id="(@1 @26 @29 @111)" />
+    <Alias n="113" Id="Member=get_Name" />
+    <Alias n="114" Id="(@1 @26 @29 @113)" />
+    <Alias n="115" Id="(@1 @26 @27 Member=get_NewPassword)" />
+    <Alias n="116" Id="(@1 @26 @27 Member=get_OldPassword)" />
+    <Alias n="117" Id="(@1 @26 @41 Member=get_Password)" />
+    <Alias n="118" Id="(@1 @26 @46 Member=get_Password)" />
+    <Alias n="119" Id="(@1 @26 @41 Member=get_RememberMe)" />
+    <Alias n="120" Id="(@1 @26 @48 Member=get_Subjects)" />
+    <Alias n="121" Id="(@1 @26 @35 Member=get_Tag)" />
+    <Alias n="122" Id="(@1 @26 @41 Member=get_UserName)" />
+    <Alias n="123" Id="(@1 @26 @46 Member=get_UserName)" />
+    <Alias n="124" Id="(@1 @19 @31 Member=Index)" />
+    <Alias n="125" Id="(@1 @19 @39 Member=Index)" />
+    <Alias n="126" Id="(@1 @19 @24 Member=isUserAdmin)" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="f3ac2a23-d52f-460b-92ef-d19220f0893b.OutputPathUri" Value="file:///D:/Dropbox/Projects/StudyCourseEditor/StudyCourseEditor/StudyCourseEditor/bin/StudyCourseEditor.dll" />
+    <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files/Reference Assemblies/Microsoft/Framework" />
+    <Path Id="ProgramFilesUri" Value="file:///C:/Program Files" />
+    <Path Id="VsSolutionUri" Value="file:///D:/Dropbox/Projects/StudyCourseEditor/StudyCourseEditor" />
+  </Paths>
+</DirectedGraph>

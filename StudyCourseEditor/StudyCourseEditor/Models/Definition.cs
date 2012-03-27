@@ -12,5 +12,6 @@ namespace StudyCourseEditor.Models
         public string Body { get; set; }
 
         public virtual ICollection<Example> Examples { get; set; }
+        public virtual ICollection<DefTagRelation> DefTagRelations { get; set; }
     }
 }
