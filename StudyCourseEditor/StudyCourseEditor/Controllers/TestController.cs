@@ -66,12 +66,10 @@ namespace StudyCourseEditor.Controllers
                 data.CurrentQuestionDifficulty -= 2 / data.ItemsTaken;
             }
 
-            if (CalculateError(data) < 0.3)
+            if (data.CalculateError() < 0.3)
                 return RedirectToAction("FinishExam", data);
 
-            var model = GetTest(data);
-
-            return View(model);
+            return View(data.NextQuestion());
         }
 
         /// <summary>
@@ -80,91 +78,9 @@ namespace StudyCourseEditor.Controllers
         /// <returns></returns>
         public ActionResult FinishExam(TestData data)
         {
-            double score = CalculateMeasure(data);
+            double score = data.CalculateMeasure();
             return View();
         }
 
-        /// <summary>
-        /// Возвращает примерную оценку уровня знаний студента.
-        /// </summary>
-        /// <param name="difficultiesUsed">Сумма сложностей всех заданных вопросов</param>
-        /// <param name="itemsTaken">Количество пройденных заданий</param>
-        /// <param name="rightAnswersCount">Количество верных ответов</param>
-        /// <returns>Оценка уровня знаний</returns>
-        private double CalculateMeasure(float difficultiesUsed, float itemsTaken, float rightAnswersCount)
-        {
-            float wrongAnswersCount = itemsTaken - rightAnswersCount;
-
-            if (Math.Abs(wrongAnswersCount - 0) < 0.001)
-            {
-                wrongAnswersCount += 0.5f;
-                rightAnswersCount -= 0.5f;
-            }
-
-            if (Math.Abs(rightAnswersCount - 0) < 0.001)
-            {
-                wrongAnswersCount -= 0.5f;
-                rightAnswersCount += 0.5f;
-            }
-
-            return (difficultiesUsed / itemsTaken) + Math.Log(rightAnswersCount / wrongAnswersCount);
-        }
-
-        /// <summary>
-        /// Возвращает примерную оценку уровня знаний студента.
-        /// </summary>
-        /// <param name="data">Набо данных о тесте</param>
-        /// <returns>Оценка уровня знаний</returns>
-        private double CalculateMeasure(TestData data)
-        {
-            return CalculateMeasure(data.TotalDifficultiesUsed, data.ItemsTaken, data.RightAnswersCount);
-        }
-
-        /// <summary>
-        /// Возвращает текущую ошибку измерения. Необходима для критерия остановки.
-        /// </summary>
-        /// <param name="itemsTaken">Количество пройденных заданий</param>
-        /// <param name="rightAnswersCount">Количество верных ответов</param>
-        /// <returns>Ошбика</returns>
-        private double CalculateError(float itemsTaken, float rightAnswersCount)
-        {
-            float wrongAnswersCount = itemsTaken - rightAnswersCount;
-            
-            if (Math.Abs(wrongAnswersCount - 0) < 0.001)
-            {
-                wrongAnswersCount += 0.5f;
-                rightAnswersCount -= 0.5f;
-            }
-
-            if (Math.Abs(rightAnswersCount - 0) < 0.001)
-            {
-                wrongAnswersCount -= 0.5f;
-                rightAnswersCount += 0.5f;
-            }
-
-            return Math.Sqrt(itemsTaken / (wrongAnswersCount * rightAnswersCount));
-        }
-
-
-        /// <summary>
-        /// Возвращает текущую ошибку измерения. Необходима для критерия остановки.
-        /// </summary>
-        /// <param name="data">Набо данных о тесте</param>
-        /// <returns>Ошбика</returns>
-        private double CalculateError(TestData data)
-        {
-            return CalculateError(data.ItemsTaken, data.RightAnswersCount);
-        }
-
-
-        /// <summary>
-        /// Возвращает сгенерированый по шаблону случайный тест, заданного уровня сложности
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        private GeneratedTest GetTest(TestData data)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
