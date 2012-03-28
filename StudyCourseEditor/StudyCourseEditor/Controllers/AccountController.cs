@@ -151,7 +151,7 @@ namespace StudyCourseEditor.Controllers
         }
 
 
-        public static bool isUserAdmin()
+        public static bool IsUserAdmin()
         {
             return Roles.GetRolesForUser().Contains("administrator");
         }

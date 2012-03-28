@@ -1,12 +1,5 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/f:_ViewStart.cshtml" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Account/f:Register.cshtml" caret="1869" fromTop="35" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Account/f:LogOn.cshtml" caret="817" fromTop="24" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Account/f:ChangePasswordSuccess.cshtml" caret="92" fromTop="6" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Shared/f:_LogOnPartial.cshtml" caret="223" fromTop="7" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="801" fromTop="23" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:AccountController.cs" caret="4663" fromTop="11" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Shared/f:_Layout.cshtml" caret="773" fromTop="20" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="837" fromTop="19" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Course/f:Create.cshtml" caret="44" fromTop="0" />
@@ -14,53 +7,60 @@
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Course/f:Edit.cshtml" caret="1099" fromTop="35" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Course/f:Index.cshtml" caret="621" fromTop="25" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Edit.cshtml" caret="1447" fromTop="31" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Details.cshtml" caret="576" fromTop="24" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Create.cshtml" caret="1386" fromTop="47" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:List.cshtml" caret="752" fromTop="36" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Global.asax.cs" caret="1611" fromTop="30" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Subject.cs" caret="0" fromTop="0" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Course.cs" caret="273" fromTop="8" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2402" fromTop="36" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="247" fromTop="12" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="1036" fromTop="20" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:DefTagRelation.cs" caret="460" fromTop="17" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Definition.cs" caret="437" fromTop="14" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Tag.cs" caret="331" fromTop="15" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:StudyCourseDB.cs" caret="499" fromTop="12" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="440" fromTop="16" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:AccountModels.cs" caret="1296" fromTop="37" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Example.cs" caret="0" fromTop="0" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Details.cshtml" caret="576" fromTop="24" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Create.cshtml" caret="1386" fromTop="47" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:List.cshtml" caret="752" fromTop="36" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Test/f:FinishExam.cshtml" caret="0" fromTop="0" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="0" fromTop="0" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:AccountController.cs" caret="4572" fromTop="78" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2415" fromTop="32" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="2027" fromTop="21" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="0" fromTop="0" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:TestShow.cshtml" caret="115" fromTop="6" />
+    <File id="F5EDF132-7DD9-4F81-88BC-EB8CB3B50666/f:Index.cshtml" caret="0" fromTop="0" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="773" fromTop="25" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="239" fromTop="10" />
   </RecentFiles>
   <RecentEdits>
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:List.cshtml" caret="354" fromTop="18" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:List.cshtml" caret="752" fromTop="21" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="1023" fromTop="33" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Create.cshtml" caret="101" fromTop="6" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Create.cshtml" caret="421" fromTop="14" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Create.cshtml" caret="1307" fromTop="26" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Create.cshtml" caret="1386" fromTop="32" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="1407" fromTop="23" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="1855" fromTop="35" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Edit.cshtml" caret="82" fromTop="3" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Edit.cshtml" caret="426" fromTop="14" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Edit.cshtml" caret="1357" fromTop="28" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Edit.cshtml" caret="1436" fromTop="19" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="1821" fromTop="18" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2203" fromTop="30" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2039" fromTop="25" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2406" fromTop="36" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Details.cshtml" caret="74" fromTop="3" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Details.cshtml" caret="696" fromTop="28" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Details.cshtml" caret="190" fromTop="11" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Details.cshtml" caret="333" fromTop="16" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Global.asax.cs" caret="1629" fromTop="31" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:StudyCourseDB.cs" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="256" fromTop="12" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:DefTagRelation.cs" caret="446" fromTop="17" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Definition.cs" caret="380" fromTop="14" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Tag.cs" caret="331" fromTop="15" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:StudyCourseDB.cs" caret="486" fromTop="12" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="440" fromTop="16" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:AccountModels.cs" caret="1302" fromTop="37" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="2185" fromTop="25" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="1840" fromTop="19" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="1952" fromTop="22" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2476" fromTop="27" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2167" fromTop="23" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2429" fromTop="29" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="2729" fromTop="27" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:AccountController.cs" caret="4572" fromTop="18" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="721" fromTop="33" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="628" fromTop="28" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:TestShow.cshtml" caret="185" fromTop="8" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="344" fromTop="14" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:TestShow.cshtml" caret="85" fromTop="4" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="555" fromTop="26" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="0" fromTop="0" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="14" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="26" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="32" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="88" fromTop="2" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="25" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="19" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="24" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="25" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="12" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="169" fromTop="8" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="464" fromTop="16" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="596" fromTop="22" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="773" fromTop="25" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="38" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="229" fromTop="10" />
   </RecentEdits>
 </RecentFiles>

@@ -14,6 +14,7 @@ namespace StudyCourseEditor.Models
     }
 
     [NotMapped]
+    [Serializable]
     public class TestData
     {
         public int CurrentQuestionDifficulty { get; set; }
@@ -95,7 +96,7 @@ namespace StudyCourseEditor.Models
     {
         public string Body { get; set; }
         public List<Answer> Answers { get; set; }
-        public QuestionType Type { get; set; }
+        public int Type { get; set; }
     }
 
     [NotMapped]

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "TestShow";
+}
+
+<h2>@ViewBag.Hash</h2> <br/>
+
+Длина ключа: @ViewBag.AesLength
+<h3>@ViewBag.Aes</h3> <br/>
+
+<h4>@ViewBag.Xml</h4> <br/>
+
+@using (Html.BeginForm("TestProcess", "Home"))
+{
+    @Html.Label("", "Id")
+    @Html.TextBox("id")
+    <input type="submit" value="Done" />
+}

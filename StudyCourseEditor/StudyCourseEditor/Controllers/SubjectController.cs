@@ -26,7 +26,7 @@ namespace StudyCourseEditor.Controllers
 
             ViewBag.CourseName = course.Name;
             ViewBag.CourseDescription = course.Description;
-            ViewBag.isUserAdmin = AccountController.isUserAdmin();
+            ViewBag.isUserAdmin = AccountController.IsUserAdmin();
             
             return View(model);
         }
