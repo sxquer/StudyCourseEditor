@@ -7,11 +7,12 @@
 Длина ключа: @ViewBag.AesLength
 <h3>@ViewBag.Aes</h3> <br/>
 
+Длина xml: @ViewBag.XmlLength
 <h4>@ViewBag.Xml</h4> <br/>
 
 @using (Html.BeginForm("TestProcess", "Home"))
 {
     @Html.Label("", "Id")
     @Html.TextBox("id")
-    <input type="submit" value="Done" />
+    <input type="submit" value="Done"/>
 }
