@@ -1,7 +1,5 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Shared/f:_Layout.cshtml" caret="773" fromTop="20" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="837" fromTop="19" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Course/f:Create.cshtml" caret="44" fromTop="0" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Course/f:Details.cshtml" caret="73" fromTop="3" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Course/f:Edit.cshtml" caret="1099" fromTop="35" />
@@ -23,44 +21,45 @@
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Test/f:FinishExam.cshtml" caret="0" fromTop="0" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="0" fromTop="0" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:AccountController.cs" caret="4572" fromTop="78" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2415" fromTop="32" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="2027" fromTop="21" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:TestShow.cshtml" caret="115" fromTop="6" />
-    <File id="F5EDF132-7DD9-4F81-88BC-EB8CB3B50666/f:Index.cshtml" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="773" fromTop="25" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="239" fromTop="10" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:MD5HashManager.cs" caret="5022" fromTop="97" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="1009" fromTop="14" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="971" fromTop="0" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoXorManager.cs" caret="493" fromTop="19" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="4433" fromTop="22" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:TestShow.cshtml" caret="342" fromTop="16" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="1541" fromTop="13" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="3024" fromTop="23" />
   </RecentFiles>
   <RecentEdits>
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="2185" fromTop="25" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="1840" fromTop="19" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="1952" fromTop="22" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2476" fromTop="27" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2167" fromTop="23" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2429" fromTop="29" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="2729" fromTop="27" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:AccountController.cs" caret="4572" fromTop="18" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="721" fromTop="33" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="628" fromTop="28" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:TestShow.cshtml" caret="185" fromTop="8" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="344" fromTop="14" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:TestShow.cshtml" caret="85" fromTop="4" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="555" fromTop="26" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="14" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="26" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="32" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="88" fromTop="2" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="25" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="19" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="24" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="25" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="12" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="169" fromTop="8" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="464" fromTop="16" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="596" fromTop="22" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="773" fromTop="25" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="5311" fromTop="38" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoAesManager.cs" caret="229" fromTop="10" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="720" fromTop="22" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="720" fromTop="30" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="720" fromTop="25" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="308" fromTop="4" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="514" fromTop="8" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="1495" fromTop="38" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="809" fromTop="6" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="1159" fromTop="15" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="1252" fromTop="16" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:XmlManager.cs" caret="560" fromTop="13" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="3605" fromTop="32" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="1084" fromTop="32" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="4186" fromTop="29" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="4430" fromTop="29" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="491" fromTop="16" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="94" fromTop="2" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="3899" fromTop="22" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="4271" fromTop="24" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="4092" fromTop="26" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:TestShow.cshtml" caret="147" fromTop="9" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:TestShow.cshtml" caret="347" fromTop="16" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoXorManager.cs" caret="225" fromTop="9" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:CryptoXorManager.cs" caret="480" fromTop="18" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="2006" fromTop="15" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="2320" fromTop="20" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="3039" fromTop="27" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="2500" fromTop="10" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="48" fromTop="1" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="2900" fromTop="18" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="3024" fromTop="23" />
   </RecentEdits>
 </RecentFiles>

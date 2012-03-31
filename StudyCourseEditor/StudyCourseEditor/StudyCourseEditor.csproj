@@ -81,6 +81,7 @@
     <Compile Include="Models\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\CryptoAesManager.cs" />
+    <Compile Include="Tools\CryptoXorManager.cs" />
     <Compile Include="Tools\MD5HashManager.cs" />
     <Compile Include="Tools\XmlManager.cs" />
   </ItemGroup>

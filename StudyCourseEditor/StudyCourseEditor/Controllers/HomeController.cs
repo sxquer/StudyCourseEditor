@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using StudyCourseEditor.Models;
@@ -61,12 +58,12 @@ namespace StudyCourseEditor.Controllers
 
             var lol = new TestData
                           {
-                            CurrentQuestionDifficulty = 4,
+                            CurrentQuestionDifficulty = 54,
                             CurrentTest = test,
                             ItemsTaken = 24,
                             ResultGraph = "19;03;19;16;05;19;03;19;16;05;19;03;19;16;05;19;03;19;16;05;",
                             RightAnswersCount = 16,
-                            Started = DateTime.Now.AddHours(-1),
+                            Started = DateTime.Parse("00:00:00"),
                             TotalDifficultiesUsed = 38
                           };
 
@@ -78,6 +75,17 @@ namespace StudyCourseEditor.Controllers
             ViewBag.Aes = aesCode;
             ViewBag.AesLength = aesCode.Length;
             ViewBag.Hash = hash;
+
+            Response.Cookies.Add(new HttpCookie("SecurityToken", hash));
+/*
+            for (int i = 0; i < 2; i++)
+            {
+                aesCode += aesCode;
+            }
+            */
+             Response.Cookies.Add(new HttpCookie("DataToken", aesCode));
+   
+            
 
             var some = XmlManager.DeserializeObject<TestData>(xml);
             return View("TestShow");
