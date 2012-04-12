@@ -1,7 +1,8 @@
 ﻿@model StudyCourseEditor.Models.Subject
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Создать тему";
+    int courseID = ViewBag.CourseID;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -12,8 +13,6 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Новая тема</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
@@ -31,10 +30,10 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CourseID)
+            @Html.LabelFor(model => model.CourseID, "Course")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CourseID)
+            @Html.Hidden("CourseID", courseID)
             @Html.ValidationMessageFor(model => model.CourseID)
         </div>
 
@@ -45,5 +44,5 @@
 }
 
 <div>
-    @Html.ActionLink("К списку", "Index")
+    @Html.ActionLink("К списку тем", "Edit", "Course", new {id = courseID}, null)
 </div>

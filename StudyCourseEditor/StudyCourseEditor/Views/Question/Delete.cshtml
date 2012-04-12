@@ -1,0 +1,18 @@
+﻿@model StudyCourseEditor.Models.Question
+
+@{
+    ViewBag.Title = "Удалить вопрос";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Вы уверены, что хотите удалить этот вопрос??</h3>
+<fieldset>
+    @Model.Body
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Да, удалить" /> |
+        @Html.ActionLink("К списку вопросов", "Edit", "Subject", new {id = Model.SubjectID}, null)
+    </p>
+}

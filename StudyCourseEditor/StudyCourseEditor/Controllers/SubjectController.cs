@@ -1,89 +1,111 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StudyCourseEditor.Models;
 
 namespace StudyCourseEditor.Controllers
-{
+{ 
     public class SubjectController : Controller
     {
-        StudyCourseDB _db = new StudyCourseDB();
+        private readonly StudyCourseDB _db = new StudyCourseDB();
 
-        
-        public ActionResult Index(string courseName, string subject)
+        //
+        // GET: /Subject/
+
+        public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Course");
         }
 
-        public ActionResult List(string courseName)
+        //
+        // GET: /Subject/Details/5
+
+        public ViewResult Details(int id)
         {
-            var course = _db.Courses.FirstOrDefault(x => x.Name == courseName);
-            if (course == null) return RedirectToAction("Index", "Home");
-            
-            var model = _db.Subjects.Where(x => x.Course.Name == courseName);
-
-            ViewBag.CourseName = course.Name;
-            ViewBag.CourseDescription = course.Description;
-            ViewBag.isUserAdmin = AccountController.IsUserAdmin();
-            
-            return View(model);
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public ActionResult Create(Subject subject)
-        {
-            _db.Subjects.Add(subject);
-            _db.SaveChanges();
-
-            return RedirectToAction("List");
-        }
-        
-        
-        [Authorize(Roles = "Administrator")]
-        public ActionResult Delete(int id)
-        {
-            _db.Subjects.Remove(_db.Subjects.Find(id));
-            _db.SaveChanges();
-            
-            return RedirectToAction("List");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public ActionResult Edit(int id)
-        {
-            var model = _db.Subjects.Find(id);
-            return View(model);
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            var subject = _db.Subjects.Find(id);
-
-            if (TryUpdateModel(subject, collection))
-            {
-                _db.SaveChanges();
-                return RedirectToAction("List");
-            }
-
+            Subject subject = _db.Subjects.Find(id);
             return View(subject);
         }
 
-        public ActionResult Details(int id)
+        //
+        // GET: /Subject/Create
+
+        public ActionResult Create(int courseId)
         {
-            var model = _db.Subjects.Find(id);
-            return View(model);
+            ViewBag.CourseID = courseId;
+            return View();
+        } 
+
+        //
+        // POST: /Subject/Create
+
+        [HttpPost]
+        public ActionResult Create(Subject subject)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Subjects.Add(subject);
+                _db.SaveChanges();
+                return RedirectToAction("Index"); 
+            }
+
+            ViewBag.CourseID = subject.CourseID;
+            return View(subject);
+        }
+        
+        //
+        // GET: /Subject/Edit/5
+ 
+        public ActionResult Edit(int id)
+        {
+            Subject subject = _db.Subjects.Find(id);
+            return View(subject);
         }
 
+        //
+        // POST: /Subject/Edit/5
+
+        [HttpPost]
+        public ActionResult Edit(Subject subject)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(subject).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.CourseID = new SelectList(_db.Courses, "ID", "Name", subject.CourseID);
+            return View(subject);
+        }
+
+        //
+        // GET: /Subject/Delete/5
+ 
+        public ActionResult Delete(int id)
+        {
+            Subject subject = _db.Subjects.Find(id);
+            return View(subject);
+        }
+
+        //
+        // POST: /Subject/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {            
+            Subject subject = _db.Subjects.Find(id);
+            _db.Subjects.Remove(subject);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _db.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

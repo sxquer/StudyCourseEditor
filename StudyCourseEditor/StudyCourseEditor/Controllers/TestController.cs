@@ -19,7 +19,7 @@ namespace StudyCourseEditor.Controllers
         public ActionResult Index()
         {
             var testData = GetTestData();
-            if (testData == null) return RedirectToAction("FinishTest");
+            if (testData == null) return RedirectToAction("End");
 
             ViewBag.QuestionToken = testData.GetQuestionHash();
 
@@ -42,7 +42,7 @@ namespace StudyCourseEditor.Controllers
             var testData = GetTestData();
 
             //If bad data then finish survey
-            if (testData == null) return RedirectToAction("FinishTest");
+            if (testData == null) return RedirectToAction("End");
             
             //If bad question token (for example student are trying to answer question previously cached in browser) redirect to last question
             if (collection["QuestionToken"] != testData.GetQuestionHash())
@@ -52,7 +52,8 @@ namespace StudyCourseEditor.Controllers
 
             testData.ItemsTaken++;
             testData.TotalDifficultiesUsed += testData.CurrentQuestionDifficulty;
-            int difficultyShift = (int) Math.Round((float) 2 / testData.ItemsTaken);
+            
+            var difficultyShift = (int) Math.Round((float) 2 / testData.ItemsTaken);
 
             bool answerIsCorrect = CheckAnswerIsCorrect(question, collection["Answers"]);
 
@@ -86,7 +87,7 @@ namespace StudyCourseEditor.Controllers
             SetTestData(testData);
 
             if (testData.CalculateError() < 0.3)
-                return RedirectToAction("FinishTest");
+                return RedirectToAction("End");
 
             return RedirectToAction("Index");
         }
@@ -95,11 +96,12 @@ namespace StudyCourseEditor.Controllers
         /// Обработка результатов тестирования
         /// </summary>
         /// <returns></returns>
-        public ActionResult FinishTest()
+        public ActionResult End()
         {
             //TODO: Check if data == null
             var data = GetTestData();
-            
+            ClearTestData();
+            if (data == null) return View();
             double score = data.CalculateMeasure();
             return View();
         }
@@ -144,6 +146,23 @@ namespace StudyCourseEditor.Controllers
             if (MD5HashManager.GenerateKey(testInfo.Value) != securityToken.Value) return null;
 
             return XmlManager.DeserializeObject<TestData>(CryptoXorManager.Process(testInfo.Value, 17));
+        }
+
+        private void ClearTestData()
+        {
+            var testInfo = Request.Cookies["TestInfo"];
+            var securityToken = Request.Cookies["SecurityToken"];
+
+            if (testInfo != null)
+            {
+                testInfo.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(testInfo);
+            }
+            if (securityToken != null)
+            {
+                securityToken.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(securityToken);
+            }
         }
 
 

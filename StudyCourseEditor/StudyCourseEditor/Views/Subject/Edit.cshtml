@@ -1,7 +1,8 @@
 ﻿@model StudyCourseEditor.Models.Subject
 
 @{
-    ViewBag.Title = "Редактирование";
+    ViewBag.Title = "Редактировать тему";
+    int i = 0;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -12,8 +13,6 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Тема</legend>
-
         @Html.HiddenFor(model => model.ID)
 
         <div class="editor-label">
@@ -32,12 +31,8 @@
             @Html.ValidationMessageFor(model => model.Body)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CourseID)
-        </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CourseID)
-            @Html.ValidationMessageFor(model => model.CourseID)
+            @Html.Hidden("CourseID", Model.CourseID)
         </div>
 
         <p>
@@ -47,5 +42,20 @@
 }
 
 <div>
-    @Html.ActionLink("К списку", "Index")
+     @Html.ActionLink("К списку тем", "Edit", "Course", new { id = Model.CourseID }, null)
+</div>
+
+
+<div>
+    <h3>Список вопросов (@Html.ActionLink("Добавить новый", "Create", "Question", new { subjectId = Model.ID }, null))</h3> 
+
+    <div>
+        
+        @foreach (var question in Model.Questions)
+        {
+            
+            @Html.ActionLink("Вопрос №" + (++i), "Edit", "Question", new { id = question.ID }, null) @:||
+            @Html.ActionLink("Удалить", "Delete", "Question", new { id = question.ID }, null)
+        }
+    </div>
 </div>

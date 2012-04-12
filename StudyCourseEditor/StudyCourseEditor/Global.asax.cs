@@ -24,18 +24,6 @@ namespace StudyCourseEditor
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "Courses", // Route name
-                "Курсы/{courseName}", // URL with parameters
-                new { controller = "Subject", action = "List" } // Parameter defaults
-            );
-
-            routes.MapRoute(
-                "Subjects", // Route name
-                "Курсы/{courseName}/{subject}", // URL with parameters
-                new { controller = "Subject", action = "Index" } // Parameter defaults
-            );
-
-            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
@@ -47,7 +35,7 @@ namespace StudyCourseEditor
         {
             AreaRegistration.RegisterAllAreas();
 
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<StudyCourseDB>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<StudyCourseDB>());
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);

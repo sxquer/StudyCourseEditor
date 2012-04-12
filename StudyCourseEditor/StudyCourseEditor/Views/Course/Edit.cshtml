@@ -1,7 +1,7 @@
 ﻿@model StudyCourseEditor.Models.Course
 
 @{
-    ViewBag.Title = "Редактирование";
+    ViewBag.Title = "Редактировать курс";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -12,7 +12,7 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Курс</legend>
+        <legend>Course</legend>
 
         @Html.HiddenFor(model => model.ID)
 
@@ -39,5 +39,20 @@
 }
 
 <div>
-    @Html.ActionLink("К списку", "Index")
+    @Html.ActionLink("К списку курсов", "Index")
 </div>
+
+
+<div>
+    <h3>Список тем (@Html.ActionLink("Добавить новую", "Create", "Subject", new { courseId = Model.ID }, null))</h3> 
+
+    <div>
+        @foreach (var subject in Model.Subjects)
+        {
+            @Html.ActionLink(subject.Name, "Details", "Subject", new { id = subject.ID }, null) @:||
+            @Html.ActionLink("Редактировать", "Edit", "Subject", new { id = subject.ID }, null) @:|
+            @Html.ActionLink("Удалить", "Delete", "Subject", new { id = subject.ID }, null)
+        }
+    </div>
+</div>
+

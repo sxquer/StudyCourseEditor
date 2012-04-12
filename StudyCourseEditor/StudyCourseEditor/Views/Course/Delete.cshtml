@@ -1,0 +1,16 @@
+﻿@model StudyCourseEditor.Models.Course
+
+@{
+    ViewBag.Title = "Удалить курс";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Вы уверены, что хотите удалить курс "@Model.Name"?</h3>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Да, удалить" /> |
+        @Html.ActionLink("К списку курсов", "Index")
+    </p>
+}

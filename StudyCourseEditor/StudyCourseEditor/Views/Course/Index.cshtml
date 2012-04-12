@@ -1,34 +1,31 @@
 ﻿@model IEnumerable<StudyCourseEditor.Models.Course>
 
 @{
-    ViewBag.Title = "Список доступных курсов";
+    ViewBag.Title = "Список курсов";
 }
 
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @if (ViewBag.isUserAdmin)
-    {
-        @Html.ActionLink("Создать новый", "Create")
-    }
-   
+    @Html.ActionLink("Создать новый курс", "Create")
 </p>
 <table>
+    <tr>
+        <th>
+            Название
+        </th>
+    </tr>
 
-@foreach (var item in Model)
-{
+@foreach (var item in Model) {
     <tr>
         <td>
-           @Html.RouteLink(item.Name, "Courses", new { courseName = item.Name })
+            @Html.ActionLink(item.Name, "Details", new { id = item.ID })
+            
         </td>
-    @if (ViewBag.isUserAdmin)
-    {
         <td>
-            @Html.ActionLink("Редактировать", "Edit", new {id = item.ID}) |
-            @Html.ActionLink("Подробнее", "Details", new {id = item.ID}) |
-            @Html.ActionLink("Удалить", "Delete", new {id = item.ID})
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ID })
         </td>
-    }
     </tr>
 }
 
