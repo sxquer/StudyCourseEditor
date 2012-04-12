@@ -21,7 +21,7 @@ namespace StudyCourseEditor.Controllers
             var testData = GetTestData();
             if (testData == null) return RedirectToAction("FinishExam");
 
-
+            var generatedTest = TemplateManager.Generate(testData.CurrentTestId, testData.CurrentTestSeed);
 
             return View();
         }

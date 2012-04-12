@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using StudyCourseEditor.Interfaces;
 using StudyCourseEditor.Models;
 
-namespace StudyCourseEditor.Interfaces
+namespace StudyCourseEditor.Tools
 {
-    public interface IQuestionGenerator
+    public class TemplateManager
     {
         /// <summary>
         /// Возвращает сгенерированный вопрос по заданному шаблону и сиду
@@ -15,7 +15,11 @@ namespace StudyCourseEditor.Interfaces
         /// <param name="templateId">ID шаблона</param>
         /// <param name="seed">Сид</param>
         /// <returns>Сгенерированный вопрос</returns>
-        GeneratedQuestion Generate(int templateId, int seed);
+        public static GeneratedQuestion Generate(int templateId, int seed)
+        {
+            throw new NotImplementedException();
+        }
+
 
         /// <summary>
         /// Возвращает ID шаблона из заданного курса, со сложностью, максимально близкой к difficulty
@@ -23,12 +27,19 @@ namespace StudyCourseEditor.Interfaces
         /// <param name="courseId">ID курса</param>
         /// <param name="difficulty">Теоретическая сложность вопроса</param>
         /// <returns>ID шаблона</returns>
-        int GetQuestionID(int courseId, int difficulty);
+        public static int GetQuestionID(int courseId, int difficulty)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Returns randomly generated seed
         /// </summary>
         /// <returns></returns>
-        int GetRandomSeed();
+        public static int GetRandomSeed()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
