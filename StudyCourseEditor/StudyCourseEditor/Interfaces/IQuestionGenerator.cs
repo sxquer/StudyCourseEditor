@@ -15,7 +15,7 @@ namespace StudyCourseEditor.Interfaces
         /// <param name="templateId">ID шаблона</param>
         /// <param name="seed">Сид</param>
         /// <returns>Сгенерированный вопрос</returns>
-        GeneratedTest Generate(int templateId, int seed);
+        GeneratedQuestion Generate(int templateId, int seed);
 
         /// <summary>
         /// Возвращает сгенерированный вопрос по заданному шаблону
@@ -23,7 +23,7 @@ namespace StudyCourseEditor.Interfaces
         /// <param name="templateId">ID шаблона</param>
         /// <param name="seed">Возвращает выбранный для генерации шаблона сид</param>
         /// <returns>Сгенерированный вопрос</returns>
-        GeneratedTest Generate(int templateId, out int seed);
+        GeneratedQuestion Generate(int templateId, out int seed);
 
         /// <summary>
         /// Возвращает ID шаблона из заданного курса, со сложностью, максимально близкой к difficulty
@@ -31,6 +31,12 @@ namespace StudyCourseEditor.Interfaces
         /// <param name="courseId">ID курса</param>
         /// <param name="difficulty">Теоретическая сложность вопроса</param>
         /// <returns>ID шаблона</returns>
-        int GetQuestionTemplate(int courseId, int difficulty);
+        int GetQuestionID(int courseId, int difficulty);
+
+        /// <summary>
+        /// Returns randomly generated seed
+        /// </summary>
+        /// <returns></returns>
+        int GetRandomSeed();
     }
 }

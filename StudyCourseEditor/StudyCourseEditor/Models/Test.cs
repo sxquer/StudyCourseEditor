@@ -6,15 +6,6 @@ using StudyCourseEditor.Tools;
 
 namespace StudyCourseEditor.Models
 {
-    public class Question
-    {
-        public int ID { get; set; }
-        public string Body { get; set; }
-        public int Difficulty { get; set; }
-
-        public ICollection<Question> Questions { get; set; } 
-    }
-
     [NotMapped]
     [Serializable]
     [XmlRoot("TD")]
@@ -57,7 +48,7 @@ namespace StudyCourseEditor.Models
         /// Генерирует следующий вопрос и кладет его в поле CurrentQuestion
         /// </summary>
         /// <returns></returns>
-        public GeneratedTest NextQuestion()
+        public GeneratedQuestion NextQuestion()
         {
             throw new NotImplementedException();
         }
@@ -117,45 +108,90 @@ namespace StudyCourseEditor.Models
         
     }
 
+    /// <summary>
+    /// Question from database
+    /// </summary>
+    public class Question
+    {
+        public int ID { get; set; }
+
+        /// <summary>
+        /// Question's template
+        /// </summary>
+        public string Body { get; set; }
+
+        public int Difficulty { get; set; }
+
+        /// <summary>
+        /// List of possible answers to this question
+        /// </summary>
+        public ICollection<Answer> Answers { get; set; }
+    }
+
+
+    /// <summary>
+    /// Answer from database
+    /// </summary>
     public class Answer
     {
         public int ID { get; set; }
+
+        /// <summary>
+        /// Answer Template
+        /// </summary>
         public string Body { get; set; }
+
+        /// <summary>
+        /// Checked if answer is correct
+        /// </summary>
         public bool IsCorrect { get; set; }
 
+
+        /// <summary>
+        /// Link to question
+        /// </summary>
         [ForeignKey("Question")]
         public int QuestionID { get; set; }
-
         public virtual Question Question { get; set; }
     }
 
     /// <summary>
-    /// Уже сгенерированый по шаблону тест
+    /// Fully generated test
     /// </summary>
     [NotMapped]
-    [XmlRoot("GT")]
-    public class GeneratedTest
+    public class GeneratedQuestion
     {
-        [XmlElement(ElementName = "B")]
+        /// <summary>
+        /// Question's text
+        /// </summary>
         public string Body { get; set; }
 
-        [XmlArray(ElementName = "AS")]
-        [XmlArrayItem("A")]
+        /// <summary>
+        /// List of answers
+        /// </summary>
         public List<GeneratedAnswer> Answers { get; set; }
 
-        [XmlElement(ElementName = "T")]
+
+        /// <summary>
+        /// Type of question. 1 by Default
+        /// </summary>
         public int Type { get; set; }
     }
 
-    
+    /// <summary>
+    /// Fully generated answer
+    /// </summary>
     [NotMapped]
-    [XmlRoot("GA")]
     public class GeneratedAnswer
     {
-        [XmlElement(ElementName = "B")]
+        /// <summary>
+        /// Answer's text
+        /// </summary>
         public string Body { get; set; }
 
-        [XmlElement(ElementName = "IC")]
+        /// <summary>
+        /// Answer is correct
+        /// </summary>
         public bool IsCorrect { get; set; }
     }
 

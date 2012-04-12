@@ -79,7 +79,7 @@ namespace StudyCourseEditor.Controllers
                                   }
                           };
 
-            var test = new GeneratedTest
+            var test = new GeneratedQuestion
                            {
                                Body = "lol3213",
                                Type = QuestionType.MULTI_CHOOSE_QUESTION,

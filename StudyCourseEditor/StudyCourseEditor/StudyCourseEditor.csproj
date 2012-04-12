@@ -70,6 +70,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IQuestionGenerator.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Definition.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Tools\CryptoAesManager.cs" />
     <Compile Include="Tools\CryptoXorManager.cs" />
     <Compile Include="Tools\MD5HashManager.cs" />
+    <Compile Include="Tools\TempateManager.cs" />
     <Compile Include="Tools\XmlManager.cs" />
   </ItemGroup>
   <ItemGroup>
