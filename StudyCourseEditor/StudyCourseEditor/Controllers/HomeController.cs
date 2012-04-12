@@ -59,39 +59,39 @@ namespace StudyCourseEditor.Controllers
                           {
                               new GeneratedAnswer
                                   {
-                                      Body = "232",
+                                      Body = "First",
                                       IsCorrect = false,
                                   },
                                   new GeneratedAnswer
                                   {
-                                      Body = "232",
+                                      Body = "Second",
                                       IsCorrect = false,
                                   },
                                   new GeneratedAnswer
                                   {
-                                      Body = "232",
-                                      IsCorrect = false,
+                                      Body = "Third",
+                                      IsCorrect = true,
                                   },
                                   new GeneratedAnswer
                                   {
-                                      Body = "232",
+                                      Body = "Fourth",
                                       IsCorrect = false,
                                   }
                           };
 
             var test = new GeneratedQuestion
                            {
-                               Body = "lol3213",
-                               Type = QuestionType.MULTI_CHOOSE_QUESTION,
+                               Body = "Select Third Please",
+                               Type = QuestionType.SINGLE_CHOOSE_QUESTION,
                                Answers = ans
                             
                            };
 
-            var lol = new TestData
+           var lol = new TestData
                           {
                             CurrentQuestionDifficulty = 54,
-                            CurrentTestId = 10,
-                            CurrentTestSeed = 233522,
+                            CurrentQuestionId = 10,
+                            TestSeed = 233522,
                             ItemsTaken = 24,
                             ResultGraph = "19;03;19;16;05;19;03;19;16;05;19;03;19;16;05;19;03;19;16;05;",
                             RightAnswersCount = 16,
@@ -109,7 +109,7 @@ namespace StudyCourseEditor.Controllers
             ViewBag.Hash = hash;
 
             Response.Cookies.Add(new HttpCookie("SecurityToken", hash));
-/*
+            /*
             for (int i = 0; i < 2; i++)
             {
                 aesCode += aesCode;

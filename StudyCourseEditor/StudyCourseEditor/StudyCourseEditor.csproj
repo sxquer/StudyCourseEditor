@@ -84,7 +84,7 @@
     <Compile Include="Tools\CryptoAesManager.cs" />
     <Compile Include="Tools\CryptoXorManager.cs" />
     <Compile Include="Tools\MD5HashManager.cs" />
-    <Compile Include="Tools\TempateManager.cs" />
+    <Compile Include="Tools\TemplateManager.cs" />
     <Compile Include="Tools\XmlManager.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,8 +190,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
-    <Content Include="Views\Test\FinishExam.cshtml" />
+    <Content Include="Views\Test\FinishTest.cshtml" />
     <Content Include="Views\Home\TestShow.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

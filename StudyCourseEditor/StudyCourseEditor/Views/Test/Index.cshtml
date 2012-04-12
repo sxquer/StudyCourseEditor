@@ -1,7 +1,26 @@
-﻿@model StudyCourseEditor.Models.GeneratedTest
+﻿@model StudyCourseEditor.Models.GeneratedQuestion
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Отвечай немедля на вопрос!";
+    string questionHash = ViewBag.QuestionToken;
 }
 
-@Model.Body
+<div>@Model.Body</div>
+
+@using (Html.BeginForm("Process", "Test"))
+{
+    @Html.Hidden("QuestionToken", questionHash)
+
+    int i = 0;
+    foreach (var answer in Model.Answers)
+    {
+        @Html.RadioButton("Answers", i, new {title = answer.Body}) @:@answer.Body
+        <br/>
+        i++;
+    }
+        
+       
+    <p>
+        <input type="submit" value="Готово" />
+    </p>
+}

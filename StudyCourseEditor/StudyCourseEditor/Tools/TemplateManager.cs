@@ -20,18 +20,6 @@ namespace StudyCourseEditor.Tools
             throw new NotImplementedException();
         }
 
-
-        /// <summary>
-        /// Возвращает ID шаблона из заданного курса, со сложностью, максимально близкой к difficulty
-        /// </summary>
-        /// <param name="courseId">ID курса</param>
-        /// <param name="difficulty">Теоретическая сложность вопроса</param>
-        /// <returns>ID шаблона</returns>
-        public static int GetQuestionID(int courseId, int difficulty)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Returns randomly generated seed
         /// </summary>

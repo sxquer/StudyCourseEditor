@@ -11,14 +11,20 @@ namespace StudyCourseEditor.Models
     [XmlRoot("TD")]
     public class TestData
     {
+        /// <summary>
+        /// Id of all subjects using in current test
+        /// </summary>
+        [XmlElement(ElementName = "SI")]
+        public List<int> SubjectsIds { get; set; }
+
         [XmlElement(ElementName = "CQD")]
         public int CurrentQuestionDifficulty { get; set; }
         
-        [XmlElement(ElementName = "CTI")]
-        public int CurrentTestId { get; set; }
+        [XmlElement(ElementName = "CQI")]
+        public int CurrentQuestionId { get; set; }
 
-        [XmlElement(ElementName = "CTS")]
-        public int CurrentTestSeed { get; set; }
+        [XmlElement(ElementName = "TS")]
+        public int TestSeed { get; set; }
 
         [XmlElement(ElementName = "IT")]
         public int ItemsTaken { get; set; }
@@ -32,6 +38,9 @@ namespace StudyCourseEditor.Models
         [XmlElement(ElementName = "S")]
         public DateTime Started { get; set; }
 
+        /// <summary>
+        /// Data for graphic presentation of test's results. Format "difficulty_isCorrect;"
+        /// </summary>
         [XmlElement(ElementName = "RG")]
         public string ResultGraph { get; set; }
 
@@ -41,17 +50,10 @@ namespace StudyCourseEditor.Models
         /// <returns></returns>
         public string GetQuestionHash()
         {
-            return MD5HashManager.GenerateKey(CurrentTestId + CurrentTestSeed);
+            return MD5HashManager.GenerateKey(CurrentQuestionId + TestSeed);
         }
 
-        /// <summary>
-        /// Генерирует следующий вопрос и кладет его в поле CurrentQuestion
-        /// </summary>
-        /// <returns></returns>
-        public GeneratedQuestion NextQuestion()
-        {
-            throw new NotImplementedException();
-        }
+
 
         /// <summary>
         /// Возвращает текущую ошибку измерения. Необходима для критерия остановки.
@@ -101,9 +103,13 @@ namespace StudyCourseEditor.Models
             return ((float)TotalDifficultiesUsed / ItemsTaken) + Math.Log(rightAnswersCount / wrongAnswersCount);
         }
 
-        public void AddPointToResultGraph()
+        /// <summary>
+        /// Add New Point to ResultGraph
+        /// </summary>
+        /// <param name="answerIsCorrect"></param>
+        public void AddPointToResultGraph(bool answerIsCorrect)
         {
-
+            ResultGraph += CurrentQuestionDifficulty + "_" + ((answerIsCorrect) ? 1 : 0) + ";";
         }
         
     }
@@ -126,6 +132,10 @@ namespace StudyCourseEditor.Models
         /// List of possible answers to this question
         /// </summary>
         public ICollection<Answer> Answers { get; set; }
+
+        [ForeignKey("Subject")]
+        public int SubjectID { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 
 

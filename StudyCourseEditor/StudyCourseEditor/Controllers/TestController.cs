@@ -19,11 +19,11 @@ namespace StudyCourseEditor.Controllers
         public ActionResult Index()
         {
             var testData = GetTestData();
-            if (testData == null) return RedirectToAction("FinishExam");
+            if (testData == null) return RedirectToAction("FinishTest");
 
-            var generatedTest = TemplateManager.Generate(testData.CurrentTestId, testData.CurrentTestSeed);
+            ViewBag.QuestionToken = testData.GetQuestionHash();
 
-            return View();
+            return View(TemplateManager.Generate(testData.CurrentQuestionId, testData.TestSeed));
         }
 
         public ActionResult Process()
@@ -39,29 +39,54 @@ namespace StudyCourseEditor.Controllers
         [HttpPost]
         public ActionResult Process(FormCollection collection)
         {
-            var data = GetTestData();
+            var testData = GetTestData();
 
-            //TODO: Получить реальное значение
-            bool responseIsCorrect = true;
+            //If bad data then finish survey
+            if (testData == null) return RedirectToAction("FinishTest");
+            
+            //If bad question token (for example student are trying to answer question previously cached in browser) redirect to last question
+            if (collection["QuestionToken"] != testData.GetQuestionHash())
+                return RedirectToAction("Index");
 
-            data.ItemsTaken++;
-            data.TotalDifficultiesUsed += data.CurrentQuestionDifficulty;
+            var question = TemplateManager.Generate(testData.CurrentQuestionId, testData.TestSeed);
+
+            testData.ItemsTaken++;
+            testData.TotalDifficultiesUsed += testData.CurrentQuestionDifficulty;
+            int difficultyShift = (int) Math.Round((float) 2 / testData.ItemsTaken);
+
+            bool answerIsCorrect = CheckAnswerIsCorrect(question, collection["Answers"]);
+
+            testData.AddPointToResultGraph(answerIsCorrect);
 
             //Корректируем сложность следующего вопроса
-            if (responseIsCorrect)
+            if (answerIsCorrect)
             {
-                data.RightAnswersCount++;
-                data.CurrentQuestionDifficulty += 2 / data.ItemsTaken;
+                testData.RightAnswersCount++;
+                testData.CurrentQuestionDifficulty += difficultyShift;
             }
             else
             {
-                data.CurrentQuestionDifficulty -= 2 / data.ItemsTaken;
+                testData.CurrentQuestionDifficulty -= difficultyShift;
             }
 
-            SetTestData(data);
+            var questionList = new List<Question>();
+            int i = 0;
+            while (questionList.Count == 0)
+            {
+                questionList = _db.Questions.Where(x => Math.Abs(x.Difficulty - testData.CurrentQuestionDifficulty) == i && (testData.SubjectsIds.Contains(x.SubjectID))).ToList();
+                if (++i > testData.CurrentQuestionDifficulty) throw new Exception("Нет подходящих вопросов");
+            }
 
-            if (data.CalculateError() < 0.3)
-                return RedirectToAction("FinishExam", data);
+            var selectedQuestion = questionList.ToArray()[new Random().Next(questionList.Count - 1)];
+
+            testData.TestSeed = TemplateManager.GetRandomSeed();
+            testData.CurrentQuestionDifficulty = selectedQuestion.Difficulty;
+            testData.CurrentQuestionId = selectedQuestion.ID;
+
+            SetTestData(testData);
+
+            if (testData.CalculateError() < 0.3)
+                return RedirectToAction("FinishTest");
 
             return RedirectToAction("Index");
         }
@@ -70,13 +95,30 @@ namespace StudyCourseEditor.Controllers
         /// Обработка результатов тестирования
         /// </summary>
         /// <returns></returns>
-        public ActionResult FinishExam()
+        public ActionResult FinishTest()
         {
             //TODO: Check if data == null
             var data = GetTestData();
             
             double score = data.CalculateMeasure();
             return View();
+        }
+
+        /// <summary>
+        /// Validate user Answer
+        /// </summary>
+        /// <param name="question">Question that user answered</param>
+        /// <param name="userAnswer"></param>
+        /// <returns></returns>
+        private bool CheckAnswerIsCorrect(GeneratedQuestion question, string userAnswer)
+        {
+            bool result = false;
+            if (question.Type == QuestionType.SINGLE_CHOOSE_QUESTION)
+            {
+                int rightAnswer = int.Parse(userAnswer);
+                if (question.Answers[rightAnswer].IsCorrect) result = true;
+            }
+            return result;
         }
 
         private void SetTestData(TestData data)
@@ -104,5 +146,43 @@ namespace StudyCourseEditor.Controllers
             return XmlManager.DeserializeObject<TestData>(CryptoXorManager.Process(testInfo.Value, 17));
         }
 
+
+
+        public ActionResult Demo()
+        {
+            var ans = new List<GeneratedAnswer>
+                          {
+                              new GeneratedAnswer
+                                  {
+                                      Body = "First",
+                                      IsCorrect = false,
+                                  },
+                                  new GeneratedAnswer
+                                  {
+                                      Body = "Second",
+                                      IsCorrect = false,
+                                  },
+                                  new GeneratedAnswer
+                                  {
+                                      Body = "Third",
+                                      IsCorrect = true,
+                                  },
+                                  new GeneratedAnswer
+                                  {
+                                      Body = "Fourth",
+                                      IsCorrect = false,
+                                  }
+                          };
+
+            var test = new GeneratedQuestion
+            {
+                Body = "Select Third Please",
+                Type = QuestionType.SINGLE_CHOOSE_QUESTION,
+                Answers = ans
+
+            };
+            ViewBag.QuestionToken = "140";
+            return View("Index", test);
+        }
     }
 }
