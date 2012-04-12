@@ -11,44 +11,30 @@ namespace StudyCourseEditor.Controllers
     {
         readonly StudyCourseDB _db = new StudyCourseDB(); 
 
-        public ActionResult CreateDummyData()
-        {
-            var course = new Course
-                             {
-                                 Name = "Математика",
-                                 Description = "Математика - царица наук",
-                             };
-            _db.Courses.Add(course);
-            _db.SaveChanges();
-
-
-            _db.Subjects.Add(new Subject
-                              {
-                                  Name = "Целые числа",
-                                  CourseID = course.ID,
-                              });
-
-            _db.SaveChanges();
-
-            _db.Subjects.Add(new Subject
-                                {
-                                    Name = "Дробные числа",
-                                    CourseID = course.ID,
-                                });
-            _db.SaveChanges();
-            
-            return RedirectToAction("Index", "Home");
-        }
-
-
+        /// <summary>
+        /// Отображает тест для пользователя
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Index(TestData data)
+        public ActionResult Process()
         {
+            return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// Обрабатывает информацию о тесте и введенные ответы
+        /// </summary>
+        /// <param name="collection">Данные из формы</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Process(FormCollection collection)
+        {
+            var data = new TestData();
+
             //TODO: Получить реальное значение
             bool responseIsCorrect = true;
 
@@ -69,7 +55,7 @@ namespace StudyCourseEditor.Controllers
             if (data.CalculateError() < 0.3)
                 return RedirectToAction("FinishExam", data);
 
-            return View(data.NextQuestion());
+            return RedirectToAction("Index");
         }
 
         /// <summary>
@@ -80,6 +66,15 @@ namespace StudyCourseEditor.Controllers
         {
             double score = data.CalculateMeasure();
             return View();
+        }
+
+        private void SetTestData(TestData data)
+        {
+        }
+
+        private TestData GetTestData()
+        {
+            return new TestData();
         }
 
     }

@@ -6,11 +6,13 @@ using StudyCourseEditor.Tools;
 
 namespace StudyCourseEditor.Models
 {
-    public class Test
+    public class Question
     {
         public int ID { get; set; }
         public string Body { get; set; }
         public int Difficulty { get; set; }
+
+        public ICollection<Question> Questions { get; set; } 
     }
 
     [NotMapped]
@@ -21,8 +23,11 @@ namespace StudyCourseEditor.Models
         [XmlElement(ElementName = "CQD")]
         public int CurrentQuestionDifficulty { get; set; }
         
-        [XmlElement(ElementName = "CT")]
-        public GeneratedTest CurrentTest { get; set; }
+        [XmlElement(ElementName = "CTI")]
+        public int CurrentTestId { get; set; }
+
+        [XmlElement(ElementName = "CTS")]
+        public int CurrentTestSeed { get; set; }
 
         [XmlElement(ElementName = "IT")]
         public int ItemsTaken { get; set; }
@@ -38,6 +43,15 @@ namespace StudyCourseEditor.Models
 
         [XmlElement(ElementName = "RG")]
         public string ResultGraph { get; set; }
+
+        /// <summary>
+        /// Возвращает хэш от вопроса по ключу и сиду
+        /// </summary>
+        /// <returns></returns>
+        public string GetQuestionHash()
+        {
+            return MD5HashManager.GenerateKey(CurrentTestId + CurrentTestSeed);
+        }
 
         /// <summary>
         /// Генерирует следующий вопрос и кладет его в поле CurrentQuestion
@@ -100,30 +114,19 @@ namespace StudyCourseEditor.Models
         {
 
         }
+        
+    }
 
-        private class TestDataStamps
-        {
-            public string XML { get; set; }
-            public string AesXML { get; set; }
-            public string AesXMLHash { get; set; }
-            public string CurrentTestHash { get; set; }
+    public class Answer
+    {
+        public int ID { get; set; }
+        public string Body { get; set; }
+        public bool IsCorrect { get; set; }
 
-            public TestDataStamps(TestData data)
-            {
-                
-            }
+        [ForeignKey("Question")]
+        public int QuestionID { get; set; }
 
-            public static string GetXml(TestData data)
-            {
-                return XmlManager.SerializeObjectUTF16(data);
-            }
-
-            public static string GetAesXml(string xmlString)
-            {
-                return string.Empty;
-            }
-
-        }
+        public virtual Question Question { get; set; }
     }
 
     /// <summary>
@@ -138,15 +141,16 @@ namespace StudyCourseEditor.Models
 
         [XmlArray(ElementName = "AS")]
         [XmlArrayItem("A")]
-        public List<Answer> Answers { get; set; }
+        public List<GeneratedAnswer> Answers { get; set; }
 
         [XmlElement(ElementName = "T")]
         public int Type { get; set; }
     }
 
+    
     [NotMapped]
-    [XmlRoot("A")]
-    public class Answer
+    [XmlRoot("GA")]
+    public class GeneratedAnswer
     {
         [XmlElement(ElementName = "B")]
         public string Body { get; set; }

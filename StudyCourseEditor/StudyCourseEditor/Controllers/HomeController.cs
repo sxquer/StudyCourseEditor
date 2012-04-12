@@ -9,6 +9,37 @@ namespace StudyCourseEditor.Controllers
 {
     public class HomeController : Controller
     {
+        readonly StudyCourseDB _db = new StudyCourseDB(); 
+
+        public ActionResult CreateDummyData()
+        {
+            var course = new Course
+            {
+                Name = "Математика",
+                Description = "Математика - царица наук",
+            };
+            _db.Courses.Add(course);
+            _db.SaveChanges();
+
+
+            _db.Subjects.Add(new Subject
+            {
+                Name = "Целые числа",
+                CourseID = course.ID,
+            });
+
+            _db.SaveChanges();
+
+            _db.Subjects.Add(new Subject
+            {
+                Name = "Дробные числа",
+                CourseID = course.ID,
+            });
+            _db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+        
         public ActionResult Index()
         {
             ViewBag.Message = "Под конструкцией.";
@@ -24,24 +55,24 @@ namespace StudyCourseEditor.Controllers
 
         public ActionResult TestProcess(string id)
         {
-            var ans = new List<Answer>
+            var ans = new List<GeneratedAnswer>
                           {
-                              new Answer
+                              new GeneratedAnswer
                                   {
                                       Body = "232",
                                       IsCorrect = false,
                                   },
-                                  new Answer
+                                  new GeneratedAnswer
                                   {
                                       Body = "232",
                                       IsCorrect = false,
                                   },
-                                  new Answer
+                                  new GeneratedAnswer
                                   {
                                       Body = "232",
                                       IsCorrect = false,
                                   },
-                                  new Answer
+                                  new GeneratedAnswer
                                   {
                                       Body = "232",
                                       IsCorrect = false,
@@ -59,7 +90,8 @@ namespace StudyCourseEditor.Controllers
             var lol = new TestData
                           {
                             CurrentQuestionDifficulty = 54,
-                            CurrentTest = test,
+                            CurrentTestId = 10,
+                            CurrentTestSeed = 233522,
                             ItemsTaken = 24,
                             ResultGraph = "19;03;19;16;05;19;03;19;16;05;19;03;19;16;05;19;03;19;16;05;",
                             RightAnswersCount = 16,

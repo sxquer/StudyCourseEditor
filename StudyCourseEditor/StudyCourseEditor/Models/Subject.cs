@@ -25,6 +25,6 @@ namespace StudyCourseEditor.Models
 
         public virtual Course Course { get; set; }
 
-        public virtual ICollection<Test> Tests { get; set; } 
+        public virtual ICollection<Question> Questions { get; set; } 
     }
 }
