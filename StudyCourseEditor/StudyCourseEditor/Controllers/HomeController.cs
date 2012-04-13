@@ -9,7 +9,7 @@ namespace StudyCourseEditor.Controllers
 {
     public class HomeController : Controller
     {
-        readonly StudyCourseDB _db = new StudyCourseDB(); 
+			  private readonly Entities _db = new Entities(); 
 
         public ActionResult CreateDummyData()
         {
@@ -18,11 +18,11 @@ namespace StudyCourseEditor.Controllers
                 Name = "Математика",
                 Description = "Математика - царица наук",
             };
-            _db.Courses.Add(course);
+            _db.Courses.AddObject(course);
             _db.SaveChanges();
 
 
-            _db.Subjects.Add(new Subject
+            _db.Subjects.AddObject(new Subject
             {
                 Name = "Целые числа",
                 CourseID = course.ID,
@@ -30,7 +30,7 @@ namespace StudyCourseEditor.Controllers
 
             _db.SaveChanges();
 
-            _db.Subjects.Add(new Subject
+            _db.Subjects.AddObject(new Subject
             {
                 Name = "Дробные числа",
                 CourseID = course.ID,

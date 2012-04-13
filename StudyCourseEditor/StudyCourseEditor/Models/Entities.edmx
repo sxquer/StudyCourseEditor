@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="Answer" EntityType="Models.Store.Answer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Course" EntityType="Models.Store.Course" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Definition" EntityType="Models.Store.Definition" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DefTagRelation" EntityType="Models.Store.DefTagRelation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Example" EntityType="Models.Store.Example" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Question" EntityType="Models.Store.Question" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Subject" EntityType="Models.Store.Subject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tag" EntityType="Models.Store.Tag" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Answer_Question" Association="Models.Store.FK_Answer_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefTagRelation_Definition" Association="Models.Store.FK_DefTagRelation_Definition">
+            <End Role="Definition" EntitySet="Definition" />
+            <End Role="DefTagRelation" EntitySet="DefTagRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefTagRelation_Tag" Association="Models.Store.FK_DefTagRelation_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="DefTagRelation" EntitySet="DefTagRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Example_Definition" Association="Models.Store.FK_Example_Definition">
+            <End Role="Definition" EntitySet="Definition" />
+            <End Role="Example" EntitySet="Example" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Subject" Association="Models.Store.FK_Question_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Course" Association="Models.Store.FK_Subject_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Subject" EntitySet="Subject" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Body" Type="ntext" Nullable="false" />
+          <Property Name="IsCorrect" Type="bit" Nullable="false" />
+          <Property Name="QuestionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nchar" Nullable="false" MaxLength="256" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Definition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nchar" Nullable="false" MaxLength="256" />
+          <Property Name="Body" Type="ntext" />
+        </EntityType>
+        <EntityType Name="DefTagRelation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TagID" Type="int" Nullable="false" />
+          <Property Name="DefinitionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Example">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="nchar" Nullable="false" MaxLength="256" />
+          <Property Name="IsAntiExample" Type="bit" Nullable="false" />
+          <Property Name="DefinitionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Body" Type="ntext" Nullable="false" />
+          <Property Name="Difficulty" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nchar" Nullable="false" MaxLength="256" />
+          <Property Name="Body" Type="ntext" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <Association Name="FK_Answer_Question">
+          <End Role="Question" Type="Models.Store.Question" Multiplicity="1" />
+          <End Role="Answer" Type="Models.Store.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefTagRelation_Definition">
+          <End Role="Definition" Type="Models.Store.Definition" Multiplicity="1" />
+          <End Role="DefTagRelation" Type="Models.Store.DefTagRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Definition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefTagRelation">
+              <PropertyRef Name="DefinitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefTagRelation_Tag">
+          <End Role="Tag" Type="Models.Store.Tag" Multiplicity="1" />
+          <End Role="DefTagRelation" Type="Models.Store.DefTagRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefTagRelation">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Example_Definition">
+          <End Role="Definition" Type="Models.Store.Definition" Multiplicity="1" />
+          <End Role="Example" Type="Models.Store.Example" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Definition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Example">
+              <PropertyRef Name="DefinitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Subject">
+          <End Role="Subject" Type="Models.Store.Subject" Multiplicity="1" />
+          <End Role="Question" Type="Models.Store.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_Course">
+          <End Role="Course" Type="Models.Store.Course" Multiplicity="1" />
+          <End Role="Subject" Type="Models.Store.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Answers" EntityType="Models.Answer" />
+          <EntitySet Name="Courses" EntityType="Models.Course" />
+          <EntitySet Name="Definitions" EntityType="Models.Definition" />
+          <EntitySet Name="DefTagRelations" EntityType="Models.DefTagRelation" />
+          <EntitySet Name="Examples" EntityType="Models.Example" />
+          <EntitySet Name="Questions" EntityType="Models.Question" />
+          <EntitySet Name="Subjects" EntityType="Models.Subject" />
+          <EntitySet Name="Tags" EntityType="Models.Tag" />
+          <AssociationSet Name="FK_Answer_Question" Association="Models.FK_Answer_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Course" Association="Models.FK_Subject_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Subject" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefTagRelation_Definition" Association="Models.FK_DefTagRelation_Definition">
+            <End Role="Definition" EntitySet="Definitions" />
+            <End Role="DefTagRelation" EntitySet="DefTagRelations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Example_Definition" Association="Models.FK_Example_Definition">
+            <End Role="Definition" EntitySet="Definitions" />
+            <End Role="Example" EntitySet="Examples" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefTagRelation_Tag" Association="Models.FK_DefTagRelation_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="DefTagRelation" EntitySet="DefTagRelations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Subject" Association="Models.FK_Question_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsCorrect" Nullable="false" />
+          <Property Type="Int32" Name="QuestionID" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Models.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subjects" Relationship="Models.FK_Subject_Course" FromRole="Course" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Definition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Body" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DefTagRelations" Relationship="Models.FK_DefTagRelation_Definition" FromRole="Definition" ToRole="DefTagRelation" />
+          <NavigationProperty Name="Examples" Relationship="Models.FK_Example_Definition" FromRole="Definition" ToRole="Example" />
+        </EntityType>
+        <EntityType Name="DefTagRelation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TagID" Nullable="false" />
+          <Property Type="Int32" Name="DefinitionID" Nullable="false" />
+          <NavigationProperty Name="Definition" Relationship="Models.FK_DefTagRelation_Definition" FromRole="DefTagRelation" ToRole="Definition" />
+          <NavigationProperty Name="Tag" Relationship="Models.FK_DefTagRelation_Tag" FromRole="DefTagRelation" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Example">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Type="Boolean" Name="IsAntiExample" Nullable="false" />
+          <Property Type="Int32" Name="DefinitionID" Nullable="false" />
+          <NavigationProperty Name="Definition" Relationship="Models.FK_Example_Definition" FromRole="Example" ToRole="Definition" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Difficulty" Nullable="false" />
+          <Property Type="Int32" Name="SubjectID" Nullable="false" />
+          <NavigationProperty Name="Answers" Relationship="Models.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="Subject" Relationship="Models.FK_Question_Subject" FromRole="Question" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Body" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CourseID" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Models.FK_Subject_Course" FromRole="Subject" ToRole="Course" />
+          <NavigationProperty Name="Questions" Relationship="Models.FK_Question_Subject" FromRole="Subject" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="DefTagRelations" Relationship="Models.FK_DefTagRelation_Tag" FromRole="Tag" ToRole="DefTagRelation" />
+        </EntityType>
+        <Association Name="FK_Answer_Question">
+          <End Type="Models.Question" Role="Question" Multiplicity="1" />
+          <End Type="Models.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_Course">
+          <End Type="Models.Course" Role="Course" Multiplicity="1" />
+          <End Type="Models.Subject" Role="Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefTagRelation_Definition">
+          <End Type="Models.Definition" Role="Definition" Multiplicity="1" />
+          <End Type="Models.DefTagRelation" Role="DefTagRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Definition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefTagRelation">
+              <PropertyRef Name="DefinitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Example_Definition">
+          <End Type="Models.Definition" Role="Definition" Multiplicity="1" />
+          <End Type="Models.Example" Role="Example" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Definition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Example">
+              <PropertyRef Name="DefinitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefTagRelation_Tag">
+          <End Type="Models.Tag" Role="Tag" Multiplicity="1" />
+          <End Type="Models.DefTagRelation" Role="DefTagRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefTagRelation">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Subject">
+          <End Type="Models.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="Models.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Answers">
+            <EntityTypeMapping TypeName="Models.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="Models.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Definitions">
+            <EntityTypeMapping TypeName="Models.Definition">
+              <MappingFragment StoreEntitySet="Definition">
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefTagRelations">
+            <EntityTypeMapping TypeName="Models.DefTagRelation">
+              <MappingFragment StoreEntitySet="DefTagRelation">
+                <ScalarProperty Name="DefinitionID" ColumnName="DefinitionID" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Examples">
+            <EntityTypeMapping TypeName="Models.Example">
+              <MappingFragment StoreEntitySet="Example">
+                <ScalarProperty Name="DefinitionID" ColumnName="DefinitionID" />
+                <ScalarProperty Name="IsAntiExample" ColumnName="IsAntiExample" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="Models.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="Models.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="Models.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Entities">
+        <EntityTypeShape EntityType="Models.Answer" Width="1.5" PointX="7" PointY="0.5" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="Models.Course" Width="1.5" PointX="1.25" PointY="0.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Models.Definition" Width="1.5" PointX="1.25" PointY="3" Height="1.9802864583333353" />
+        <EntityTypeShape EntityType="Models.DefTagRelation" Width="1.5" PointX="3.25" PointY="3" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="Models.Example" Width="1.5" PointX="1.25" PointY="5.5" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="Models.Question" Width="1.5" PointX="5.125" PointY="0.5" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="Models.Subject" Width="1.5" PointX="3.25" PointY="0.5" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="Models.Tag" Width="1.5" PointX="5.25" PointY="5.5" Height="1.5956835937500031" />
+        <AssociationConnector Association="Models.FK_Answer_Question" >
+          <ConnectorPoint PointX="6.625" PointY="1.4901432291666659" />
+          <ConnectorPoint PointX="7" PointY="1.4901432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="Models.FK_Subject_Course" >
+          <ConnectorPoint PointX="2.75" PointY="1.3939925130208337" />
+          <ConnectorPoint PointX="3.25" PointY="1.3939925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="Models.FK_DefTagRelation_Definition" >
+          <ConnectorPoint PointX="2.75" PointY="3.9901432291666659" />
+          <ConnectorPoint PointX="3.25" PointY="3.9901432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="Models.FK_Example_Definition" >
+          <ConnectorPoint PointX="2" PointY="4.9802864583333353" />
+          <ConnectorPoint PointX="2" PointY="5.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="Models.FK_DefTagRelation_Tag" >
+          <ConnectorPoint PointX="5.25" PointY="5.5" />
+          <ConnectorPoint PointX="4.75" PointY="4.9802864583333317" />
+        </AssociationConnector>
+        <AssociationConnector Association="Models.FK_Question_Subject" >
+          <ConnectorPoint PointX="4.75" PointY="1.586293945312498" />
+          <ConnectorPoint PointX="5.125" PointY="1.586293945312498" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

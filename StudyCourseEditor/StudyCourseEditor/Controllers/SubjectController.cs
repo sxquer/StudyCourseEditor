@@ -11,7 +11,7 @@ namespace StudyCourseEditor.Controllers
 { 
     public class SubjectController : Controller
     {
-        private readonly StudyCourseDB _db = new StudyCourseDB();
+        private readonly Entities _db = new Entities(); 
 
         //
         // GET: /Subject/
@@ -26,7 +26,7 @@ namespace StudyCourseEditor.Controllers
 
         public ViewResult Details(int id)
         {
-            Subject subject = _db.Subjects.Find(id);
+            Subject subject = _db.Subjects.FirstOrDefault(s => s.ID == id);
             return View(subject);
         }
 
@@ -47,9 +47,9 @@ namespace StudyCourseEditor.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Subjects.Add(subject);
+                _db.Subjects.AddObject(subject);
                 _db.SaveChanges();
-                return RedirectToAction("Index"); 
+                return RedirectToAction("Edit", "Course", new { id = subject.CourseID }); 
             }
 
             ViewBag.CourseID = subject.CourseID;
@@ -61,7 +61,7 @@ namespace StudyCourseEditor.Controllers
  
         public ActionResult Edit(int id)
         {
-            Subject subject = _db.Subjects.Find(id);
+            Subject subject = _db.Subjects.FirstOrDefault(s => s.ID == id);
             return View(subject);
         }
 
@@ -73,11 +73,12 @@ namespace StudyCourseEditor.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(subject).State = EntityState.Modified;
+                _db.Subjects.Attach(subject);
+                _db.ObjectStateManager.ChangeObjectState(subject, EntityState.Modified);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "Course", new { id = subject.CourseID }); 
             }
-            ViewBag.CourseID = new SelectList(_db.Courses, "ID", "Name", subject.CourseID);
+            
             return View(subject);
         }
 
@@ -86,7 +87,7 @@ namespace StudyCourseEditor.Controllers
  
         public ActionResult Delete(int id)
         {
-            Subject subject = _db.Subjects.Find(id);
+            Subject subject = _db.Subjects.FirstOrDefault(s => s.ID == id);
             return View(subject);
         }
 
@@ -96,9 +97,10 @@ namespace StudyCourseEditor.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            Subject subject = _db.Subjects.Find(id);
-            _db.Subjects.Remove(subject);
+            Subject subject = _db.Subjects.FirstOrDefault(s => s.ID == id);
+            _db.Subjects.DeleteObject(subject);
             _db.SaveChanges();
+            if (subject != null) return RedirectToAction("Edit", "Course", new { id = subject.CourseID });
             return RedirectToAction("Index");
         }
 

@@ -2,19 +2,62 @@
   <RecentFiles>
     <RecentFiles>
       <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Shared/f:_Layout.cshtml" caret="520" fromTop="13" />
-      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="307" fromTop="12" />
-      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Global.asax.cs" caret="0" fromTop="0" />
       <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:Index.cshtml" caret="203" fromTop="8" />
       <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:AccountController.cs" caret="2234" fromTop="17" />
-      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="208" fromTop="7" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:DefTagRelation.cs" caret="225" fromTop="9" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Definition.cs" caret="0" fromTop="0" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Example.cs" caret="0" fromTop="0" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Subject.cs" caret="308" fromTop="12" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Tag.cs" caret="203" fromTop="9" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="383" fromTop="14" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Course.cs" caret="130" fromTop="5" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:TestMetadata.cs" caret="563" fromTop="27" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:TagMetadata.cs" caret="434" fromTop="15" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:SubjectMetadata.cs" caret="680" fromTop="22" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:ExampleMetadata.cs" caret="607" fromTop="21" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:DefTagRelationMetadata.cs" caret="0" fromTop="0" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:DefinitionMetadata.cs" caret="0" fromTop="0" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:CourseMetadata.cs" caret="546" fromTop="17" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2681" fromTop="26" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="2656" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="4231" fromTop="42" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2644" fromTop="25" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Global.asax.cs" caret="1086" fromTop="35" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="0" fromTop="0" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:TemplateManager.cs" caret="0" fromTop="0" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="0" fromTop="0" />
     </RecentFiles>
     <RecentEdits>
-      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Shared/f:_Layout.cshtml" caret="520" fromTop="13" />
-      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="307" fromTop="12" />
-      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Home/f:Index.cshtml" caret="171" fromTop="6" />
-      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="387" fromTop="9" />
-      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="1643" fromTop="0" />
-      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="481" fromTop="13" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:CourseMetadata.cs" caret="183" fromTop="8" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:CourseMetadata.cs" caret="546" fromTop="17" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="4348" fromTop="20" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="569" fromTop="20" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="649" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="842" fromTop="32" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="2910" fromTop="20" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="474" fromTop="20" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="680" fromTop="28" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2890" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="698" fromTop="25" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="2803" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="680" fromTop="25" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Global.asax.cs" caret="1086" fromTop="22" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="1195" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="1529" fromTop="37" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="1174" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="1164" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="2174" fromTop="36" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="2547" fromTop="32" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="1539" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="2251" fromTop="27" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="1569" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="7555" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2681" fromTop="26" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2025" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2255" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="2656" fromTop="24" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2635" fromTop="25" />
+      <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/f:Web.config" caret="414" fromTop="7" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -35,4 +78,22 @@
       <setting name="SolutionAnalysisEnabled">False</setting>
     </boolean>
   </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="CSharpCodeCompletionContext">
+      <Item value="AddingNewEventArgs`0" priority="26" />
+      <Item value="ErrorMessage" priority="31" />
+      <Item value="EndEventHandler`0" priority="31" />
+      <Item value="Entities`0" priority="31" />
+      <Item value="id" priority="31" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Linq.IQueryable`1">
+      <Item value="FirstOrDefault`1" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:StudyCourseEditor.Models.Subject">
+      <Item value="ID" priority="22" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.Objects.ObjectSet`1">
+      <Item value="DeleteObject`0" priority="73" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
 </Configuration>

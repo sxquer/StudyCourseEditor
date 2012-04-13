@@ -10,7 +10,7 @@ namespace StudyCourseEditor.Controllers
 {
     public class TestController : Controller
     {
-        readonly StudyCourseDB _db = new StudyCourseDB(); 
+        private readonly Entities _db = new Entities(); 
 
         /// <summary>
         /// Отображает тест для пользователя

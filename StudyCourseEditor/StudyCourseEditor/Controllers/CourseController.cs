@@ -11,7 +11,7 @@ namespace StudyCourseEditor.Controllers
 { 
     public class CourseController : Controller
     {
-        private readonly StudyCourseDB _db = new StudyCourseDB();
+        private readonly Entities _db = new Entities(); 
 
         //
         // GET: /Course/
@@ -26,7 +26,7 @@ namespace StudyCourseEditor.Controllers
 
         public ViewResult Details(int id)
         {
-            Course course = _db.Courses.Find(id);
+            Course course = _db.Courses.FirstOrDefault(c => c.ID == id);
             return View(course);
         }
 
@@ -46,7 +46,7 @@ namespace StudyCourseEditor.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Courses.Add(course);
+                _db.Courses.AddObject(course);
                 _db.SaveChanges();
                 return RedirectToAction("Index");  
             }
@@ -59,7 +59,7 @@ namespace StudyCourseEditor.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
-            Course course = _db.Courses.Find(id);
+            Course course = _db.Courses.FirstOrDefault(c => c.ID == id);
             return View(course);
         }
 
@@ -71,7 +71,8 @@ namespace StudyCourseEditor.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(course).State = EntityState.Modified;
+                _db.Courses.Attach(course);
+                _db.ObjectStateManager.ChangeObjectState(course, EntityState.Modified);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -83,7 +84,7 @@ namespace StudyCourseEditor.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
-            Course course = _db.Courses.Find(id);
+            Course course = _db.Courses.FirstOrDefault(c => c.ID == id);
             return View(course);
         }
 
@@ -93,8 +94,8 @@ namespace StudyCourseEditor.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            Course course = _db.Courses.Find(id);
-            _db.Courses.Remove(course);
+            Course course = _db.Courses.FirstOrDefault(c => c.ID == id);
+            _db.Courses.DeleteObject(course);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

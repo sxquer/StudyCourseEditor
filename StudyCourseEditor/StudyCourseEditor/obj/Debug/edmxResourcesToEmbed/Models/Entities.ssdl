@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ModelsStoreContainer">
+    <EntitySet Name="Answer" EntityType="Models.Store.Answer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Course" EntityType="Models.Store.Course" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Definition" EntityType="Models.Store.Definition" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DefTagRelation" EntityType="Models.Store.DefTagRelation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Example" EntityType="Models.Store.Example" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Question" EntityType="Models.Store.Question" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Subject" EntityType="Models.Store.Subject" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tag" EntityType="Models.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Answer_Question" Association="Models.Store.FK_Answer_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DefTagRelation_Definition" Association="Models.Store.FK_DefTagRelation_Definition">
+      <End Role="Definition" EntitySet="Definition" />
+      <End Role="DefTagRelation" EntitySet="DefTagRelation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DefTagRelation_Tag" Association="Models.Store.FK_DefTagRelation_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="DefTagRelation" EntitySet="DefTagRelation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Example_Definition" Association="Models.Store.FK_Example_Definition">
+      <End Role="Definition" EntitySet="Definition" />
+      <End Role="Example" EntitySet="Example" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Subject" Association="Models.Store.FK_Question_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_Course" Association="Models.Store.FK_Subject_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Body" Type="ntext" Nullable="false" />
+    <Property Name="IsCorrect" Type="bit" Nullable="false" />
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="256" />
+    <Property Name="Description" Type="ntext" />
+  </EntityType>
+  <EntityType Name="Definition">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="256" />
+    <Property Name="Body" Type="ntext" />
+  </EntityType>
+  <EntityType Name="DefTagRelation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TagID" Type="int" Nullable="false" />
+    <Property Name="DefinitionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Example">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="nchar" Nullable="false" MaxLength="256" />
+    <Property Name="IsAntiExample" Type="bit" Nullable="false" />
+    <Property Name="DefinitionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Body" Type="ntext" Nullable="false" />
+    <Property Name="Difficulty" Type="int" Nullable="false" />
+    <Property Name="SubjectID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="256" />
+    <Property Name="Body" Type="ntext" />
+    <Property Name="CourseID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="256" />
+  </EntityType>
+  <Association Name="FK_Answer_Question">
+    <End Role="Question" Type="Models.Store.Question" Multiplicity="1" />
+    <End Role="Answer" Type="Models.Store.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DefTagRelation_Definition">
+    <End Role="Definition" Type="Models.Store.Definition" Multiplicity="1" />
+    <End Role="DefTagRelation" Type="Models.Store.DefTagRelation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Definition">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DefTagRelation">
+        <PropertyRef Name="DefinitionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DefTagRelation_Tag">
+    <End Role="Tag" Type="Models.Store.Tag" Multiplicity="1" />
+    <End Role="DefTagRelation" Type="Models.Store.DefTagRelation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DefTagRelation">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Example_Definition">
+    <End Role="Definition" Type="Models.Store.Definition" Multiplicity="1" />
+    <End Role="Example" Type="Models.Store.Example" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Definition">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Example">
+        <PropertyRef Name="DefinitionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Subject">
+    <End Role="Subject" Type="Models.Store.Subject" Multiplicity="1" />
+    <End Role="Question" Type="Models.Store.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_Course">
+    <End Role="Course" Type="Models.Store.Course" Multiplicity="1" />
+    <End Role="Subject" Type="Models.Store.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

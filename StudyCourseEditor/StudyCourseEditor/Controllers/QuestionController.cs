@@ -12,7 +12,7 @@ namespace StudyCourseEditor.Controllers
 
     public class QuestionController : Controller
     {
-        private readonly StudyCourseDB _db = new StudyCourseDB();
+        private readonly Entities _db = new Entities(); 
 
         //
         // GET: /Question/
@@ -27,7 +27,7 @@ namespace StudyCourseEditor.Controllers
 
         public ViewResult Details(int id)
         {
-            Question question = _db.Questions.Find(id);
+            Question question = _db.Questions.FirstOrDefault(q => q.ID == id);
             return View(question);
         }
 
@@ -49,9 +49,9 @@ namespace StudyCourseEditor.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Questions.Add(question);
+                _db.Questions.AddObject(question);
                 _db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Edit", "Subject", new { id = question.SubjectID }); 
             }
 
             return View(question);
@@ -62,7 +62,7 @@ namespace StudyCourseEditor.Controllers
  
         public ActionResult Edit(int id)
         {
-            Question question = _db.Questions.Find(id);
+            Question question = _db.Questions.FirstOrDefault(q => q.ID == id);
             return View(question);
         }
 
@@ -74,9 +74,10 @@ namespace StudyCourseEditor.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(question).State = EntityState.Modified;
+                _db.Questions.Attach(question);
+                _db.ObjectStateManager.ChangeObjectState(question, EntityState.Modified);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "Subject", new { id = question.SubjectID }); 
             }
             return View(question);
         }
@@ -86,7 +87,7 @@ namespace StudyCourseEditor.Controllers
  
         public ActionResult Delete(int id)
         {
-            Question question = _db.Questions.Find(id);
+            Question question = _db.Questions.FirstOrDefault(q => q.ID == id);
             return View(question);
         }
 
@@ -96,9 +97,10 @@ namespace StudyCourseEditor.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            Question question = _db.Questions.Find(id);
-            _db.Questions.Remove(question);
+            Question question = _db.Questions.FirstOrDefault(q => q.ID == id);
+            _db.Questions.DeleteObject(question);
             _db.SaveChanges();
+            if (question != null) return RedirectToAction("Edit", "Subject", new { id = question.SubjectID });
             return RedirectToAction("Index");
         }
 
