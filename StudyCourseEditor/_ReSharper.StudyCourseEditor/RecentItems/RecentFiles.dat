@@ -14,30 +14,18 @@
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:CourseMetadata.cs" caret="564" fromTop="18" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:TestMetadata.cs" caret="0" fromTop="0" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/d:Metadata/f:SubjectMetadata.cs" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="387" fromTop="12" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2409" fromTop="12" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Course/f:Edit.cshtml" caret="1353" fromTop="37" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Subject.cs" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:DeleteMe/f:Delete.cshtml" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:DeleteMe/f:Edit.cshtml" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:DeleteMe/f:Create.cshtml" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:DeleteMe/f:Details.cshtml" caret="0" fromTop="0" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:DeleteMeController.cs" caret="1650" fromTop="25" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:DeleteMe/f:Index.cshtml" caret="0" fromTop="0" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="1825" fromTop="18" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Create.cshtml" caret="1393" fromTop="19" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="2736" fromTop="21" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2448" fromTop="17" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:TemplateManager.cs" caret="0" fromTop="0" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Entities.Designer.cs" caret="2580" fromTop="22" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Create.cshtml" caret="1393" fromTop="19" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:TemplateManager.cs" caret="1519" fromTop="24" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2597" fromTop="19" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Models/f:Test.cs" caret="2426" fromTop="10" />
   </RecentFiles>
   <RecentEdits>
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Edit.cshtml" caret="113" fromTop="6" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Delete.cshtml" caret="294" fromTop="29" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Delete.cshtml" caret="207" fromTop="9" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Subject/f:Delete.cshtml" caret="107" fromTop="6" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Course/f:Edit.cshtml" caret="1687" fromTop="21" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="559" fromTop="20" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="640" fromTop="24" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:HomeController.cs" caret="834" fromTop="32" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="475" fromTop="20" />
@@ -51,7 +39,7 @@
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="668" fromTop="20" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="1551" fromTop="25" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="2311" fromTop="25" />
-    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2682" fromTop="20" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2783" fromTop="20" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Views/d:Course/f:Edit.cshtml" caret="1353" fromTop="37" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:CourseController.cs" caret="1978" fromTop="21" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="658" fromTop="10" />
@@ -62,5 +50,11 @@
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="1197" fromTop="9" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:QuestionController.cs" caret="2881" fromTop="22" />
     <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:SubjectController.cs" caret="2798" fromTop="24" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:TemplateManager.cs" caret="3859" fromTop="46" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:TemplateManager.cs" caret="869" fromTop="25" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:TemplateManager.cs" caret="226" fromTop="9" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Tools/f:TemplateManager.cs" caret="2173" fromTop="23" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="3413" fromTop="34" />
+    <File id="F3AC2A23-D52F-460B-92EF-D19220F0893B/d:Controllers/f:TestController.cs" caret="2597" fromTop="19" />
   </RecentEdits>
 </RecentFiles>

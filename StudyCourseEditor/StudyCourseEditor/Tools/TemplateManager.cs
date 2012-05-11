@@ -70,7 +70,7 @@ namespace StudyCourseEditor.Tools
 
             // Get answers from _db
             var answers = question.Answers.ToList();
-            if (answers.Count == 0) throw new Exception("Question has no answers");
+            //if (answers.Count == 0) throw new Exception("Question has no answers");
             foreach (var answer in answers)
             {
                 var newAnswer = new GeneratedAnswer

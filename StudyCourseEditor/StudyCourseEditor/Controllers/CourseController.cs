@@ -100,6 +100,11 @@ namespace StudyCourseEditor.Controllers
             return RedirectToAction("Index");
         }
 
+        public static Course GetById(int id)
+        {
+            return new Entities().Courses.FirstOrDefault(c => c.ID == id);
+        }
+
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();

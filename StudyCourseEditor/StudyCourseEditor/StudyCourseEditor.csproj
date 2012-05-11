@@ -99,6 +99,7 @@
     <Compile Include="Tools\CryptoXorManager.cs" />
     <Compile Include="Tools\MD5HashManager.cs" />
     <Compile Include="Tools\TemplateManager.cs" />
+    <Compile Include="Tools\TimeManager.cs" />
     <Compile Include="Tools\XmlManager.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,7 +220,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>33628</DevelopmentServerPort>
+          <DevelopmentServerPort>60992</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

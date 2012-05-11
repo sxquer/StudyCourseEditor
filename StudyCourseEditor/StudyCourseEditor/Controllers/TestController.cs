@@ -16,6 +16,7 @@ namespace StudyCourseEditor.Controllers
         /// Отображает тест для пользователя
         /// </summary>
         /// <returns></returns>
+       [ValidateInput(false)]
         public ActionResult Index()
         {
             var testData = GetTestData();
@@ -70,15 +71,10 @@ namespace StudyCourseEditor.Controllers
                 testData.CurrentQuestionDifficulty -= difficultyShift;
             }
 
-            var questionList = new List<Question>();
-            int i = 0;
-            while (questionList.Count == 0)
-            {
-                questionList = _db.Questions.Where(x => Math.Abs(x.Difficulty - testData.CurrentQuestionDifficulty) == i && (testData.SubjectsIds.Contains(x.SubjectID))).ToList();
-                if (++i > testData.CurrentQuestionDifficulty) throw new Exception("Нет подходящих вопросов");
-            }
+            if (testData.CalculateError() < 0.3)
+                return RedirectToAction("End");
 
-            var selectedQuestion = questionList.ToArray()[new Random().Next(questionList.Count - 1)];
+            var selectedQuestion = GetQuestion(testData);
 
             testData.TestSeed = TemplateManager.GetRandomSeed();
             testData.CurrentQuestionDifficulty = selectedQuestion.Difficulty;
@@ -86,11 +82,42 @@ namespace StudyCourseEditor.Controllers
 
             SetTestData(testData);
 
-            if (testData.CalculateError() < 0.3)
-                return RedirectToAction("End");
-
             return RedirectToAction("Index");
         }
+
+        /// <summary>
+        /// Стартовая страница для теста
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult StartTest(IEnumerable<int> subjectIds)
+        {
+            var testData = new TestData
+                            {
+                               CurrentQuestionDifficulty = 5,
+                               SubjectsIds = subjectIds.ToList(),
+                               Started = TimeManager.GetCurrentTime(),
+                            };  
+
+            var selectedQuestion = GetQuestion(testData);
+
+            testData.TestSeed = TemplateManager.GetRandomSeed();
+            testData.CurrentQuestionDifficulty = selectedQuestion.Difficulty;
+            testData.CurrentQuestionId = selectedQuestion.ID;
+
+            SetTestData(testData);
+            
+            return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// Стартовая страница для теста
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult StartCourseTest(int courseId)
+        {
+            return StartTest(CourseController.GetById(courseId).Subjects.Select(x => x.ID));
+        }
+
 
         /// <summary>
         /// Обработка результатов тестирования
@@ -123,9 +150,23 @@ namespace StudyCourseEditor.Controllers
             return result;
         }
 
+        private Question GetQuestion(TestData testData)
+        {
+            var questionList = new List<Question>();
+            int i = 0;
+            while (questionList.Count == 0)
+            {
+                questionList = _db.Questions.Where(x => Math.Abs(x.Difficulty - testData.CurrentQuestionDifficulty) == i && (testData.SubjectsIds.Contains(x.SubjectID))).ToList();
+                if (++i > testData.CurrentQuestionDifficulty) throw new Exception("Нет подходящих вопросов");
+            }
+
+            return questionList.ToArray()[new Random().Next(questionList.Count - 1)];
+        }
+
+
         private void SetTestData(TestData data)
         {
-            string cookieString = CryptoXorManager.Process(XmlManager.SerializeObjectUTF8(data), 17);
+            string cookieString = HttpUtility.UrlEncode(XmlManager.SerializeObjectUTF8(data));
 
             var testInfo = new HttpCookie("TestInfo", cookieString);
             var securityToken = new HttpCookie("SecurityToken", MD5HashManager.GenerateKey(cookieString));
@@ -133,19 +174,32 @@ namespace StudyCourseEditor.Controllers
             Response.Cookies.Add(testInfo);
             Response.Cookies.Add(securityToken);
 
-            Request.Cookies.Add(testInfo);
-            Request.Cookies.Add(securityToken);
+            TempData["testInfo"] = testInfo;
+            TempData["securityToken"] = securityToken;
         }
 
         private TestData GetTestData()
         {
-            var testInfo = Request.Cookies["TestInfo"];
-            var securityToken = Request.Cookies["SecurityToken"];
+            var testInfo = (HttpCookie)TempData["TestInfo"];
+            var securityToken = (HttpCookie)TempData["SecurityToken"];
 
-            if (testInfo == null || securityToken == null) return null;
+            if (testInfo == null || securityToken == null || string.IsNullOrWhiteSpace(testInfo.Value) || string.IsNullOrWhiteSpace(securityToken.Value))
+            {
+                testInfo = Request.Cookies["TestInfo"];
+                securityToken = Request.Cookies["SecurityToken"];
+
+                if (testInfo == null || securityToken == null || string.IsNullOrWhiteSpace(testInfo.Value) || string.IsNullOrWhiteSpace(securityToken.Value)) return null;
+            }
+
+            else
+            {
+                Response.Cookies.Add(testInfo);
+                Response.Cookies.Add(securityToken);
+            }
+            
             if (MD5HashManager.GenerateKey(testInfo.Value) != securityToken.Value) return null;
 
-            return XmlManager.DeserializeObject<TestData>(CryptoXorManager.Process(testInfo.Value, 17));
+            return XmlManager.DeserializeObject<TestData>(HttpUtility.UrlDecode(testInfo.Value));
         }
 
         private void ClearTestData()
@@ -205,3 +259,4 @@ namespace StudyCourseEditor.Controllers
         }
     }
 }
+
