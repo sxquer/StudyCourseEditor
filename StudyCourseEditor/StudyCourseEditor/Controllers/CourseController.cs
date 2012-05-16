@@ -18,7 +18,7 @@ namespace StudyCourseEditor.Controllers
 
         public ViewResult Index()
         {
-            return View(_db.Courses.ToList());
+            return View(_db.Courses.OrderBy(x => x.Name).ToList());
         }
 
         //

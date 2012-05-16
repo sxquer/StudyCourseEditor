@@ -16,13 +16,14 @@ namespace StudyCourseEditor.Controllers
         /// Отображает тест для пользователя
         /// </summary>
         /// <returns></returns>
-       [ValidateInput(false)]
         public ActionResult Index()
         {
             var testData = GetTestData();
             if (testData == null) return RedirectToAction("End");
 
             ViewBag.QuestionToken = testData.GetQuestionHash();
+            ViewBag.TestData = testData;
+
 
             return View(TemplateManager.Generate(testData.CurrentQuestionId, testData.TestSeed));
         }
@@ -42,6 +43,7 @@ namespace StudyCourseEditor.Controllers
         {
             var testData = GetTestData();
 
+
             //If bad data then finish survey
             if (testData == null) return RedirectToAction("End");
             
@@ -54,7 +56,7 @@ namespace StudyCourseEditor.Controllers
             testData.ItemsTaken++;
             testData.TotalDifficultiesUsed += testData.CurrentQuestionDifficulty;
             
-            var difficultyShift = (int) Math.Round((float) 2 / testData.ItemsTaken);
+            var difficultyShift = 0.2 + (float) 2 / testData.ItemsTaken;
 
             bool answerIsCorrect = CheckAnswerIsCorrect(question, collection["Answers"]);
 
@@ -64,11 +66,11 @@ namespace StudyCourseEditor.Controllers
             if (answerIsCorrect)
             {
                 testData.RightAnswersCount++;
-                testData.CurrentQuestionDifficulty += difficultyShift;
+                testData.TrueDifficultyLevel += difficultyShift;
             }
             else
             {
-                testData.CurrentQuestionDifficulty -= difficultyShift;
+                testData.TrueDifficultyLevel -= difficultyShift;
             }
 
             if (testData.CalculateError() < 0.3)
@@ -93,7 +95,7 @@ namespace StudyCourseEditor.Controllers
         {
             var testData = new TestData
                             {
-                               CurrentQuestionDifficulty = 5,
+                               TrueDifficultyLevel = 5,
                                SubjectsIds = subjectIds.ToList(),
                                Started = TimeManager.GetCurrentTime(),
                             };  
@@ -142,6 +144,9 @@ namespace StudyCourseEditor.Controllers
         private bool CheckAnswerIsCorrect(GeneratedQuestion question, string userAnswer)
         {
             bool result = false;
+
+            if (string.IsNullOrWhiteSpace(userAnswer)) return false;
+
             if (question.Type == QuestionType.SINGLE_CHOOSE_QUESTION)
             {
                 int rightAnswer = int.Parse(userAnswer);
@@ -153,16 +158,49 @@ namespace StudyCourseEditor.Controllers
         private Question GetQuestion(TestData testData)
         {
             var questionList = new List<Question>();
+
+            var priorityArray = GetDifficultyPriorityArray(testData.TrueDifficultyLevel);
+
             int i = 0;
-            while (questionList.Count == 0)
+            int dif = 0;
+            while (questionList.Count == 0 && i < 10)
             {
-                questionList = _db.Questions.Where(x => Math.Abs(x.Difficulty - testData.CurrentQuestionDifficulty) == i && (testData.SubjectsIds.Contains(x.SubjectID))).ToList();
-                if (++i > testData.CurrentQuestionDifficulty) throw new Exception("Нет подходящих вопросов");
+                dif = priorityArray[i];
+                questionList = _db.Questions.Where(x => x.Difficulty == dif && (testData.SubjectsIds.Contains(x.SubjectID))).ToList();
+                if (++i >= 10) throw new Exception("Нет подходящих вопросов");
             }
 
-            return questionList.ToArray()[new Random().Next(questionList.Count - 1)];
+            return questionList.FirstOrDefault();
         }
 
+        private int[] GetDifficultyPriorityArray(double realDifficulty)
+        {
+            var result = new int[10];
+            
+            var currentValue = (int) Math.Round(realDifficulty);
+            int inverter = (realDifficulty / currentValue > 1) ? 1 : -1;
+            var filledCount = 10;
+
+            for (int i = 0; i < 10; i++)
+            {
+                result[i] = currentValue;
+                currentValue = currentValue + (i + 1) * inverter;
+                inverter = -inverter;
+                if (currentValue > 10 || currentValue <= 0)
+                {
+                    filledCount = i + 1;
+                    break;
+                }
+            }
+    
+            while (filledCount < 10)
+            {
+                result[filledCount] = result[filledCount - 1] + inverter;
+                filledCount++;
+            }
+
+            return result;
+        }
 
         private void SetTestData(TestData data)
         {

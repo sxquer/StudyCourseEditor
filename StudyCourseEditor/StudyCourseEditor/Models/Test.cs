@@ -38,6 +38,9 @@ namespace StudyCourseEditor.Models
 		[XmlElement(ElementName = "CQD")]
 		public int CurrentQuestionDifficulty { get; set; }
 
+        [XmlElement(ElementName = "TDL")]
+        public double TrueDifficultyLevel { get; set; }
+
 		[XmlElement(ElementName = "CQI")]
 		public int CurrentQuestionId { get; set; }
 

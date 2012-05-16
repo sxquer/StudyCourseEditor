@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace StudyCourseEditor.Models.Metadata
 {
@@ -18,6 +19,7 @@ namespace StudyCourseEditor.Models.Metadata
 		/// 
 		/// </summary>
 		[DisplayName("Описание")]
+        [UIHint("tinymce_jquery_full"), AllowHtml]
 		public string Description { get; set; }
 	}
 }
