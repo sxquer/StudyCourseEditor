@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using StudyCourseEditor.Extensions;
 using StudyCourseEditor.Models;
 
 namespace StudyCourseEditor.Controllers
@@ -14,102 +15,155 @@ namespace StudyCourseEditor.Controllers
     {
         private Entities db = new Entities();
 
-        //
-        // POST: /Answer/Create
-
-        private bool Create(Answer answer)
+        /// <summary>
+        /// Updates answer
+        /// </summary>
+        /// <param name="collection">Form data</param>
+        /// <param name="id">Answer id to update</param>
+        /// <returns>Json result</returns>
+        [HttpParamAction]
+        public JsonResult Update(FormCollection collection, int id)
         {
-            if (ModelState.IsValid)
-            {
-                db.Answers.AddObject(answer);
-                db.SaveChanges();
-                return true;
-            }
-
-            return false;
-        }
-        
-
-        //
-        // POST: /Answer/Edit/5
-
-        private bool Update(Answer answer)
-        {
-            if (ModelState.IsValid)
-            {
-                db.ObjectStateManager.ChangeObjectState(answer, EntityState.Modified);
-                db.SaveChanges();
-                return true;
-            }
-            return false;
-        }
-
-        private bool Delete(Answer answer)
-        {
-            if (answer != null)
-            {
-                db.Answers.DeleteObject(answer);
-                db.SaveChanges();
-                return true;
-            }
-
-            return false;
-        }
-        
-        public JsonResult ProcessAnswer(FormCollection collection, int id, int counter, int questionID = 0)
-        {
-            var ajaxResponse = new string[4];
-            string body = collection["Answer_" + counter];
-            bool isCorrect = (collection["IsCorrect_" + counter] == "true");
-
-            ajaxResponse[0] = id.ToString(CultureInfo.InvariantCulture);
-            ajaxResponse[3] = "0";
+            var ajaxResponse = new Dictionary<string, string>();
             
-            var req = ControllerContext.RequestContext.HttpContext.Request;
-            ajaxResponse[1] = req.Form["submit"];
+            string body = collection["Answer"];
+            Answer answer = db.Answers.FirstOrDefault(q => q.ID == id);
 
-            if (ajaxResponse[1] == "Добавить")
+            try
             {
-                Create(new Answer
+                CheckAnswerBody(body);
+                CheckAnswer(answer);
+            }
+            catch (AnswerAjaxException ex)
+            {
+                ajaxResponse["success"] = "false";
+                ajaxResponse["message"] = ex.Message;
+                return Json(ajaxResponse);
+            }
+
+            answer.Body = body;
+
+            db.ObjectStateManager.ChangeObjectState(answer, EntityState.Modified);
+            db.SaveChanges();
+            
+            ajaxResponse["message"] = AnswerAjaxMessages.UPDATE_COMPLETE;
+            ajaxResponse["actionType"] = "update";
+            ajaxResponse["success"] = "true";
+            
+            return Json(ajaxResponse);
+        }
+
+        /// <summary>
+        /// Creates answer
+        /// </summary>
+        /// <param name="collection">Form data</param>
+        /// <param name="id">DEPRICATED</param>
+        /// <param name="questionID">Question id which will contain answer</param>
+        /// <returns>Json result</returns>
+        [HttpParamAction]
+        public JsonResult Create(FormCollection collection, int id, int questionID)
+        {
+            var ajaxResponse = new Dictionary<string, string>();
+
+            string body = collection["Answer"];
+            var answer = new Answer
                 {
                     Body = body,
                     IsCorrect = false,
                     QuestionID = questionID
-                });
-                ajaxResponse[2] = "Ответ успешно создан";
-                return Json(ajaxResponse);
-            }
+                };
 
-            Answer answer = db.Answers.FirstOrDefault(q => q.ID == id);
-            if (answer == null)
+            try
             {
-                ajaxResponse[2] = "Ответ с заданным ID не найден";
-                ajaxResponse[3] = "1";
-                return Json(ajaxResponse);
+                CheckAnswerBody(body);
+                CheckAnswer(answer);
             }
-
-            if (ajaxResponse[1] == "Сохранить")
+            catch (AnswerAjaxException ex)
             {
-                answer.Body = body;
-                answer.IsCorrect = isCorrect;
-                Update(answer);
-                ajaxResponse[2] = "Ответ сохранен";
+                ajaxResponse["success"] = "false";
+                ajaxResponse["message"] = ex.Message;
                 return Json(ajaxResponse);
             }
 
-            if (ajaxResponse[1] == "Удалить")
-            {
-                Delete(answer);
-                ajaxResponse[2] = "Ответ удален";
-                return Json(ajaxResponse);
-            }
+            db.Answers.AddObject(answer);
+            db.SaveChanges();
+            
+            ajaxResponse["message"] = AnswerAjaxMessages.CREATE_COMPLETE;
+            ajaxResponse["actionType"] = "create";
+            ajaxResponse["success"] = "true";
+            ajaxResponse["answerID"] = answer.ID.ToString(CultureInfo.InvariantCulture);
+            ajaxResponse["body"] = body;
 
-            ajaxResponse[2] = "Команда не найдена";
-            ajaxResponse[3] = "1";
             return Json(ajaxResponse);
-
         }
 
+        /// <summary>
+        /// Deletes answer
+        /// </summary>
+        /// <param name="collection">Form data</param>
+        /// <param name="id">Answer id to delete</param>
+        /// <returns>Json result</returns>
+        [HttpParamAction]
+        public JsonResult Delete(FormCollection collection, int id)
+        {
+            var ajaxResponse = new Dictionary<string, string>();
+
+            Answer answer = db.Answers.FirstOrDefault(q => q.ID == id);
+
+            try
+            {
+                CheckAnswer(answer);
+            }
+            catch (AnswerAjaxException ex)
+            {
+                ajaxResponse["success"] = "false";
+                ajaxResponse["message"] = ex.Message;
+                return Json(ajaxResponse);
+            }
+
+            db.Answers.DeleteObject(answer);
+            db.SaveChanges();
+
+            ajaxResponse["message"] = AnswerAjaxMessages.DELETE_COMPLETE;
+            ajaxResponse["actionType"] = "delete";
+            ajaxResponse["success"] = "true";
+            ajaxResponse["answerID"] = id.ToString(CultureInfo.InvariantCulture);
+
+            return Json(ajaxResponse);
+        }
+
+        private void CheckAnswerBody(string body)
+        {
+            if (string.IsNullOrWhiteSpace(body))
+                throw new AnswerAjaxException(AnswerAjaxMessages.EMPTY_BODY);
+        }
+
+        private void CheckAnswer(Answer answer)
+        {
+            if (answer == null)
+                throw new AnswerAjaxException(AnswerAjaxMessages.NULL_ANSWER);
+        }
+
+        /// <summary>
+        /// Ajax response's list
+        /// </summary>
+        private struct AnswerAjaxMessages
+        {
+            public const string EMPTY_BODY = "Тело вопроса не может быть пустым. Изменения не сохранены";
+            public const string NULL_ANSWER = "Ответ с заданным ID не найден";
+            public const string CREATE_COMPLETE = "Ответ успешно создан";
+            public const string UPDATE_COMPLETE = "Ответ успешно сохранен";
+            public const string DELETE_COMPLETE = "Ответ успешно удален";
+            
+        }
+
+        /// <summary>
+        /// Simple wrap around default Exception class
+        /// </summary>
+        private class AnswerAjaxException : Exception
+        {
+            public AnswerAjaxException(string message) : base (message) { }
+        }
 
         protected override void Dispose(bool disposing)
         {

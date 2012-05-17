@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using StudyCourseEditor.Extensions;
 using StudyCourseEditor.Models;
 
 namespace StudyCourseEditor.Controllers
@@ -43,9 +44,9 @@ namespace StudyCourseEditor.Controllers
 
         //
         // POST: /Question/Create
-
+        [HttpParamAction]
         [HttpPost]
-        public ActionResult Create(Question question)
+        public ActionResult CreateAndBack(Question question)
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +55,23 @@ namespace StudyCourseEditor.Controllers
                 return RedirectToAction("Edit", "Subject", new { id = question.SubjectID }); 
             }
 
-            return View(question);
+            return View("Create");
+        }
+
+        //
+        // POST: /Question/Create
+        [HttpParamAction]
+        [HttpPost]
+        public ActionResult CreateAndContinue(Question question)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Questions.AddObject(question);
+                _db.SaveChanges();
+                return RedirectToAction("Edit", "Question", new { id = question.ID });
+            }
+
+            return View("Create");
         }
         
         //

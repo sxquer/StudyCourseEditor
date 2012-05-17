@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Редактировать вопрос";
-    int ansCounter = 1;
+    
 }
 
 <h2>@ViewBag.Title</h2>
@@ -10,6 +10,7 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/answers.js")" type="text/javascript" ></script>
 
 
 
@@ -52,40 +53,54 @@
 
 
 <div>
+    <div id="existing-answers-placeholder">
  
     @foreach (var answer in Model.Answers)
     {
-        using (Ajax.BeginForm("ProcessAnswer", "Answer", new {id = answer.ID, counter = ansCounter}, new AjaxOptions 
-        {
-            HttpMethod = "POST",
-            OnSuccess = "AnswerProcessSuccess",
-            OnFailure = "AnswerProcessFailed",
+        <div id="answer_@(answer.ID)">
+        @using (Ajax.BeginForm("Action", "Answer", new {id = answer.ID}, new AjaxOptions 
+                                                                                   {
+                                                                                       HttpMethod = "POST",
+                                                                                       OnSuccess = "AnswerProcessSuccess",
+                                                                                       OnFailure = "AnswerProcessFailed",
 
-        }))
-        {
-            @Html.TextBox("Answer_" + (ansCounter++), answer.Body)
-            <input type="submit" name="submit" value="Сохранить"/>
-            <input type="submit" name="submit" value="Удалить"/>
-        }
- 
+                                                                                   }))
+            {
+                @Html.TextBox("Answer", answer.Body)
+                <input type="submit" name="Update" value="Сохранить"/>
+                <input type="submit" name="Delete" value="Удалить"/>
+            }
+        </div>
+
     }
+    </div>
+    @using (Ajax.BeginForm("Action", "Answer", new { id = 0, questionID = Model.ID }, new AjaxOptions
+                                                                                                               {
+                                                                                                                   HttpMethod = "POST",
+                                                                                                                   OnSuccess = "AnswerProcessSuccess",
+                                                                                                                   OnFailure = "AnswerProcessFailed",
 
-    @using (Ajax.BeginForm("ProcessAnswer", "Answer", new { id = 0, counter = ansCounter, questionID = Model.ID }, new AjaxOptions
+                                                                                                               }))
     {
-        HttpMethod = "POST",
-        OnSuccess = "AnswerProcessSuccess",
-        OnFailure = "AnswerProcessFailed",
-
-    }))
-    {
-            @Html.TextBox("Answer_" + (ansCounter++), "");
-            <input type="submit" name="submit" value="Добавить"/>
+        @Html.TextBox("Answer", "", new {id = "NewAnswer"})
+        <input type="submit" name="Create" value="Добавить"/>
     }
     
 </div>
 
 
+<div id="answer_template" style="display: none">
+    @using (Ajax.BeginForm("Action", "Answer", new {id = "id_placeholder"}, new AjaxOptions 
+                                                                                              {
+                                                                                                  HttpMethod = "POST",
+                                                                                                  OnSuccess = "AnswerProcessSuccess",
+                                                                                                  OnFailure = "AnswerProcessFailed",
 
-<script type="text/javascript" src="@Url.Content("~/Scripts/answers.js")">
-    
-</script>
+                                                                                              }))
+    {
+        @Html.TextBox("Answer", "value_placeholder")
+        <input type="submit" name="Update" value="Сохранить"/>
+        <input type="submit" name="Delete" value="Удалить"/>
+    }
+</div>
+
