@@ -14,12 +14,11 @@ using System.Data.EntityClient;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
-using StudyCourseEditor.Models;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Models", "FK_Answer_Question", "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Question), "Answer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Answer), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_Answer_Question", "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Question), "Answer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Answer), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK__aspnet_Me__Appli__21B6055D", "aspnet_Applications", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.aspnet_Applications), "aspnet_Membership", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.aspnet_Membership), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK__aspnet_Pa__Appli__5AEE82B9", "aspnet_Applications", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.aspnet_Applications), "aspnet_Paths", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.aspnet_Paths), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK__aspnet_Ro__Appli__440B1D61", "aspnet_Applications", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.aspnet_Applications), "aspnet_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.aspnet_Roles), true)]
@@ -33,8 +32,8 @@ using StudyCourseEditor.Models;
 [assembly: EdmRelationshipAttribute("Models", "FK_DefTagRelation_Definition", "Definition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Definition), "DefTagRelation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.DefTagRelation), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_Example_Definition", "Definition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Definition), "Example", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Example), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_DefTagRelation_Tag", "Tag", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Tag), "DefTagRelation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.DefTagRelation), true)]
-[assembly: EdmRelationshipAttribute("Models", "FK_Question_QuestionType", "QuestionType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(QuestionType), "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Question), true)]
-[assembly: EdmRelationshipAttribute("Models", "FK_Question_Subject", "Subject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Subject), "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Question), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_Question_QuestionType", "QuestionType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.QuestionType), "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Question), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_Question_Subject", "Subject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Subject), "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Question), true)]
 [assembly: EdmRelationshipAttribute("Models", "aspnet_UsersInRoles", "aspnet_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.aspnet_Roles), "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.aspnet_Users))]
 
 #endregion
@@ -4225,7 +4224,8 @@ namespace StudyCourseEditor.Models
         /// <param name="difficulty">Initial value of the Difficulty property.</param>
         /// <param name="subjectID">Initial value of the SubjectID property.</param>
         /// <param name="questionTypeID">Initial value of the QuestionTypeID property.</param>
-        public static Question CreateQuestion(global::System.Int32 id, global::System.String body, global::System.Int32 difficulty, global::System.Int32 subjectID, global::System.Int32 questionTypeID)
+        /// <param name="isPublished">Initial value of the IsPublished property.</param>
+        public static Question CreateQuestion(global::System.Int32 id, global::System.String body, global::System.Int32 difficulty, global::System.Int32 subjectID, global::System.Int32 questionTypeID, global::System.Boolean isPublished)
         {
             Question question = new Question();
             question.ID = id;
@@ -4233,6 +4233,7 @@ namespace StudyCourseEditor.Models
             question.Difficulty = difficulty;
             question.SubjectID = subjectID;
             question.QuestionTypeID = questionTypeID;
+            question.IsPublished = isPublished;
             return question;
         }
 
@@ -4361,6 +4362,30 @@ namespace StudyCourseEditor.Models
         private global::System.Int32 _QuestionTypeID;
         partial void OnQuestionTypeIDChanging(global::System.Int32 value);
         partial void OnQuestionTypeIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsPublished
+        {
+            get
+            {
+                return _IsPublished;
+            }
+            set
+            {
+                OnIsPublishedChanging(value);
+                ReportPropertyChanging("IsPublished");
+                _IsPublished = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsPublished");
+                OnIsPublishedChanged();
+            }
+        }
+        private global::System.Boolean _IsPublished;
+        partial void OnIsPublishedChanging(global::System.Boolean value);
+        partial void OnIsPublishedChanged();
 
         #endregion
     

@@ -25,6 +25,7 @@ namespace StudyCourseEditor.Controllers
             var ajaxResponse = new Dictionary<string, string>();
 
             string body = collection["Answer"];
+            bool isCorrect = (collection["IsCorrect"] != "false");
             Answer answer = _db.Answers.FirstOrDefault(q => q.ID == id);
 
             try
@@ -40,6 +41,7 @@ namespace StudyCourseEditor.Controllers
             }
 
             answer.Body = body;
+            answer.IsCorrect = isCorrect;
 
             _db.ObjectStateManager.ChangeObjectState(answer,
                                                      EntityState.Modified);
@@ -60,16 +62,16 @@ namespace StudyCourseEditor.Controllers
         /// <param name="questionID">Question id which will contain answer</param>
         /// <returns>Json result</returns>
         [HttpParamAction]
-        public JsonResult Create(FormCollection collection, int id,
-                                 int questionID)
+        public JsonResult Create(FormCollection collection, int id, int questionID)
         {
             var ajaxResponse = new Dictionary<string, string>();
 
             string body = collection["Answer"];
+            bool isCorrect = (collection["IsCorrect"] != "false");
             var answer = new Answer
                              {
                                  Body = body,
-                                 IsCorrect = false,
+                                 IsCorrect = isCorrect,
                                  QuestionID = questionID
                              };
 
@@ -91,9 +93,9 @@ namespace StudyCourseEditor.Controllers
             ajaxResponse["message"] = AnswerAjaxMessages.CREATE_COMPLETE;
             ajaxResponse["actionType"] = "create";
             ajaxResponse["success"] = "true";
-            ajaxResponse["answerID"] =
-                answer.ID.ToString(CultureInfo.InvariantCulture);
+            ajaxResponse["answerID"] = answer.ID.ToString(CultureInfo.InvariantCulture);
             ajaxResponse["body"] = body;
+            ajaxResponse["isCorrect"] = (isCorrect) ? "true" : "false";
 
             return Json(ajaxResponse);
         }
@@ -172,9 +174,7 @@ namespace StudyCourseEditor.Controllers
         /// </summary>
         private struct AnswerAjaxMessages
         {
-            public const string EMPTY_BODY =
-                "Тело вопроса не может быть пустым. Изменения не сохранены";
-
+            public const string EMPTY_BODY = "Тело вопроса не может быть пустым. Изменения не сохранены";
             public const string NULL_ANSWER = "Ответ с заданным ID не найден";
             public const string CREATE_COMPLETE = "Ответ успешно создан";
             public const string UPDATE_COMPLETE = "Ответ успешно сохранен";

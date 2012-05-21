@@ -283,6 +283,7 @@
           <Property Name="Difficulty" Type="int" Nullable="false" />
           <Property Name="SubjectID" Type="int" Nullable="false" />
           <Property Name="QuestionTypeID" Type="int" Nullable="false" />
+          <Property Name="IsPublished" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -833,6 +834,7 @@
           <NavigationProperty Name="Answers" Relationship="Models.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
           <NavigationProperty Name="QuestionType" Relationship="Models.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
           <NavigationProperty Name="Subject" Relationship="Models.FK_Question_Subject" FromRole="Question" ToRole="Subject" />
+          <Property Type="Boolean" Name="IsPublished" Nullable="false" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -1257,6 +1259,7 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="Models.Question">
               <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
                 <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
                 <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
                 <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />

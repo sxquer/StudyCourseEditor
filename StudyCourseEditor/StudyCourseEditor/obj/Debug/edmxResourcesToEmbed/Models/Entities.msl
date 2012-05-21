@@ -184,6 +184,7 @@
     <EntitySetMapping Name="Questions">
       <EntityTypeMapping TypeName="Models.Question">
         <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
           <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
           <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
           <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />

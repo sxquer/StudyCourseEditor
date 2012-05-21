@@ -278,6 +278,7 @@
     <Property Name="Difficulty" Type="int" Nullable="false" />
     <Property Name="SubjectID" Type="int" Nullable="false" />
     <Property Name="QuestionTypeID" Type="int" Nullable="false" />
+    <Property Name="IsPublished" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="QuestionType">
     <Key>

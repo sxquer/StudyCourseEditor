@@ -40,6 +40,12 @@ namespace StudyCourseEditor.TestClasses
         [XmlElement(ElementName = "S")]
         public DateTime Started { get; set; }
 
+        [XmlElement(ElementName = "TT")]
+        public TestType TestType { get; set; }
+
+        [XmlElement(ElementName = "MAOQ")]
+        public int MaxAmountOfQuestions { get; set; }
+
         /// <summary>
         /// 	Data for graphic presentation of test's results. Format "difficulty_isCorrect;"
         /// </summary>

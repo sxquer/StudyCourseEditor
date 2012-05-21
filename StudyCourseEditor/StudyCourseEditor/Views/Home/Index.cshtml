@@ -1,9 +1,10 @@
-﻿@{
+﻿@using StudyCourseEditor.TestClasses
+@{
     ViewBag.Title = "Главная";
 }
 
 <h2>@ViewBag.Message</h2>
 
 <p>
-    @Html.ActionLink("Тест", "StartCourseTest", "Test", new { courseId = 3 }, null)
+    @Html.ActionLink("Тест", "StartCourseTest", "Test", new { courseId = 3, testType = TestType.Adaptive }, null)
 </p>

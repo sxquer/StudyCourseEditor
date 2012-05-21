@@ -77,6 +77,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IQuestionGenerator.cs" />
+    <Content Include="Content\img\help.png" />
     <Content Include="README.txt" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -106,7 +107,8 @@
     <Compile Include="TestClasses\GeneratedQuestion.cs" />
     <Compile Include="TestClasses\TestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Scripts\answers.js" />
+    <Content Include="Scripts\pages\answers.js" />
+    <Compile Include="TestClasses\TestType.cs" />
     <Compile Include="Tools\CryptoAesManager.cs" />
     <Compile Include="Tools\CryptoXorManager.cs" />
     <Compile Include="Tools\MD5HashManager.cs" />
@@ -154,7 +156,6 @@
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.min.OLD.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\noty\.gitignore" />
@@ -166,6 +167,7 @@
     <Content Include="Scripts\noty\js\jquery.noty.js" />
     <Content Include="Scripts\noty\js\promise.js" />
     <Content Include="Scripts\noty\LICENSE.txt" />
+    <Content Include="Scripts\pages\questions.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.js" />
     <Content Include="Scripts\tinymce\langs\en.js" />
     <Content Include="Scripts\tinymce\license.txt" />
@@ -505,7 +507,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60992</DevelopmentServerPort>
+          <DevelopmentServerPort>9108</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

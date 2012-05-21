@@ -34,6 +34,7 @@ namespace StudyCourseEditor.Controllers
         public ActionResult Create(int subjectId)
         {
             ViewBag.SubjectID = subjectId;
+            ViewBag.Types = GetQuestionTypes();
 
             return View();
         }
@@ -52,6 +53,7 @@ namespace StudyCourseEditor.Controllers
                                         new {id = question.SubjectID});
             }
 
+            ViewBag.Types = GetQuestionTypes();
             return View("Create");
         }
 
@@ -69,6 +71,7 @@ namespace StudyCourseEditor.Controllers
                                         new {id = question.ID});
             }
 
+            ViewBag.Types = GetQuestionTypes();
             return View("Create");
         }
 
@@ -78,6 +81,7 @@ namespace StudyCourseEditor.Controllers
         public ActionResult Edit(int id)
         {
             Question question = _db.Questions.FirstOrDefault(q => q.ID == id);
+            ViewBag.Types = GetQuestionTypes();
             return View(question);
         }
 
@@ -93,9 +97,9 @@ namespace StudyCourseEditor.Controllers
                 _db.ObjectStateManager.ChangeObjectState(question,
                                                          EntityState.Modified);
                 _db.SaveChanges();
-                return RedirectToAction("Edit", "Subject",
-                                        new {id = question.SubjectID});
+                //return RedirectToAction("Edit", "Subject",new {id = question.SubjectID});
             }
+            ViewBag.Types = GetQuestionTypes();
             return View(question);
         }
 
@@ -121,6 +125,18 @@ namespace StudyCourseEditor.Controllers
                 return RedirectToAction("Edit", "Subject",
                                         new {id = question.SubjectID});
             return RedirectToAction("Index");
+        }
+
+        private SelectList GetQuestionTypes()
+        {
+            return new SelectList(_db.QuestionTypes, "ID", "Name");
+        }
+
+        public ActionResult QuestionTypeAjaxHelp(int typeID)
+        {
+            var type = _db.QuestionTypes.FirstOrDefault(qt => qt.ID == typeID);
+            if (type == null) return Json("Подсказка не найдена", JsonRequestBehavior.AllowGet);
+            return Json(type.Description, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

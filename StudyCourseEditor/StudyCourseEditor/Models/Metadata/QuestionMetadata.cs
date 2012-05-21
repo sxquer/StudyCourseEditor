@@ -14,5 +14,9 @@ namespace StudyCourseEditor.Models.Metadata
         [DisplayName("Сложность")]
         [Range(1, 10)]
         public int Difficulty { get; set; }
+
+        [DisplayName("Опубликован")]
+        [DefaultValue(true)]
+        public bool IsPublished { get; set; }
     }
 }

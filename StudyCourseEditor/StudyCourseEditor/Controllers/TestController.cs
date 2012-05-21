@@ -62,6 +62,8 @@ namespace StudyCourseEditor.Controllers
             testData.ItemsTaken++;
             testData.TotalDifficultiesUsed += testData.CurrentQuestionDifficulty;
 
+            if (testData.ItemsTaken > testData.MaxAmountOfQuestions) return RedirectToAction("End");
+
             double difficultyShift = 0.2 + (float) 2 / testData.ItemsTaken;
 
             bool answerIsCorrect = CheckAnswerIsCorrect(question,
@@ -98,13 +100,17 @@ namespace StudyCourseEditor.Controllers
         /// Стартовая страница для теста
         /// </summary>
         /// <returns></returns>
-        public ActionResult StartTest(IEnumerable<int> subjectIds)
+        public ActionResult StartTest(IEnumerable<int> subjectIds, TestType testType)
         {
+            if (subjectIds == null || !subjectIds.Any()) return RedirectToAction("Index", "Home");
+            
             var testData = new TestData
                                {
                                    TrueDifficultyLevel = 5,
                                    SubjectsIds = subjectIds.ToList(),
                                    Started = TimeManager.GetCurrentTime(),
+                                   TestType = testType,
+                                   MaxAmountOfQuestions = _db.Questions.Count(x => subjectIds.Contains(x.SubjectID) && x.IsPublished),
                                };
 
             Question selectedQuestion = GetQuestion(testData);
@@ -112,6 +118,7 @@ namespace StudyCourseEditor.Controllers
             testData.TestSeed = TemplateManager.GetRandomSeed();
             testData.CurrentQuestionDifficulty = selectedQuestion.Difficulty;
             testData.CurrentQuestionId = selectedQuestion.ID;
+
 
             SetTestData(testData);
 
@@ -122,11 +129,11 @@ namespace StudyCourseEditor.Controllers
         /// Стартовая страница для теста
         /// </summary>
         /// <returns></returns>
-        public ActionResult StartCourseTest(int courseId)
+        public ActionResult StartCourseTest(int courseId, TestType testType)
         {
             return
                 StartTest(
-                    CourseController.GetById(courseId).Subjects.Select(x => x.ID));
+                    CourseController.GetById(courseId).Subjects.Select(x => x.ID), testType);
         }
 
 

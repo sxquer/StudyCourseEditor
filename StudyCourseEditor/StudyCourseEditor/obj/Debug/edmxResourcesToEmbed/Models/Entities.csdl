@@ -295,6 +295,7 @@
     <NavigationProperty Name="Answers" Relationship="Models.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
     <NavigationProperty Name="QuestionType" Relationship="Models.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
     <NavigationProperty Name="Subject" Relationship="Models.FK_Question_Subject" FromRole="Question" ToRole="Subject" />
+    <Property Type="Boolean" Name="IsPublished" Nullable="false" />
   </EntityType>
   <EntityType Name="QuestionType">
     <Key>
