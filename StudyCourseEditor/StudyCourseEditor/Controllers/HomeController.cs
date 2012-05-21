@@ -1,45 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using StudyCourseEditor.Models;
-using StudyCourseEditor.Tools;
 
 namespace StudyCourseEditor.Controllers
 {
     public class HomeController : Controller
     {
-			  private readonly Entities _db = new Entities(); 
+        private readonly Entities _db = new Entities();
 
         public ActionResult CreateDummyData()
         {
             var course = new Course
-            {
-                Name = "Математика",
-                Description = "Математика - царица наук",
-            };
+                             {
+                                 Name = "Математика",
+                                 Description = "Математика - царица наук",
+                             };
             _db.Courses.AddObject(course);
             _db.SaveChanges();
 
 
             _db.Subjects.AddObject(new Subject
-            {
-                Name = "Целые числа",
-                CourseID = course.ID,
-            });
+                                       {
+                                           Name = "Целые числа",
+                                           CourseID = course.ID,
+                                       });
 
             _db.SaveChanges();
 
             _db.Subjects.AddObject(new Subject
-            {
-                Name = "Дробные числа",
-                CourseID = course.ID,
-            });
+                                       {
+                                           Name = "Дробные числа",
+                                           CourseID = course.ID,
+                                       });
             _db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
         }
-        
+
         public ActionResult Index()
         {
             ViewBag.Message = "Под конструкцией.";
@@ -53,6 +49,7 @@ namespace StudyCourseEditor.Controllers
             return View();
         }
 
+        /*
         public ActionResult TestProcess(string id)
         {
             var ans = new List<GeneratedAnswer>
@@ -114,20 +111,18 @@ namespace StudyCourseEditor.Controllers
             {
                 aesCode += aesCode;
             }
-            */
+            
              Response.Cookies.Add(new HttpCookie("DataToken", aesCode));
    
             
 
             var some = XmlManager.DeserializeObject<TestData>(xml);
             return View("TestShow");
-            return RedirectToAction("TestShow");
-        }
+        }*/
 
         public ActionResult TestShow()
         {
             return View();
         }
-
     }
 }

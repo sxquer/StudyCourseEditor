@@ -3,8 +3,8 @@ using StudyCourseEditor.Models.Metadata;
 
 namespace StudyCourseEditor.Models
 {
-	[MetadataType(typeof(DefTagRelationMetadata))]
-	public partial class DefTagRelation
-	{
-	}
+    [MetadataType(typeof (DefTagRelationMetadata))]
+    public partial class DefTagRelation
+    {
+    }
 }

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Text;
-using System.Security.Cryptography;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 using System.Reflection;
-
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace StudyCourseEditor.Tools
 {
@@ -38,7 +37,7 @@ namespace StudyCourseEditor.Tools
             {
                 throw new ArgumentNullException("sourceObject");
             }
-            
+
             //We determine if the passed object is really serializable.
             try
             {
@@ -48,7 +47,9 @@ namespace StudyCourseEditor.Tools
             }
             catch (AmbiguousMatchException ame)
             {
-                throw new ApplicationException("Could not definitly decide if object is serializable. Message:" + ame.Message);
+                throw new ApplicationException(
+                    "Could not definitly decide if object is serializable. Message:" +
+                    ame.Message);
             }
         }
 
@@ -74,7 +75,8 @@ namespace StudyCourseEditor.Tools
             }
             catch (SerializationException se)
             {
-                Console.WriteLine("Error occured during serialization. Message: " + se.Message);
+                Console.WriteLine(
+                    "Error occured during serialization. Message: " + se.Message);
                 return null;
             }
             finally

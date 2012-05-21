@@ -3,8 +3,8 @@ using StudyCourseEditor.Models.Metadata;
 
 namespace StudyCourseEditor.Models
 {
-	[MetadataType(typeof(CourseMetadata))]
-	public partial class Course
-	{
-	}
+    [MetadataType(typeof (CourseMetadata))]
+    public partial class Course
+    {
+    }
 }

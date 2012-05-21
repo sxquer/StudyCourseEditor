@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace StudyCourseEditor.Tools
@@ -17,8 +18,8 @@ namespace StudyCourseEditor.Tools
         public static string SerializeObjectUTF16<T>(T objToConvert)
         {
             var writer = new StringWriter();
-            
-            new XmlSerializer(typeof(T)).Serialize(writer, objToConvert);
+
+            new XmlSerializer(typeof (T)).Serialize(writer, objToConvert);
             return writer.ToString();
         }
 
@@ -29,10 +30,10 @@ namespace StudyCourseEditor.Tools
         /// <returns>XML-строка</returns>
         public static string SerializeObjectUTF8<T>(T objToConvert)
         {
-            var serializer = new XmlSerializer(typeof(T));
+            var serializer = new XmlSerializer(typeof (T));
             Stream stream = new MemoryStream();
 
-            var xtWriter = new System.Xml.XmlTextWriter(stream, Encoding.UTF8);
+            var xtWriter = new XmlTextWriter(stream, Encoding.UTF8);
             serializer.Serialize(xtWriter, objToConvert);
             xtWriter.Flush();
             stream.Seek(0, SeekOrigin.Begin);
@@ -48,7 +49,10 @@ namespace StudyCourseEditor.Tools
         /// <returns>Распакованный экземпляр заданного класса</returns>
         public static T DeserializeObject<T>(string xmlString)
         {
-            return (T)new XmlSerializer(typeof(T)).Deserialize(new StringReader(xmlString));
+            return
+                (T)
+                new XmlSerializer(typeof (T)).Deserialize(
+                    new StringReader(xmlString));
         }
     }
 }

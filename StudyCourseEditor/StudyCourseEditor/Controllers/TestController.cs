@@ -4,13 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StudyCourseEditor.Models;
+using StudyCourseEditor.TestClasses;
 using StudyCourseEditor.Tools;
+using Question = StudyCourseEditor.Models.Question;
 
 namespace StudyCourseEditor.Controllers
 {
     public class TestController : Controller
     {
-        private readonly Entities _db = new Entities(); 
+        private readonly Entities _db = new Entities();
 
         /// <summary>
         /// Отображает тест для пользователя
@@ -18,14 +20,16 @@ namespace StudyCourseEditor.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var testData = GetTestData();
+            TestData testData = GetTestData();
             if (testData == null) return RedirectToAction("End");
 
             ViewBag.QuestionToken = testData.GetQuestionHash();
             ViewBag.TestData = testData;
 
 
-            return View(TemplateManager.Generate(testData.CurrentQuestionId, testData.TestSeed));
+            return
+                View(TemplateManager.Generate(testData.CurrentQuestionId,
+                                              testData.TestSeed));
         }
 
         public ActionResult Process()
@@ -41,24 +45,27 @@ namespace StudyCourseEditor.Controllers
         [HttpPost]
         public ActionResult Process(FormCollection collection)
         {
-            var testData = GetTestData();
+            TestData testData = GetTestData();
 
 
             //If bad data then finish survey
             if (testData == null) return RedirectToAction("End");
-            
+
             //If bad question token (for example student are trying to answer question previously cached in browser) redirect to last question
             if (collection["QuestionToken"] != testData.GetQuestionHash())
                 return RedirectToAction("Index");
 
-            var question = TemplateManager.Generate(testData.CurrentQuestionId, testData.TestSeed);
+            GeneratedQuestion question =
+                TemplateManager.Generate(testData.CurrentQuestionId,
+                                         testData.TestSeed);
 
             testData.ItemsTaken++;
             testData.TotalDifficultiesUsed += testData.CurrentQuestionDifficulty;
-            
-            var difficultyShift = 0.2 + (float) 2 / testData.ItemsTaken;
 
-            bool answerIsCorrect = CheckAnswerIsCorrect(question, collection["Answers"]);
+            double difficultyShift = 0.2 + (float) 2 / testData.ItemsTaken;
+
+            bool answerIsCorrect = CheckAnswerIsCorrect(question,
+                                                        collection["Answers"]);
 
             testData.AddPointToResultGraph(answerIsCorrect);
 
@@ -76,7 +83,7 @@ namespace StudyCourseEditor.Controllers
             if (testData.CalculateError() < 0.3)
                 return RedirectToAction("End");
 
-            var selectedQuestion = GetQuestion(testData);
+            Question selectedQuestion = GetQuestion(testData);
 
             testData.TestSeed = TemplateManager.GetRandomSeed();
             testData.CurrentQuestionDifficulty = selectedQuestion.Difficulty;
@@ -94,20 +101,20 @@ namespace StudyCourseEditor.Controllers
         public ActionResult StartTest(IEnumerable<int> subjectIds)
         {
             var testData = new TestData
-                            {
-                               TrueDifficultyLevel = 5,
-                               SubjectsIds = subjectIds.ToList(),
-                               Started = TimeManager.GetCurrentTime(),
-                            };  
+                               {
+                                   TrueDifficultyLevel = 5,
+                                   SubjectsIds = subjectIds.ToList(),
+                                   Started = TimeManager.GetCurrentTime(),
+                               };
 
-            var selectedQuestion = GetQuestion(testData);
+            Question selectedQuestion = GetQuestion(testData);
 
             testData.TestSeed = TemplateManager.GetRandomSeed();
             testData.CurrentQuestionDifficulty = selectedQuestion.Difficulty;
             testData.CurrentQuestionId = selectedQuestion.ID;
 
             SetTestData(testData);
-            
+
             return RedirectToAction("Index");
         }
 
@@ -117,7 +124,9 @@ namespace StudyCourseEditor.Controllers
         /// <returns></returns>
         public ActionResult StartCourseTest(int courseId)
         {
-            return StartTest(CourseController.GetById(courseId).Subjects.Select(x => x.ID));
+            return
+                StartTest(
+                    CourseController.GetById(courseId).Subjects.Select(x => x.ID));
         }
 
 
@@ -128,10 +137,10 @@ namespace StudyCourseEditor.Controllers
         public ActionResult End()
         {
             //TODO: Check if data == null
-            var data = GetTestData();
+            TestData data = GetTestData();
             ClearTestData();
             if (data == null) return View();
-            double score = data.CalculateMeasure();
+            ViewBag.Score = data.CalculateMeasure();
             return View();
         }
 
@@ -141,13 +150,14 @@ namespace StudyCourseEditor.Controllers
         /// <param name="question">Question that user answered</param>
         /// <param name="userAnswer"></param>
         /// <returns></returns>
-        private bool CheckAnswerIsCorrect(GeneratedQuestion question, string userAnswer)
+        private bool CheckAnswerIsCorrect(GeneratedQuestion question,
+                                          string userAnswer)
         {
             bool result = false;
 
             if (string.IsNullOrWhiteSpace(userAnswer)) return false;
 
-            if (question.Type == QuestionType.SINGLE_CHOOSE_QUESTION)
+            if (question.QuestionType == 1)
             {
                 int rightAnswer = int.Parse(userAnswer);
                 if (question.Answers[rightAnswer].IsCorrect) result = true;
@@ -159,14 +169,19 @@ namespace StudyCourseEditor.Controllers
         {
             var questionList = new List<Question>();
 
-            var priorityArray = GetDifficultyPriorityArray(testData.TrueDifficultyLevel);
+            int[] priorityArray =
+                GetDifficultyPriorityArray(testData.TrueDifficultyLevel);
 
             int i = 0;
-            int dif = 0;
             while (questionList.Count == 0 && i < 10)
             {
-                dif = priorityArray[i];
-                questionList = _db.Questions.Where(x => x.Difficulty == dif && (testData.SubjectsIds.Contains(x.SubjectID))).ToList();
+                int dif = priorityArray[i];
+                questionList =
+                    _db.Questions.Where(
+                        x =>
+                        x.Difficulty == dif &&
+                        (testData.SubjectsIds.Contains(x.SubjectID))).ToList
+                        ();
                 if (++i >= 10) throw new Exception("Нет подходящих вопросов");
             }
 
@@ -176,10 +191,10 @@ namespace StudyCourseEditor.Controllers
         private int[] GetDifficultyPriorityArray(double realDifficulty)
         {
             var result = new int[10];
-            
+
             var currentValue = (int) Math.Round(realDifficulty);
             int inverter = (realDifficulty / currentValue > 1) ? 1 : -1;
-            var filledCount = 10;
+            int filledCount = 10;
 
             for (int i = 0; i < 10; i++)
             {
@@ -192,7 +207,7 @@ namespace StudyCourseEditor.Controllers
                     break;
                 }
             }
-    
+
             while (filledCount < 10)
             {
                 result[filledCount] = result[filledCount - 1] + inverter;
@@ -204,10 +219,13 @@ namespace StudyCourseEditor.Controllers
 
         private void SetTestData(TestData data)
         {
-            string cookieString = HttpUtility.UrlEncode(XmlManager.SerializeObjectUTF8(data));
+            string cookieString =
+                HttpUtility.UrlEncode(XmlManager.SerializeObjectUTF8(data));
 
             var testInfo = new HttpCookie("TestInfo", cookieString);
-            var securityToken = new HttpCookie("SecurityToken", MD5HashManager.GenerateKey(cookieString));
+            var securityToken = new HttpCookie("SecurityToken",
+                                               MD5HashManager.GenerateKey(
+                                                   cookieString));
 
             Response.Cookies.Add(testInfo);
             Response.Cookies.Add(securityToken);
@@ -218,15 +236,19 @@ namespace StudyCourseEditor.Controllers
 
         private TestData GetTestData()
         {
-            var testInfo = (HttpCookie)TempData["TestInfo"];
-            var securityToken = (HttpCookie)TempData["SecurityToken"];
+            var testInfo = (HttpCookie) TempData["TestInfo"];
+            var securityToken = (HttpCookie) TempData["SecurityToken"];
 
-            if (testInfo == null || securityToken == null || string.IsNullOrWhiteSpace(testInfo.Value) || string.IsNullOrWhiteSpace(securityToken.Value))
+            if (testInfo == null || securityToken == null ||
+                string.IsNullOrWhiteSpace(testInfo.Value) ||
+                string.IsNullOrWhiteSpace(securityToken.Value))
             {
                 testInfo = Request.Cookies["TestInfo"];
                 securityToken = Request.Cookies["SecurityToken"];
 
-                if (testInfo == null || securityToken == null || string.IsNullOrWhiteSpace(testInfo.Value) || string.IsNullOrWhiteSpace(securityToken.Value)) return null;
+                if (testInfo == null || securityToken == null ||
+                    string.IsNullOrWhiteSpace(testInfo.Value) ||
+                    string.IsNullOrWhiteSpace(securityToken.Value)) return null;
             }
 
             else
@@ -234,16 +256,19 @@ namespace StudyCourseEditor.Controllers
                 Response.Cookies.Add(testInfo);
                 Response.Cookies.Add(securityToken);
             }
-            
-            if (MD5HashManager.GenerateKey(testInfo.Value) != securityToken.Value) return null;
 
-            return XmlManager.DeserializeObject<TestData>(HttpUtility.UrlDecode(testInfo.Value));
+            if (MD5HashManager.GenerateKey(testInfo.Value) !=
+                securityToken.Value) return null;
+
+            return
+                XmlManager.DeserializeObject<TestData>(
+                    HttpUtility.UrlDecode(testInfo.Value));
         }
 
         private void ClearTestData()
         {
-            var testInfo = Request.Cookies["TestInfo"];
-            var securityToken = Request.Cookies["SecurityToken"];
+            HttpCookie testInfo = Request.Cookies["TestInfo"];
+            HttpCookie securityToken = Request.Cookies["SecurityToken"];
 
             if (testInfo != null)
             {
@@ -257,8 +282,7 @@ namespace StudyCourseEditor.Controllers
             }
         }
 
-
-
+        /*
         public ActionResult Demo()
         {
             var ans = new List<GeneratedAnswer>
@@ -268,17 +292,17 @@ namespace StudyCourseEditor.Controllers
                                       Body = "First",
                                       IsCorrect = false,
                                   },
-                                  new GeneratedAnswer
+                              new GeneratedAnswer
                                   {
                                       Body = "Second",
                                       IsCorrect = false,
                                   },
-                                  new GeneratedAnswer
+                              new GeneratedAnswer
                                   {
                                       Body = "Third",
                                       IsCorrect = true,
                                   },
-                                  new GeneratedAnswer
+                              new GeneratedAnswer
                                   {
                                       Body = "Fourth",
                                       IsCorrect = false,
@@ -286,15 +310,13 @@ namespace StudyCourseEditor.Controllers
                           };
 
             var test = new GeneratedQuestion
-            {
-                Body = "Select Third Please",
-                Type = QuestionType.SINGLE_CHOOSE_QUESTION,
-                Answers = ans
-
-            };
+                           {
+                               Body = "Select Third Please",
+                               QuestionType = 1,
+                               Answers = ans
+                           };
             ViewBag.QuestionToken = "140";
             return View("Index", test);
-        }
+        }*/
     }
 }
-

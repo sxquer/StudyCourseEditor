@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace StudyCourseEditor.Models
 {
-
     public class ChangePasswordModel
     {
         [Required]
@@ -16,7 +11,9 @@ namespace StudyCourseEditor.Models
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} должен быть минимум {2} символов в длину.", MinimumLength = 6)]
+        [StringLength(100,
+            ErrorMessage = "{0} должен быть минимум {2} символов в длину.",
+            MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Новый пароль")]
         public string NewPassword { get; set; }
@@ -54,7 +51,9 @@ namespace StudyCourseEditor.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} должен быть минимум {2} символов в длину.", MinimumLength = 6)]
+        [StringLength(100,
+            ErrorMessage = "{0} должен быть минимум {2} символов в длину.",
+            MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }

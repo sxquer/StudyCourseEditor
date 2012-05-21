@@ -1,12 +1,9 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Главная";
 }
 
 <h2>@ViewBag.Message</h2>
-<p>
-    <img src="/Content/img/database.jpg" alt=""/>
-</p>
 
 <p>
-    @Html.ActionLink("Тест", "StartCourseTest", "Test", new { courseId = 3 }, null);
+    @Html.ActionLink("Тест", "StartCourseTest", "Test", new { courseId = 3 }, null)
 </p>

@@ -10,7 +10,8 @@ namespace StudyCourseEditor.Tools
     /// </summary>
     public static class CryptoAesManager
     {
-        private static readonly byte[] Salt = Encoding.ASCII.GetBytes("o6806642kbM7c5");
+        private static readonly byte[] Salt =
+            Encoding.ASCII.GetBytes("o6806642kbM7c5");
 
         /// <summary>
         /// Encrypt the given string using AES.  The string can be decrypted using 
@@ -18,15 +19,17 @@ namespace StudyCourseEditor.Tools
         /// </summary>
         /// <param name="plainText">The text to encrypt.</param>
         /// <param name="sharedSecret">A password used to generate a key for encryption.</param>
-        public static string EncryptStringAES(string plainText, string sharedSecret)
+        public static string EncryptStringAES(string plainText,
+                                              string sharedSecret)
         {
             if (string.IsNullOrEmpty(plainText))
                 throw new ArgumentNullException("plainText");
             if (string.IsNullOrEmpty(sharedSecret))
                 throw new ArgumentNullException("sharedSecret");
 
-            string outStr;                              // Encrypted string to return
-            RijndaelManaged aesAlg = null;              // RijndaelManaged object used to encrypt the data.
+            string outStr; // Encrypted string to return
+            RijndaelManaged aesAlg = null;
+                // RijndaelManaged object used to encrypt the data.
 
             try
             {
@@ -40,12 +43,16 @@ namespace StudyCourseEditor.Tools
                 aesAlg.IV = key.GetBytes(aesAlg.BlockSize / 8);
 
                 // Create a decrytor to perform the stream transform.
-                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key,
+                                                                    aesAlg.IV);
 
                 // Create the streams used for encryption.
                 using (var msEncrypt = new MemoryStream())
                 {
-                    using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    using (
+                        var csEncrypt = new CryptoStream(msEncrypt, encryptor,
+                                                         CryptoStreamMode.Write)
+                        )
                     {
                         using (var swEncrypt = new StreamWriter(csEncrypt))
                         {
@@ -73,7 +80,8 @@ namespace StudyCourseEditor.Tools
         /// </summary>
         /// <param name="cipherText">The text to decrypt.</param>
         /// <param name="sharedSecret">A password used to generate a key for decryption.</param>
-        public static string DecryptStringAES(string cipherText, string sharedSecret)
+        public static string DecryptStringAES(string cipherText,
+                                              string sharedSecret)
         {
             if (string.IsNullOrEmpty(cipherText))
                 throw new ArgumentNullException("cipherText");
@@ -100,12 +108,15 @@ namespace StudyCourseEditor.Tools
                 aesAlg.IV = key.GetBytes(aesAlg.BlockSize / 8);
 
                 // Create a decrytor to perform the stream transform.
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key,
+                                                                    aesAlg.IV);
                 // Create the streams used for decryption.                
                 byte[] bytes = Convert.FromBase64String(cipherText);
                 using (var msDecrypt = new MemoryStream(bytes))
                 {
-                    using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    using (
+                        var csDecrypt = new CryptoStream(msDecrypt, decryptor,
+                                                         CryptoStreamMode.Read))
                     {
                         using (var srDecrypt = new StreamReader(csDecrypt))
 

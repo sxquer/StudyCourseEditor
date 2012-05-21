@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Web;
 using System.Web.Mvc;
 
 namespace StudyCourseEditor.Extensions
@@ -10,15 +11,21 @@ namespace StudyCourseEditor.Extensions
     /// </summary>
     public class HttpParamActionAttribute : ActionNameSelectorAttribute
     {
-        public override bool IsValidName(ControllerContext controllerContext, string actionName, MethodInfo methodInfo)
+        public override bool IsValidName(ControllerContext controllerContext,
+                                         string actionName,
+                                         MethodInfo methodInfo)
         {
-            if (actionName.Equals(methodInfo.Name, StringComparison.InvariantCultureIgnoreCase))
+            if (actionName.Equals(methodInfo.Name,
+                                  StringComparison.InvariantCultureIgnoreCase))
                 return true;
 
-            if (!actionName.Equals("Action", StringComparison.InvariantCultureIgnoreCase))
+            if (
+                !actionName.Equals("Action",
+                                   StringComparison.InvariantCultureIgnoreCase))
                 return false;
 
-            var request = controllerContext.RequestContext.HttpContext.Request;
+            HttpRequestBase request =
+                controllerContext.RequestContext.HttpContext.Request;
             return request[methodInfo.Name] != null;
         }
     }

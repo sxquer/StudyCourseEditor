@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using StudyCourseEditor.Models;
 
 namespace StudyCourseEditor.Controllers
-{ 
+{
     public class CourseController : Controller
     {
-        private readonly Entities _db = new Entities(); 
+        private readonly Entities _db = new Entities();
 
         //
         // GET: /Course/
@@ -36,7 +32,7 @@ namespace StudyCourseEditor.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         //
         // POST: /Course/Create
@@ -48,12 +44,12 @@ namespace StudyCourseEditor.Controllers
             {
                 _db.Courses.AddObject(course);
                 _db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             return View(course);
         }
-        
+
         //
         // GET: /Course/Edit/5
         [Authorize(Roles = "Administrator")]
@@ -72,7 +68,8 @@ namespace StudyCourseEditor.Controllers
             if (ModelState.IsValid)
             {
                 _db.Courses.Attach(course);
-                _db.ObjectStateManager.ChangeObjectState(course, EntityState.Modified);
+                _db.ObjectStateManager.ChangeObjectState(course,
+                                                         EntityState.Modified);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -93,7 +90,7 @@ namespace StudyCourseEditor.Controllers
         [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
+        {
             Course course = _db.Courses.FirstOrDefault(c => c.ID == id);
             _db.Courses.DeleteObject(course);
             _db.SaveChanges();

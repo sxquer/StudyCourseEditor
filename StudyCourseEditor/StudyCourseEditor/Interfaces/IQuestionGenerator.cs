@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using StudyCourseEditor.Models;
+﻿using StudyCourseEditor.Models;
+using StudyCourseEditor.TestClasses;
 
 namespace StudyCourseEditor.Interfaces
 {

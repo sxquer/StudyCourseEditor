@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using StudyCourseEditor.Models;
 
 namespace StudyCourseEditor.Controllers
-{ 
+{
     public class SubjectController : Controller
     {
-        private readonly Entities _db = new Entities(); 
+        private readonly Entities _db = new Entities();
 
         //
         // GET: /Subject/
@@ -37,7 +33,7 @@ namespace StudyCourseEditor.Controllers
         {
             ViewBag.CourseID = courseId;
             return View();
-        } 
+        }
 
         //
         // POST: /Subject/Create
@@ -49,16 +45,17 @@ namespace StudyCourseEditor.Controllers
             {
                 _db.Subjects.AddObject(subject);
                 _db.SaveChanges();
-                return RedirectToAction("Edit", "Course", new { id = subject.CourseID }); 
+                return RedirectToAction("Edit", "Course",
+                                        new {id = subject.CourseID});
             }
 
             ViewBag.CourseID = subject.CourseID;
             return View(subject);
         }
-        
+
         //
         // GET: /Subject/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             Subject subject = _db.Subjects.FirstOrDefault(s => s.ID == id);
@@ -74,17 +71,19 @@ namespace StudyCourseEditor.Controllers
             if (ModelState.IsValid)
             {
                 _db.Subjects.Attach(subject);
-                _db.ObjectStateManager.ChangeObjectState(subject, EntityState.Modified);
+                _db.ObjectStateManager.ChangeObjectState(subject,
+                                                         EntityState.Modified);
                 _db.SaveChanges();
-                return RedirectToAction("Edit", "Course", new { id = subject.CourseID }); 
+                return RedirectToAction("Edit", "Course",
+                                        new {id = subject.CourseID});
             }
-            
+
             return View(subject);
         }
 
         //
         // GET: /Subject/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             Subject subject = _db.Subjects.FirstOrDefault(s => s.ID == id);
@@ -96,11 +95,13 @@ namespace StudyCourseEditor.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
+        {
             Subject subject = _db.Subjects.FirstOrDefault(s => s.ID == id);
             _db.Subjects.DeleteObject(subject);
             _db.SaveChanges();
-            if (subject != null) return RedirectToAction("Edit", "Course", new { id = subject.CourseID });
+            if (subject != null)
+                return RedirectToAction("Edit", "Course",
+                                        new {id = subject.CourseID});
             return RedirectToAction("Index");
         }
 
