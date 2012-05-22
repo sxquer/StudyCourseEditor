@@ -105,6 +105,7 @@
     <Compile Include="Models\Tag.cs" />
     <Compile Include="TestClasses\GeneratedAnswer.cs" />
     <Compile Include="TestClasses\GeneratedQuestion.cs" />
+    <Compile Include="TestClasses\QuestionBank.cs" />
     <Compile Include="TestClasses\TestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Scripts\pages\answers.js" />

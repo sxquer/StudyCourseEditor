@@ -16,6 +16,8 @@ namespace StudyCourseEditor.TestClasses
         [XmlElement(ElementName = "SI")]
         public List<int> SubjectsIds { get; set; }
 
+        public QuestionBank QuestionBank { get; set; }
+
         [XmlElement(ElementName = "CQD")]
         public int CurrentQuestionDifficulty { get; set; }
 

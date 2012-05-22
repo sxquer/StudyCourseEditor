@@ -103,11 +103,22 @@ namespace StudyCourseEditor.Controllers
         public ActionResult StartTest(IEnumerable<int> subjectIds, TestType testType)
         {
             if (subjectIds == null || !subjectIds.Any()) return RedirectToAction("Index", "Home");
+
+            var questionBank = new QuestionBank();
+            var questions =
+                _db.Questions.Where(
+                    x => subjectIds.Contains(x.SubjectID) && x.IsPublished);
+
+            for (int i = 1; i <= 10; i++)
+            {
+               questionBank.Questions.Add(new List<int>(questions.Where(x => x.Difficulty == i).Select(x => x.ID))); 
+            }
             
             var testData = new TestData
                                {
                                    TrueDifficultyLevel = 5,
                                    SubjectsIds = subjectIds.ToList(),
+                                   QuestionBank = questionBank,
                                    Started = TimeManager.GetCurrentTime(),
                                    TestType = testType,
                                    MaxAmountOfQuestions = _db.Questions.Count(x => subjectIds.Contains(x.SubjectID) && x.IsPublished),
