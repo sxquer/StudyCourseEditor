@@ -28,6 +28,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Models", "FK__aspnet_Pe__PathI__68487DD7", "aspnet_Paths", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyCourseEditor.Models.aspnet_Paths), "aspnet_PersonalizationPerUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.aspnet_PersonalizationPerUser), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK__aspnet_Pe__UserI__693CA210", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyCourseEditor.Models.aspnet_Users), "aspnet_PersonalizationPerUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.aspnet_PersonalizationPerUser), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK__aspnet_Pr__UserI__38996AB5", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.aspnet_Users), "aspnet_Profile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyCourseEditor.Models.aspnet_Profile), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_Result_User", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.aspnet_Users), "Result", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Result), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_Subject_Course", "Course", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Course), "Subject", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Subject), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_DefTagRelation_Definition", "Definition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Definition), "DefTagRelation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.DefTagRelation), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_Example_Definition", "Definition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Definition), "Example", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Example), true)]
@@ -361,6 +362,22 @@ namespace StudyCourseEditor.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<Result> Results
+        {
+            get
+            {
+                if ((_Results == null))
+                {
+                    _Results = base.CreateObjectSet<Result>("Results");
+                }
+                return _Results;
+            }
+        }
+        private ObjectSet<Result> _Results;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Subject> Subjects
         {
             get
@@ -405,6 +422,22 @@ namespace StudyCourseEditor.Models
             }
         }
         private ObjectSet<Tag> _Tags;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TestSession> TestSessions
+        {
+            get
+            {
+                if ((_TestSessions == null))
+                {
+                    _TestSessions = base.CreateObjectSet<TestSession>("TestSessions");
+                }
+                return _TestSessions;
+            }
+        }
+        private ObjectSet<TestSession> _TestSessions;
 
         #endregion
         #region AddTo Methods
@@ -546,6 +579,14 @@ namespace StudyCourseEditor.Models
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the Results EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToResults(Result result)
+        {
+            base.AddObject("Results", result);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the Subjects EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToSubjects(Subject subject)
@@ -567,6 +608,14 @@ namespace StudyCourseEditor.Models
         public void AddToTags(Tag tag)
         {
             base.AddObject("Tags", tag);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TestSessions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTestSessions(TestSession testSession)
+        {
+            base.AddObject("TestSessions", testSession);
         }
 
         #endregion
@@ -3112,6 +3161,28 @@ namespace StudyCourseEditor.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_Result_User", "Result")]
+        public EntityCollection<Result> Results
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Result>("Models.FK_Result_User", "Result");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Result>("Models.FK_Result_User", "Result", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "aspnet_UsersInRoles", "aspnet_Roles")]
         public EntityCollection<aspnet_Roles> aspnet_Roles
         {
@@ -4625,6 +4696,256 @@ namespace StudyCourseEditor.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Models", Name="Result")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Result : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="measure">Initial value of the Measure property.</param>
+        /// <param name="resultGraph">Initial value of the ResultGraph property.</param>
+        /// <param name="sourceType">Initial value of the SourceType property.</param>
+        /// <param name="userId">Initial value of the UserId property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        public static Result CreateResult(global::System.Int32 id, global::System.Double measure, global::System.String resultGraph, global::System.Int32 sourceType, global::System.Guid userId, global::System.DateTime date)
+        {
+            Result result = new Result();
+            result.ID = id;
+            result.Measure = measure;
+            result.ResultGraph = resultGraph;
+            result.SourceType = sourceType;
+            result.UserId = userId;
+            result.Date = date;
+            return result;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double Measure
+        {
+            get
+            {
+                return _Measure;
+            }
+            set
+            {
+                OnMeasureChanging(value);
+                ReportPropertyChanging("Measure");
+                _Measure = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Measure");
+                OnMeasureChanged();
+            }
+        }
+        private global::System.Double _Measure;
+        partial void OnMeasureChanging(global::System.Double value);
+        partial void OnMeasureChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ResultGraph
+        {
+            get
+            {
+                return _ResultGraph;
+            }
+            set
+            {
+                OnResultGraphChanging(value);
+                ReportPropertyChanging("ResultGraph");
+                _ResultGraph = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ResultGraph");
+                OnResultGraphChanged();
+            }
+        }
+        private global::System.String _ResultGraph;
+        partial void OnResultGraphChanging(global::System.String value);
+        partial void OnResultGraphChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Source
+        {
+            get
+            {
+                return _Source;
+            }
+            set
+            {
+                OnSourceChanging(value);
+                ReportPropertyChanging("Source");
+                _Source = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Source");
+                OnSourceChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Source;
+        partial void OnSourceChanging(Nullable<global::System.Int32> value);
+        partial void OnSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SourceType
+        {
+            get
+            {
+                return _SourceType;
+            }
+            set
+            {
+                OnSourceTypeChanging(value);
+                ReportPropertyChanging("SourceType");
+                _SourceType = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SourceType");
+                OnSourceTypeChanged();
+            }
+        }
+        private global::System.Int32 _SourceType;
+        partial void OnSourceTypeChanging(global::System.Int32 value);
+        partial void OnSourceTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Guid _UserId;
+        partial void OnUserIdChanging(global::System.Guid value);
+        partial void OnUserIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_Result_User", "aspnet_Users")]
+        public aspnet_Users aspnet_Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("Models.FK_Result_User", "aspnet_Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("Models.FK_Result_User", "aspnet_Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Users> aspnet_UsersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("Models.FK_Result_User", "aspnet_Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Users>("Models.FK_Result_User", "aspnet_Users", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Models", Name="Subject")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -5075,6 +5396,113 @@ namespace StudyCourseEditor.Models
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Models", Name="TestSession")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TestSession : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TestSession object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="objectData">Initial value of the ObjectData property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        public static TestSession CreateTestSession(global::System.Int32 id, global::System.String objectData, global::System.DateTime date)
+        {
+            TestSession testSession = new TestSession();
+            testSession.ID = id;
+            testSession.ObjectData = objectData;
+            testSession.Date = date;
+            return testSession;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ObjectData
+        {
+            get
+            {
+                return _ObjectData;
+            }
+            set
+            {
+                OnObjectDataChanging(value);
+                ReportPropertyChanging("ObjectData");
+                _ObjectData = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ObjectData");
+                OnObjectDataChanged();
+            }
+        }
+        private global::System.String _ObjectData;
+        partial void OnObjectDataChanging(global::System.String value);
+        partial void OnObjectDataChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+
+        #endregion
+    
     }
 
     #endregion

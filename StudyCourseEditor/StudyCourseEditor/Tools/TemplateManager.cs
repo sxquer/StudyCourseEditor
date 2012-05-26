@@ -102,6 +102,7 @@ namespace StudyCourseEditor.Tools
                 result.Answers.Add(newAnswer);
             }
 
+            result.QuestionType = question.QuestionTypeID;
             return result;
         }
 

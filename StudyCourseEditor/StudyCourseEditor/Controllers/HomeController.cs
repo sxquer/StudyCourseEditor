@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using System.Web.Security;
 using StudyCourseEditor.Models;
 
 namespace StudyCourseEditor.Controllers
@@ -48,6 +50,19 @@ namespace StudyCourseEditor.Controllers
         {
             return View();
         }
+
+        public ActionResult Test()
+        {
+            var result = new Result
+                             {
+                                 UserId = (Guid)Membership.GetUser().ProviderUserKey,
+                                 Measure = 4.5f,
+                                 ResultGraph = "1_1",
+                             };
+            ResultController.Add(result);
+            return RedirectToAction("Index");
+        }
+
 
         /*
         public ActionResult TestProcess(string id)

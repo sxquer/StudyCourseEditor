@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Отвечай немедля на вопрос!";
     string questionHash = ViewBag.QuestionToken;
+    var type = Model.QuestionType;
 }
 
 <div>@Model.Body</div>
@@ -12,14 +13,31 @@
     @Html.Hidden("QuestionToken", questionHash)
 
     int i = 0;
-    foreach (var answer in Model.Answers)
+    
+    if (type != 3)
     {
-        @Html.RadioButton("Answers", i, new {title = answer.Body}) @:@answer.Body
-        <br/>
-        i++;
+        foreach (var answer in Model.Answers)
+        {
+            if (type == 1)
+            {
+                @Html.RadioButton("Answers", i, new { title = answer.Body }) @:@answer.Body
+                <br/>
+            }
+            if (type == 2)
+            {
+                <input type="checkbox" name="Answers" value="@i" /> @:@answer.Body
+                <br/>
+            }
+
+
+            i++;
+        }
     }
-        
-       
+    else
+    {
+       @Html.TextBox("Answers", string.Empty) 
+    }
+    
     <p>
         <input type="submit" value="Готово" />
     </p>
@@ -30,3 +48,7 @@
 <div>@ViewBag.TestData.CalculateMeasure()</div>
 <div>@ViewBag.TestData.CalculateError()</div>
 <div>@ViewBag.TestData.ItemsTaken</div>
+
+<div>Type: @Model.QuestionType</div>
+
+@Html.ActionLink("Покинуть тест", "End", "Test")

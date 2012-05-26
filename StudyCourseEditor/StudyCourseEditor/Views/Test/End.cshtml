@@ -2,4 +2,17 @@
     ViewBag.Title = "FinishExam";
 }
 
-<h2>Тест пройден. Вы набрали @ViewBag.Score</h2>
+@if (ViewBag.TestCompleted)
+{
+    <h2>Тест пройден. Вы набрали @ViewBag.Score</h2>
+    if (ViewBag.ResultSaved)
+        {
+            <div>
+                Реультат сохранен для пользователя @User.Identity.Name
+            </div>
+        }
+}
+else
+{
+    <h2>Тест был прерван</h2>
+}

@@ -18,9 +18,11 @@
     <EntitySet Name="Examples" EntityType="Models.Example" />
     <EntitySet Name="Questions" EntityType="Models.Question" />
     <EntitySet Name="QuestionTypes" EntityType="Models.QuestionType" />
+    <EntitySet Name="Results" EntityType="Models.Result" />
     <EntitySet Name="Subjects" EntityType="Models.Subject" />
     <EntitySet Name="sysdiagrams" EntityType="Models.sysdiagram" />
     <EntitySet Name="Tags" EntityType="Models.Tag" />
+    <EntitySet Name="TestSessions" EntityType="Models.TestSession" />
     <AssociationSet Name="FK_Answer_Question" Association="Models.FK_Answer_Question">
       <End Role="Question" EntitySet="Questions" />
       <End Role="Answer" EntitySet="Answers" />
@@ -60,6 +62,10 @@
     <AssociationSet Name="FK__aspnet_Pr__UserI__38996AB5" Association="Models.FK__aspnet_Pr__UserI__38996AB5">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_User" Association="Models.FK_Result_User">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Result" EntitySet="Results" />
     </AssociationSet>
     <AssociationSet Name="FK_Subject_Course" Association="Models.FK_Subject_Course">
       <End Role="Course" EntitySet="Courses" />
@@ -221,6 +227,7 @@
     <NavigationProperty Name="aspnet_Membership" Relationship="Models.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
     <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="Models.FK__aspnet_Pe__UserI__693CA210" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
     <NavigationProperty Name="aspnet_Profile" Relationship="Models.FK__aspnet_Pr__UserI__38996AB5" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
+    <NavigationProperty Name="Results" Relationship="Models.FK_Result_User" FromRole="aspnet_Users" ToRole="Result" />
     <NavigationProperty Name="aspnet_Roles" Relationship="Models.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
   </EntityType>
   <EntityType Name="aspnet_WebEvent_Events">
@@ -292,10 +299,10 @@
     <Property Type="Int32" Name="Difficulty" Nullable="false" />
     <Property Type="Int32" Name="SubjectID" Nullable="false" />
     <Property Type="Int32" Name="QuestionTypeID" Nullable="false" />
+    <Property Type="Boolean" Name="IsPublished" Nullable="false" />
     <NavigationProperty Name="Answers" Relationship="Models.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
     <NavigationProperty Name="QuestionType" Relationship="Models.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
     <NavigationProperty Name="Subject" Relationship="Models.FK_Question_Subject" FromRole="Question" ToRole="Subject" />
-    <Property Type="Boolean" Name="IsPublished" Nullable="false" />
   </EntityType>
   <EntityType Name="QuestionType">
     <Key>
@@ -305,6 +312,19 @@
     <Property Type="String" Name="Name" Nullable="false" MaxLength="63" FixedLength="true" Unicode="true" />
     <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Questions" Relationship="Models.FK_Question_QuestionType" FromRole="QuestionType" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Double" Name="Measure" Nullable="false" />
+    <Property Type="String" Name="ResultGraph" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Source" />
+    <Property Type="Int32" Name="SourceType" Nullable="false" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Models.FK_Result_User" FromRole="Result" ToRole="aspnet_Users" />
   </EntityType>
   <EntityType Name="Subject">
     <Key>
@@ -334,6 +354,14 @@
     <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Name" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="DefTagRelations" Relationship="Models.FK_DefTagRelation_Tag" FromRole="Tag" ToRole="DefTagRelation" />
+  </EntityType>
+  <EntityType Name="TestSession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ObjectData" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="Date" Nullable="false" />
   </EntityType>
   <Association Name="FK_Answer_Question">
     <End Type="Models.Question" Role="Question" Multiplicity="1" />
@@ -451,6 +479,18 @@
         <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="aspnet_Profile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_User">
+    <End Type="Models.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+    <End Type="Models.Result" Role="Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Result">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>

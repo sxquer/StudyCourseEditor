@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using StudyCourseEditor.Models;
 using StudyCourseEditor.TestClasses;
 using StudyCourseEditor.Tools;
@@ -14,21 +16,21 @@ namespace StudyCourseEditor.Controllers
     {
         private readonly Entities _db = new Entities();
 
+        
         /// <summary>
         /// Отображает тест для пользователя
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-            TestData testData = GetTestData();
+            int sessionDBId = 0;
+            TestData testData = GetTestData(out sessionDBId);
             if (testData == null) return RedirectToAction("End");
 
             ViewBag.QuestionToken = testData.GetQuestionHash();
             ViewBag.TestData = testData;
 
-
-            return
-                View(TemplateManager.Generate(testData.CurrentQuestionId,
+            return View(TemplateManager.Generate(testData.CurrentQuestionId,
                                               testData.TestSeed));
         }
 
@@ -45,7 +47,8 @@ namespace StudyCourseEditor.Controllers
         [HttpPost]
         public ActionResult Process(FormCollection collection)
         {
-            TestData testData = GetTestData();
+            int sessionId = 0;
+            TestData testData = GetTestData(out sessionId);
 
 
             //If bad data then finish survey
@@ -62,12 +65,16 @@ namespace StudyCourseEditor.Controllers
             testData.ItemsTaken++;
             testData.TotalDifficultiesUsed += testData.CurrentQuestionDifficulty;
 
-            if (testData.ItemsTaken > testData.MaxAmountOfQuestions) return RedirectToAction("End");
+            if (testData.ItemsTaken > testData.MaxAmountOfQuestions)
+            {
+                testData.TestCompleted = true;
+            }
 
             double difficultyShift = 0.2 + (float) 2 / testData.ItemsTaken;
 
-            bool answerIsCorrect = CheckAnswerIsCorrect(question,
-                                                        collection["Answers"]);
+            var test = collection["Answers"];
+
+            bool answerIsCorrect = CheckAnswerIsCorrect(question, collection["Answers"]);
 
             testData.AddPointToResultGraph(answerIsCorrect);
 
@@ -83,7 +90,7 @@ namespace StudyCourseEditor.Controllers
             }
 
             if (testData.CalculateError() < 0.3)
-                return RedirectToAction("End");
+                testData.TestCompleted = true;
 
             Question selectedQuestion = GetQuestion(testData);
 
@@ -91,16 +98,16 @@ namespace StudyCourseEditor.Controllers
             testData.CurrentQuestionDifficulty = selectedQuestion.Difficulty;
             testData.CurrentQuestionId = selectedQuestion.ID;
 
-            SetTestData(testData);
+            SetTestData(testData, sessionId);
 
-            return RedirectToAction("Index");
+            return (testData.TestCompleted) ? RedirectToAction("End") : RedirectToAction("Index");
         }
 
         /// <summary>
         /// Стартовая страница для теста
         /// </summary>
         /// <returns></returns>
-        public ActionResult StartTest(IEnumerable<int> subjectIds, TestType testType)
+        private ActionResult StartTest(IEnumerable<int> subjectIds, TestType testType, int sourceType, int? source)
         {
             if (subjectIds == null || !subjectIds.Any()) return RedirectToAction("Index", "Home");
 
@@ -116,12 +123,15 @@ namespace StudyCourseEditor.Controllers
             
             var testData = new TestData
                                {
+                                   TestCompleted = false,
                                    TrueDifficultyLevel = 5,
                                    SubjectsIds = subjectIds.ToList(),
                                    QuestionBank = questionBank,
                                    Started = TimeManager.GetCurrentTime(),
                                    TestType = testType,
                                    MaxAmountOfQuestions = _db.Questions.Count(x => subjectIds.Contains(x.SubjectID) && x.IsPublished),
+                                   SourceType = sourceType,
+                                   Source = source,
                                };
 
             Question selectedQuestion = GetQuestion(testData);
@@ -142,9 +152,16 @@ namespace StudyCourseEditor.Controllers
         /// <returns></returns>
         public ActionResult StartCourseTest(int courseId, TestType testType)
         {
-            return
-                StartTest(
-                    CourseController.GetById(courseId).Subjects.Select(x => x.ID), testType);
+            return StartTest(CourseController.GetById(courseId).Subjects.Select(x => x.ID), testType, TestSourceTypes.COURSE, courseId);
+        }
+
+        /// <summary>
+        /// Стартовая страница для теста
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult StartSubjectTest(int subjectId, TestType testType)
+        {
+            return StartTest(new List<int> { subjectId }, testType, TestSourceTypes.SUBJECT, subjectId);
         }
 
 
@@ -154,11 +171,38 @@ namespace StudyCourseEditor.Controllers
         /// <returns></returns>
         public ActionResult End()
         {
-            //TODO: Check if data == null
-            TestData data = GetTestData();
+            int sessionDBId;
+            TestData data = GetTestData(out sessionDBId);
+            ViewBag.ResultSaved = false;
+            ViewBag.TestCompleted = false;
+            
             ClearTestData();
             if (data == null) return View();
-            ViewBag.Score = data.CalculateMeasure();
+            
+
+            var score = data.CalculateMeasure();
+            ViewBag.Score = score;
+            ViewBag.TestCompleted = data.TestCompleted;
+
+            if (!data.TestCompleted) return View();
+            
+
+            var user = Membership.GetUser();
+            if (user != null && user.ProviderUserKey != null)
+            {
+                var result = new Result
+                {
+                    Source = data.Source,
+                    SourceType = data.SourceType,
+                    Date = TimeManager.GetCurrentTime(),
+                    UserId = (Guid)user.ProviderUserKey,
+                    Measure = score,
+                    ResultGraph = data.ResultGraph,
+                };
+                ResultController.Add(result);
+                ViewBag.ResultSaved = true;
+            }
+            
             return View();
         }
 
@@ -172,7 +216,6 @@ namespace StudyCourseEditor.Controllers
                                           string userAnswer)
         {
             bool result = false;
-
             if (string.IsNullOrWhiteSpace(userAnswer)) return false;
 
             if (question.QuestionType == 1)
@@ -180,6 +223,26 @@ namespace StudyCourseEditor.Controllers
                 int rightAnswer = int.Parse(userAnswer);
                 if (question.Answers[rightAnswer].IsCorrect) result = true;
             }
+
+            if (question.QuestionType == 2)
+            {
+                result = true;
+                var answerArray = userAnswer.Split(',');
+                for (int i = 0; i < question.Answers.Count; i++)
+                {
+                    if (question.Answers[i].IsCorrect != answerArray.Contains(i.ToString()))
+                        result = false;
+                }
+            }
+
+            if (question.QuestionType == 3)
+            {
+                foreach (var ans in question.Answers)
+                {
+                    if (ans.Body == userAnswer) result = true;
+                }
+            }
+
             return result;
         }
 
@@ -235,61 +298,111 @@ namespace StudyCourseEditor.Controllers
             return result;
         }
 
-        private void SetTestData(TestData data)
+        private void SetTestData(TestData data, int sessionId = 0, bool saveToCookie = false)
         {
-            string cookieString =
-                HttpUtility.UrlEncode(XmlManager.SerializeObjectUTF8(data));
+            
+            string dataString = XmlManager.SerializeObjectUTF8(data);
+            
+            string tokenString;
+            string testInfoString;
 
-            var testInfo = new HttpCookie("TestInfo", cookieString);
-            var securityToken = new HttpCookie("SecurityToken",
-                                               MD5HashManager.GenerateKey(
-                                                   cookieString));
+            if (saveToCookie)
+            {
+                testInfoString = HttpUtility.UrlEncode(dataString);
+                tokenString = MD5HashManager.GenerateKey(testInfoString);
+            }
+            else
+            {
+                tokenString = MD5HashManager.GenerateKey(dataString);
+                testInfoString = TestSessionManager.Write(dataString, sessionId).ToString(CultureInfo.InvariantCulture);
+            }
+
+
+            var testInfo = new HttpCookie("TestInfo", testInfoString);
+            var securityToken = new HttpCookie("SecurityToken", tokenString);
 
             Response.Cookies.Add(testInfo);
             Response.Cookies.Add(securityToken);
 
             TempData["testInfo"] = testInfo;
             TempData["securityToken"] = securityToken;
+
         }
 
-        private TestData GetTestData()
+        /// <summary>
+        /// ПReturn test data
+        /// </summary>
+        /// <param name="databaseRecordId">Returns ID for records are storing in Data Base</param>
+        /// <param name="getFromCookie">Where data're storing?</param>
+        /// <returns></returns>
+        private TestData GetTestData(out int databaseRecordId, bool getFromCookie = false)
         {
-            var testInfo = (HttpCookie) TempData["TestInfo"];
-            var securityToken = (HttpCookie) TempData["SecurityToken"];
+            var testInfoCookie = (HttpCookie)TempData["TestInfo"];
+            var securityTokenCookie = (HttpCookie)TempData["SecurityToken"];
 
-            if (testInfo == null || securityToken == null ||
-                string.IsNullOrWhiteSpace(testInfo.Value) ||
-                string.IsNullOrWhiteSpace(securityToken.Value))
+            databaseRecordId = 0;
+
+            if (testInfoCookie == null || securityTokenCookie == null || string.IsNullOrWhiteSpace(testInfoCookie.Value) || string.IsNullOrWhiteSpace(securityTokenCookie.Value))
             {
-                testInfo = Request.Cookies["TestInfo"];
-                securityToken = Request.Cookies["SecurityToken"];
+                testInfoCookie = Request.Cookies["TestInfo"];
+                securityTokenCookie = Request.Cookies["SecurityToken"];
 
-                if (testInfo == null || securityToken == null ||
-                    string.IsNullOrWhiteSpace(testInfo.Value) ||
-                    string.IsNullOrWhiteSpace(securityToken.Value)) return null;
+                if (testInfoCookie == null || securityTokenCookie == null ||
+                    string.IsNullOrWhiteSpace(testInfoCookie.Value) ||
+                    string.IsNullOrWhiteSpace(securityTokenCookie.Value)) return null;
             }
 
             else
             {
-                Response.Cookies.Add(testInfo);
-                Response.Cookies.Add(securityToken);
+                Response.Cookies.Add(testInfoCookie);
+                Response.Cookies.Add(securityTokenCookie);
             }
 
-            if (MD5HashManager.GenerateKey(testInfo.Value) !=
-                securityToken.Value) return null;
 
-            return
-                XmlManager.DeserializeObject<TestData>(
-                    HttpUtility.UrlDecode(testInfo.Value));
+            string data = testInfoCookie.Value;
+            string securityToken = securityTokenCookie.Value;
+                
+            if (getFromCookie)
+            {
+                data = HttpUtility.UrlDecode(data);
+            }
+            else
+            {
+                var id = 0;
+                try
+                {
+                    id = int.Parse(testInfoCookie.Value);
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+
+                databaseRecordId = id;
+                data = TestSessionManager.Read(id);
+            }
+            
+
+            if (MD5HashManager.GenerateKey(data) != securityToken) return null;
+
+            return XmlManager.DeserializeObject<TestData>(data);
         }
 
-        private void ClearTestData()
+        private void ClearTestData(bool clearDataBaseRecord = true)
         {
             HttpCookie testInfo = Request.Cookies["TestInfo"];
             HttpCookie securityToken = Request.Cookies["SecurityToken"];
 
             if (testInfo != null)
             {
+                try
+                {
+                    int id = int.Parse(testInfo.Value);
+                    TestSessionManager.Remove(id);
+
+                }
+                catch (Exception ex) { }
+                
                 testInfo.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(testInfo);
             }
@@ -298,6 +411,8 @@ namespace StudyCourseEditor.Controllers
                 securityToken.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(securityToken);
             }
+
+            
         }
 
         /*
@@ -338,3 +453,4 @@ namespace StudyCourseEditor.Controllers
         }*/
     }
 }
+

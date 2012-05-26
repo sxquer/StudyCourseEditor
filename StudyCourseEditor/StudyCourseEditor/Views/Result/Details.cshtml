@@ -1,0 +1,35 @@
+﻿@model StudyCourseEditor.Models.Result
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Result</legend>
+
+    <div class="display-label">Measure</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Measure)
+    </div>
+
+    <div class="display-label">ResultGraph</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ResultGraph)
+    </div>
+
+    <div class="display-label">LinkType</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LinkType)
+    </div>
+
+    <div class="display-label">Link</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Link)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

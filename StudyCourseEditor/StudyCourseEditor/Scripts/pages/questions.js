@@ -9,11 +9,11 @@ $(function () {
 
         //TODO: Redo
         if (val == 3) {
-            $(":checkbox").each(function () {
+            $("#answers :checkbox").each(function () {
                 $(this).attr("disabled", "disabled");
             });
         } else {
-            $(":checkbox").each(function () {
+            $("#answers :checkbox").each(function () {
                 $(this).removeAttr("disabled");
             });
         }

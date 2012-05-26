@@ -18,6 +18,8 @@ namespace StudyCourseEditor.TestClasses
 
         public QuestionBank QuestionBank { get; set; }
 
+        public bool TestCompleted { get; set; }
+
         [XmlElement(ElementName = "CQD")]
         public int CurrentQuestionDifficulty { get; set; }
 
@@ -47,6 +49,19 @@ namespace StudyCourseEditor.TestClasses
 
         [XmlElement(ElementName = "MAOQ")]
         public int MaxAmountOfQuestions { get; set; }
+
+        /// <summary>
+        /// Link to test source. Course / Subjects / Null for manually generated test
+        /// </summary>
+        [XmlElement(ElementName = "L")]
+        public int? Source { get; set; }
+
+
+        /// <summary>
+        /// See the 'TestSourseType' class
+        /// </summary>
+        [XmlElement(ElementName = "LT")]
+        public int SourceType { get; set; }
 
         /// <summary>
         /// 	Data for graphic presentation of test's results. Format "difficulty_isCorrect;"

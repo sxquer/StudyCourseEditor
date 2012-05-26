@@ -202,6 +202,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="Models.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SourceType" ColumnName="SourceType" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="ResultGraph" ColumnName="ResultGraph" />
+          <ScalarProperty Name="Measure" ColumnName="Measure" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Subjects">
       <EntityTypeMapping TypeName="Models.Subject">
         <MappingFragment StoreEntitySet="Subject">
@@ -227,6 +240,15 @@
       <EntityTypeMapping TypeName="Models.Tag">
         <MappingFragment StoreEntitySet="Tag">
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestSessions">
+      <EntityTypeMapping TypeName="Models.TestSession">
+        <MappingFragment StoreEntitySet="TestSession">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ObjectData" ColumnName="ObjectData" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

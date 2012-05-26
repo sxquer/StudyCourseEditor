@@ -19,9 +19,11 @@
     <EntitySet Name="Example" EntityType="Models.Store.Example" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question" EntityType="Models.Store.Question" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="QuestionType" EntityType="Models.Store.QuestionType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Result" EntityType="Models.Store.Result" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Subject" EntityType="Models.Store.Subject" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="sysdiagrams" EntityType="Models.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tag" EntityType="Models.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestSession" EntityType="Models.Store.TestSession" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK__aspnet_Me__Appli__21B6055D" Association="Models.Store.FK__aspnet_Me__Appli__21B6055D">
       <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
       <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
@@ -89,6 +91,10 @@
     <AssociationSet Name="FK_Question_Subject" Association="Models.Store.FK_Question_Subject">
       <End Role="Subject" EntitySet="Subject" />
       <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_User" Association="Models.Store.FK_Result_User">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Result" EntitySet="Result" />
     </AssociationSet>
     <AssociationSet Name="FK_Subject_Course" Association="Models.Store.FK_Subject_Course">
       <End Role="Course" EntitySet="Course" />
@@ -288,6 +294,18 @@
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="63" />
     <Property Name="Description" Type="ntext" />
   </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Measure" Type="float" Nullable="false" />
+    <Property Name="ResultGraph" Type="ntext" Nullable="false" />
+    <Property Name="Source" Type="int" />
+    <Property Name="SourceType" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Subject">
     <Key>
       <PropertyRef Name="ID" />
@@ -313,6 +331,14 @@
     </Key>
     <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="TestSession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ObjectData" Type="ntext" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK__aspnet_Me__Appli__21B6055D">
     <End Role="aspnet_Applications" Type="Models.Store.aspnet_Applications" Multiplicity="1" />
@@ -447,7 +473,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Answer_Question">
-    <End Role="Question" Type="Models.Store.Question" Multiplicity="1" />
+    <End Role="Question" Type="Models.Store.Question" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Answer" Type="Models.Store.Answer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Question">
@@ -515,6 +543,18 @@
       </Principal>
       <Dependent Role="Question">
         <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_User">
+    <End Role="aspnet_Users" Type="Models.Store.aspnet_Users" Multiplicity="1" />
+    <End Role="Result" Type="Models.Store.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
