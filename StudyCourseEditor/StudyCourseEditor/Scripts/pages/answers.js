@@ -44,7 +44,6 @@ function DeleteFromView(id) {
     $("#answer_" + id).remove();
 }
 
-//Possible IE bug
 function AddToView(id, body, isCorrect) {
     var newAns = $("#answer_template").clone();
 

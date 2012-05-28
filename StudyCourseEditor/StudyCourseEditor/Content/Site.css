@@ -322,3 +322,13 @@ div#title {
 .tri-state {
     width: 6em;
 }
+
+.examples, #tags{
+    float: left;
+    width: 40%;
+    border: red 1px dashed;
+}
+
+#tags {
+    width:19%
+}

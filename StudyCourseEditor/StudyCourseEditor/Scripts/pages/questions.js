@@ -37,6 +37,22 @@ function QuestionEditSuccess() {
     });
 }
 
+function QuestionEditFailure() {
+    noty({
+        "text": "Произошла ошибка. Вопрос не был сохранен",
+        "layout": "top",
+        "type": "error",
+        "animateOpen": { "height": "toggle" },
+        "animateClose": { "height": "toggle" },
+        "speed": 300,
+        "timeout": 5000,
+        "closeButton": false,
+        "closeOnSelfClick": true,
+        "closeOnSelfOver": false,
+        "modal": false
+    });
+}
+
 function HelpSuccess(response) {
     noty({ 
         "text": response,

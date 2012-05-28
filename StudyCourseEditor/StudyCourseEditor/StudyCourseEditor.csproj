@@ -68,10 +68,12 @@
     <Compile Include="Controllers\AnswerController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DefinitionController.cs" />
+    <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Extensions\MultipleSumbits.cs" />
     <Compile Include="Global.asax.cs">
@@ -113,6 +115,7 @@
     <Compile Include="TestClasses\QuestionBank.cs" />
     <Compile Include="TestClasses\TestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Scripts\noty\connectAll.js" />
     <Content Include="Scripts\pages\answers.js" />
     <Compile Include="TestClasses\TestSourceType.cs" />
     <Compile Include="TestClasses\TestType.cs" />
@@ -175,7 +178,9 @@
     <Content Include="Scripts\noty\js\jquery.noty.js" />
     <Content Include="Scripts\noty\js\promise.js" />
     <Content Include="Scripts\noty\LICENSE.txt" />
+    <Content Include="Scripts\pages\examples.js" />
     <Content Include="Scripts\pages\questions.js" />
+    <Content Include="Scripts\pages\tags.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.js" />
     <Content Include="Scripts\tinymce\langs\en.js" />
     <Content Include="Scripts\tinymce\license.txt" />
@@ -502,6 +507,16 @@
     <Content Include="Views\Result\Create.cshtml" />
     <Content Include="Views\Result\Edit.cshtml" />
     <Content Include="Views\Result\Delete.cshtml" />
+    <Content Include="Views\Example\Index.cshtml" />
+    <Content Include="Views\Example\Details.cshtml" />
+    <Content Include="Views\Example\Create.cshtml" />
+    <Content Include="Views\Example\Edit.cshtml" />
+    <Content Include="Views\Example\Delete.cshtml" />
+    <Content Include="Views\Tag\Index.cshtml" />
+    <Content Include="Views\Tag\Details.cshtml" />
+    <Content Include="Views\Tag\Create.cshtml" />
+    <Content Include="Views\Tag\Edit.cshtml" />
+    <Content Include="Views\Tag\Delete.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

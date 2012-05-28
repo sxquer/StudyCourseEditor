@@ -1,0 +1,30 @@
+﻿@model StudyCourseEditor.Models.Example
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Example</legend>
+
+    <div class="display-label">Value</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Value)
+    </div>
+
+    <div class="display-label">IsAntiExample</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsAntiExample)
+    </div>
+
+    <div class="display-label">Definition</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Definition.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

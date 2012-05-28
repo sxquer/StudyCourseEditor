@@ -82,6 +82,8 @@ namespace StudyCourseEditor.Controllers
         public ActionResult Edit(int id)
         {
             Definition definition = _db.Definitions.Single(d => d.ID == id);
+            var tagIds = definition.DefTagRelations.Select(x => x.TagID);
+            ViewBag.Tags = _db.Tags.Where(x => tagIds.Contains(x.ID));
             return View(definition);
         }
 
