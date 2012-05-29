@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using StudyCourseEditor.Extensions;
@@ -130,6 +131,26 @@ namespace StudyCourseEditor.Controllers
         private SelectList GetQuestionTypes()
         {
             return new SelectList(_db.QuestionTypes, "ID", "Name");
+        }
+
+        public static Question GetById(int id)
+        {
+            return new Entities().Questions.FirstOrDefault(x => x.ID == id);
+        }
+
+        public static void AddAttempt(int questionId, bool isCorrect)
+        {
+            var db = new Entities();
+
+            var question = db.Questions.FirstOrDefault(x => x.ID == questionId);
+
+            if (question == null) throw new Exception("Вопрос не найден");
+
+            question.TotalAttempts++;
+            if (isCorrect) question.RightAttempts++;
+
+            db.ObjectStateManager.ChangeObjectState(question, EntityState.Modified);
+            db.SaveChanges();
         }
 
         public ActionResult QuestionTypeAjaxHelp(int typeID)

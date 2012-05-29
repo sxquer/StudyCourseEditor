@@ -75,6 +75,7 @@ namespace StudyCourseEditor.Controllers
             var test = collection["Answers"];
 
             bool answerIsCorrect = CheckAnswerIsCorrect(question, collection["Answers"]);
+            QuestionController.AddAttempt(testData.CurrentQuestionId, answerIsCorrect);
 
             testData.AddPointToResultGraph(answerIsCorrect);
 

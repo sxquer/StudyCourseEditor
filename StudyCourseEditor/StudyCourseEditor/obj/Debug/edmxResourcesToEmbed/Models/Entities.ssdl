@@ -285,6 +285,8 @@
     <Property Name="SubjectID" Type="int" Nullable="false" />
     <Property Name="QuestionTypeID" Type="int" Nullable="false" />
     <Property Name="IsPublished" Type="bit" Nullable="false" />
+    <Property Name="TotalAttempts" Type="int" Nullable="false" />
+    <Property Name="RightAttempts" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="QuestionType">
     <Key>

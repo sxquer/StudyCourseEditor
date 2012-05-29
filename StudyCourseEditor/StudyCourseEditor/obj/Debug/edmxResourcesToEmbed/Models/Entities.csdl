@@ -300,6 +300,8 @@
     <Property Type="Int32" Name="SubjectID" Nullable="false" />
     <Property Type="Int32" Name="QuestionTypeID" Nullable="false" />
     <Property Type="Boolean" Name="IsPublished" Nullable="false" />
+    <Property Type="Int32" Name="TotalAttempts" Nullable="false" />
+    <Property Type="Int32" Name="RightAttempts" Nullable="false" />
     <NavigationProperty Name="Answers" Relationship="Models.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
     <NavigationProperty Name="QuestionType" Relationship="Models.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
     <NavigationProperty Name="Subject" Relationship="Models.FK_Question_Subject" FromRole="Question" ToRole="Subject" />

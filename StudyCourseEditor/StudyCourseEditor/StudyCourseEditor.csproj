@@ -122,6 +122,7 @@
     <Compile Include="Tools\CryptoAesManager.cs" />
     <Compile Include="Tools\CryptoXorManager.cs" />
     <Compile Include="Tools\MD5HashManager.cs" />
+    <Compile Include="Tools\StatisticManager.cs" />
     <Compile Include="Tools\TemplateManager.cs" />
     <Compile Include="Tools\TestSessionManager.cs" />
     <Compile Include="Tools\TimeManager.cs" />

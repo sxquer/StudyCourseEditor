@@ -290,6 +290,8 @@
           <Property Name="SubjectID" Type="int" Nullable="false" />
           <Property Name="QuestionTypeID" Type="int" Nullable="false" />
           <Property Name="IsPublished" Type="bit" Nullable="false" />
+          <Property Name="TotalAttempts" Type="int" Nullable="false" />
+          <Property Name="RightAttempts" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -879,6 +881,8 @@
           <Property Type="Int32" Name="SubjectID" Nullable="false" />
           <Property Type="Int32" Name="QuestionTypeID" Nullable="false" />
           <Property Type="Boolean" Name="IsPublished" Nullable="false" />
+          <Property Type="Int32" Name="TotalAttempts" Nullable="false" />
+          <Property Type="Int32" Name="RightAttempts" Nullable="false" />
           <NavigationProperty Name="Answers" Relationship="Models.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
           <NavigationProperty Name="QuestionType" Relationship="Models.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
           <NavigationProperty Name="Subject" Relationship="Models.FK_Question_Subject" FromRole="Question" ToRole="Subject" />
@@ -1339,6 +1343,8 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="Models.Question">
               <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="RightAttempts" ColumnName="RightAttempts" />
+                <ScalarProperty Name="TotalAttempts" ColumnName="TotalAttempts" />
                 <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
                 <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
                 <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
@@ -1436,8 +1442,8 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Entities">
-        <EntityTypeShape EntityType="Models.Answer" Width="1.5" PointX="14.5" PointY="1.375" Height="1.9802864583333246" />
+      <Diagram Name="Entities" ZoomLevel="62">
+        <EntityTypeShape EntityType="Models.Answer" Width="1.5" PointX="14.5" PointY="1.5" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="Models.aspnet_Applications" Width="1.5" PointX="0.75" PointY="9.125" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="Models.aspnet_Membership" Width="1.5" PointX="6" PointY="10.625" Height="5.4417122395833406" />
         <EntityTypeShape EntityType="Models.aspnet_Paths" Width="1.5" PointX="3" PointY="7.625" Height="2.3648893229166674" />
@@ -1448,20 +1454,20 @@
         <EntityTypeShape EntityType="Models.aspnet_SchemaVersions" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937500102" />
         <EntityTypeShape EntityType="Models.aspnet_Users" Width="1.5" PointX="8.25" PointY="12.375" Height="3.5186979166666674" />
         <EntityTypeShape EntityType="Models.aspnet_WebEvent_Events" Width="1.5" PointX="2.75" PointY="10.75" Height="3.9033007812500102" />
-        <EntityTypeShape EntityType="Models.Course" Width="1.5" PointX="7.75" PointY="1.5" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="Models.Definition" Width="1.5" PointX="12.75" PointY="6.375" Height="2.1725878906250102" />
-        <EntityTypeShape EntityType="Models.DefTagRelation" Width="1.5" PointX="15" PointY="6.375" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="Models.Example" Width="1.5" PointX="15" PointY="9.125" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="Models.Question" Width="1.5" PointX="12.25" PointY="1" Height="2.7494921875000102" />
-        <EntityTypeShape EntityType="Models.QuestionType" Width="1.5" PointX="10" PointY="5.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Models.Course" Width="1.5" PointX="7.75" PointY="1.625" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Models.Definition" Width="1.5" PointX="12.75" PointY="7.375" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="Models.DefTagRelation" Width="1.5" PointX="15" PointY="7.375" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="Models.Example" Width="1.5" PointX="15" PointY="10.125" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="Models.Question" Width="1.5" PointX="12.25" PointY="1" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="Models.QuestionType" Width="1.5" PointX="10" PointY="5.625" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="Models.Result" Width="1.5" PointX="10.5" PointY="14.375" Height="2.5571907552083246" />
-        <EntityTypeShape EntityType="Models.Subject" Width="1.5" PointX="10" PointY="1.25" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="Models.Subject" Width="1.5" PointX="10" PointY="1.5" Height="2.1725878906250102" />
         <EntityTypeShape EntityType="Models.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="Models.Tag" Width="1.5" PointX="12.75" PointY="9.625" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="Models.Tag" Width="1.5" PointX="12.75" PointY="10.625" Height="1.595683593749996" />
         <EntityTypeShape EntityType="Models.TestSession" Width="1.5" PointX="0.75" PointY="3.75" Height="1.5956835937500102" />
         <AssociationConnector Association="Models.FK_Answer_Question" >
-          <ConnectorPoint PointX="13.75" PointY="2.3651432291666623" />
-          <ConnectorPoint PointX="14.5" PointY="2.3651432291666623" />
+          <ConnectorPoint PointX="13.75" PointY="2.4901432291666623" />
+          <ConnectorPoint PointX="14.5" PointY="2.4901432291666623" />
         </AssociationConnector>
         <AssociationConnector Association="Models.FK__aspnet_Me__Appli__21B6055D" >
           <ConnectorPoint PointX="2.25" PointY="10.65625" />
@@ -1510,35 +1516,35 @@
           <ConnectorPoint PointX="10.5" PointY="15.134348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="Models.FK_Subject_Course" >
-          <ConnectorPoint PointX="9.25" PointY="2.3939925130208337" />
-          <ConnectorPoint PointX="10" PointY="2.3939925130208337" />
+          <ConnectorPoint PointX="9.25" PointY="2.5189925130208337" />
+          <ConnectorPoint PointX="10" PointY="2.5189925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="Models.FK_DefTagRelation_Definition" >
-          <ConnectorPoint PointX="14.25" PointY="7.3651432291666694" />
-          <ConnectorPoint PointX="15" PointY="7.3651432291666694" />
+          <ConnectorPoint PointX="14.25" PointY="8.36514322916667" />
+          <ConnectorPoint PointX="15" PointY="8.36514322916667" />
         </AssociationConnector>
         <AssociationConnector Association="Models.FK_Example_Definition" >
-          <ConnectorPoint PointX="14.25" PointY="8.54758789062501" />
-          <ConnectorPoint PointX="14.625" PointY="8.92258789062501" />
-          <ConnectorPoint PointX="14.625" PointY="8.75" />
-          <ConnectorPoint PointX="14.753574434901122" PointY="8.87857443490112" />
-          <ConnectorPoint PointX="14.871425565098878" PointY="8.9964255650988783" />
-          <ConnectorPoint PointX="15" PointY="9.125" />
+          <ConnectorPoint PointX="14.25" PointY="9.54758789062501" />
+          <ConnectorPoint PointX="14.625" PointY="9.92258789062501" />
+          <ConnectorPoint PointX="14.625" PointY="9.75" />
+          <ConnectorPoint PointX="14.753574434901122" PointY="9.87857443490112" />
+          <ConnectorPoint PointX="14.871425565098878" PointY="9.9964255650988783" />
+          <ConnectorPoint PointX="15" PointY="10.125" />
         </AssociationConnector>
         <AssociationConnector Association="Models.FK_DefTagRelation_Tag" >
-          <ConnectorPoint PointX="14.25" PointY="9.6873066923076916" />
-          <ConnectorPoint PointX="14.8125" PointY="9.1248066923076934" />
-          <ConnectorPoint PointX="14.8125" PointY="7.8914668437499982" />
-          <ConnectorPoint PointX="15" PointY="7.8914668437499982" />
+          <ConnectorPoint PointX="14.25" PointY="10.687306692307692" />
+          <ConnectorPoint PointX="14.8125" PointY="10.124806692307693" />
+          <ConnectorPoint PointX="14.8125" PointY="8.8914668437499991" />
+          <ConnectorPoint PointX="15" PointY="8.8914668437499991" />
         </AssociationConnector>
         <AssociationConnector Association="Models.FK_Question_QuestionType" >
-          <ConnectorPoint PointX="11.5" PointY="5.90625" />
-          <ConnectorPoint PointX="12.46875" PointY="5.90625" />
-          <ConnectorPoint PointX="12.46875" PointY="3.7494921875000102" />
+          <ConnectorPoint PointX="11.5" PointY="6.46875" />
+          <ConnectorPoint PointX="12.46875" PointY="6.46875" />
+          <ConnectorPoint PointX="12.46875" PointY="4.1340950520833246" />
         </AssociationConnector>
         <AssociationConnector Association="Models.FK_Question_Subject" >
-          <ConnectorPoint PointX="11.5" PointY="2.3362939453125051" />
-          <ConnectorPoint PointX="12.25" PointY="2.3362939453125051" />
+          <ConnectorPoint PointX="11.5" PointY="2.5862939453125051" />
+          <ConnectorPoint PointX="12.25" PointY="2.5862939453125051" />
         </AssociationConnector>
         <AssociationConnector Association="Models.aspnet_UsersInRoles" >
           <ConnectorPoint PointX="4.5" PointY="18.057444661458334" />

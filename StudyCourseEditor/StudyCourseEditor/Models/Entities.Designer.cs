@@ -4296,7 +4296,9 @@ namespace StudyCourseEditor.Models
         /// <param name="subjectID">Initial value of the SubjectID property.</param>
         /// <param name="questionTypeID">Initial value of the QuestionTypeID property.</param>
         /// <param name="isPublished">Initial value of the IsPublished property.</param>
-        public static Question CreateQuestion(global::System.Int32 id, global::System.String body, global::System.Int32 difficulty, global::System.Int32 subjectID, global::System.Int32 questionTypeID, global::System.Boolean isPublished)
+        /// <param name="totalAttempts">Initial value of the TotalAttempts property.</param>
+        /// <param name="rightAttempts">Initial value of the RightAttempts property.</param>
+        public static Question CreateQuestion(global::System.Int32 id, global::System.String body, global::System.Int32 difficulty, global::System.Int32 subjectID, global::System.Int32 questionTypeID, global::System.Boolean isPublished, global::System.Int32 totalAttempts, global::System.Int32 rightAttempts)
         {
             Question question = new Question();
             question.ID = id;
@@ -4305,6 +4307,8 @@ namespace StudyCourseEditor.Models
             question.SubjectID = subjectID;
             question.QuestionTypeID = questionTypeID;
             question.IsPublished = isPublished;
+            question.TotalAttempts = totalAttempts;
+            question.RightAttempts = rightAttempts;
             return question;
         }
 
@@ -4457,6 +4461,54 @@ namespace StudyCourseEditor.Models
         private global::System.Boolean _IsPublished;
         partial void OnIsPublishedChanging(global::System.Boolean value);
         partial void OnIsPublishedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TotalAttempts
+        {
+            get
+            {
+                return _TotalAttempts;
+            }
+            set
+            {
+                OnTotalAttemptsChanging(value);
+                ReportPropertyChanging("TotalAttempts");
+                _TotalAttempts = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalAttempts");
+                OnTotalAttemptsChanged();
+            }
+        }
+        private global::System.Int32 _TotalAttempts;
+        partial void OnTotalAttemptsChanging(global::System.Int32 value);
+        partial void OnTotalAttemptsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 RightAttempts
+        {
+            get
+            {
+                return _RightAttempts;
+            }
+            set
+            {
+                OnRightAttemptsChanging(value);
+                ReportPropertyChanging("RightAttempts");
+                _RightAttempts = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RightAttempts");
+                OnRightAttemptsChanged();
+            }
+        }
+        private global::System.Int32 _RightAttempts;
+        partial void OnRightAttemptsChanging(global::System.Int32 value);
+        partial void OnRightAttemptsChanged();
 
         #endregion
     
