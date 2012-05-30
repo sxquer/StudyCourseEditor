@@ -1,0 +1,38 @@
+﻿@using StudyCourseEditor.TestClasses
+@model StudyCourseEditor.Models.Subject
+
+@{
+    ViewBag.Title = String.Format("{0} > {1}", Model.Course.Name, Model.Name);
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="control_menu">
+    @Html.ActionLink("Тест по курсу", "StartCourseTest", "Test", new { courseId = Model.CourseID, testType = TestType.Adaptive  }, null)
+    ||
+    @Html.ActionLink("Тест по теме", "StartSubjectTest", "Test", new { subjectId = Model.ID, testType = TestType.Adaptive  }, null)
+    ||
+    @Html.ActionLink("Вернуться к списку предметов", "Index")
+</div>
+    <div class="left_menu">
+        <ul>
+            @foreach (var subject in Model.Course.Subjects.OrderBy(x => x.Name))
+            {
+                if (subject == Model)
+                {
+                    <li>@subject.Name</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink(subject.Name, "Subject", new { id = subject.ID })</li>
+                }
+            }
+        </ul>
+        
+    </div>
+    <div class="content_menu">
+        @Html.Raw(Model.Body)
+    </div>
+    <div style="clear: both">
+    </div>
+
+

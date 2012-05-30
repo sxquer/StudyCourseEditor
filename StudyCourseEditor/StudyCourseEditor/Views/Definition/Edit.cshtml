@@ -141,37 +141,38 @@
         <h3>Тэги</h3>
         <div id="existing">
             @foreach (var tag in Tags)
-                {
-                    <div id="tag_@(tag.ID)">
-                        @using (Ajax.BeginForm("Action", "Tag", new {tagId = tag.ID, definitionId = Model.ID}, new AjaxOptions 
+            {
+                <div id="tag_@(tag.ID)">
+                    @using (Ajax.BeginForm("Action", "Tag", new {tagId = tag.ID, definitionId = Model.ID}, new AjaxOptions 
+                                                                                                             {
+                                                                                                                 HttpMethod = "POST",
+                                                                                                                 OnSuccess = "TagProcessSuccess",
+                                                                                                                 OnFailure = "TagProcessFailed",
+
+                                                                                                             }))
+                    {
+                        @tag.Name
+                        <input type="submit" name="RemoveFromDefinition" value="Удалить"/>
+                    }
+                </div>
+
+            }
+        </div>
+        <div id="new">
+            @using (Ajax.BeginForm("Action", "Tag", new {definitionId = Model.ID}, new AjaxOptions 
                                                                                              {
                                                                                                  HttpMethod = "POST",
                                                                                                  OnSuccess = "TagProcessSuccess",
                                                                                                  OnFailure = "TagProcessFailed",
 
                                                                                              }))
-                        {
-                            @tag.Name
-                            <input type="submit" name="RemoveFromDefinition" value="Удалить"/>
-                        }
-                    </div>
-
-                }
-         </div>
-        <div id="new">
-            @using (Ajax.BeginForm("Action", "Tag", new {definitionId = Model.ID}, new AjaxOptions 
-                                                                                         {
-                                                                                             HttpMethod = "POST",
-                                                                                             OnSuccess = "TagProcessSuccess",
-                                                                                             OnFailure = "TagProcessFailed",
-
-                                                                                         }))
             {
                 @Html.TextBox("tagName", "")
                 <input type="submit" name="AddToDefinition" value="Добавить"/>
             }
         </div>
     </div>
+    <div style="clear: both"></div>
 </div>
 
 

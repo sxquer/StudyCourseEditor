@@ -1,5 +1,24 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model IEnumerable<StudyCourseEditor.Models.Course>
+
+@{
+    ViewBag.Title = "Список курсов";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
+
+@foreach(var course in Model)
+{
+    var first_subject = course.Subjects.OrderBy(x => x.Name).FirstOrDefault();
+    
+    if (first_subject == null)
+    {
+       @:@course.Name 
+    }
+      
+    else
+    {
+        @Html.ActionLink(course.Name, "Subject", "Textbook", new { id = first_subject.ID }, null)
+    }
+    
+    <br/>
+}

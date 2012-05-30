@@ -14,7 +14,10 @@ namespace StudyCourseEditor.Controllers
 
         public ViewResult Index()
         {
-            return View(_db.Courses.OrderBy(x => x.Name).ToList());
+            var courseList = _db.Courses.OrderBy(x => x.Name).ToList();
+            if (!AccountController.IsUserAdmin())
+                courseList = courseList.Where(x => x.UserId == AccountController.GetUserGuid()).ToList();
+            return View(courseList);
         }
 
         //

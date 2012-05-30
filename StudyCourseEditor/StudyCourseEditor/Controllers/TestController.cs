@@ -115,6 +115,8 @@ namespace StudyCourseEditor.Controllers
                 _db.Questions.Where(
                     x => subjectIds.Contains(x.SubjectID) && x.IsPublished);
 
+            if (!questions.Any()) return RedirectToAction("Error", new {message = "Для теста не найдено ни одного вопроса. Обратитесь к администратору."});
+
             for (int i = 1; i <= 10; i++)
             {
                questionBank.Questions.Add(new List<int>(questions.Where(x => x.Difficulty == i).Select(x => x.ID))); 
@@ -414,42 +416,11 @@ namespace StudyCourseEditor.Controllers
             
         }
 
-        /*
-        public ActionResult Demo()
+        public ActionResult Error(string message)
         {
-            var ans = new List<GeneratedAnswer>
-                          {
-                              new GeneratedAnswer
-                                  {
-                                      Body = "First",
-                                      IsCorrect = false,
-                                  },
-                              new GeneratedAnswer
-                                  {
-                                      Body = "Second",
-                                      IsCorrect = false,
-                                  },
-                              new GeneratedAnswer
-                                  {
-                                      Body = "Third",
-                                      IsCorrect = true,
-                                  },
-                              new GeneratedAnswer
-                                  {
-                                      Body = "Fourth",
-                                      IsCorrect = false,
-                                  }
-                          };
-
-            var test = new GeneratedQuestion
-                           {
-                               Body = "Select Third Please",
-                               QuestionType = 1,
-                               Answers = ans
-                           };
-            ViewBag.QuestionToken = "140";
-            return View("Index", test);
-        }*/
+            ViewBag.Message = message;
+            return View("Error");
+        }
     }
 }
 

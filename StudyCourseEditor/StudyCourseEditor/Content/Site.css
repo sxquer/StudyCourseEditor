@@ -332,3 +332,24 @@ div#title {
 #tags {
     width:19%
 }
+
+/*Textbook > Subject
+---------------------------------------*/
+
+.left_menu {
+    float: left;
+    width: 250px;
+    border: red 1px solid;
+}
+
+.content_menu {
+    float: left;
+    width: auto;
+    padding: 10px;
+}
+
+.control_menu {
+    width: auto;
+    margin: 10px;
+    background-color: gainsboro;
+}
