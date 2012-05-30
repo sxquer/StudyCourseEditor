@@ -28,7 +28,7 @@ namespace StudyCourseEditor.Controllers
 
         //
         // GET: /Course/Create
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Create()
         {
             return View();
@@ -36,10 +36,11 @@ namespace StudyCourseEditor.Controllers
 
         //
         // POST: /Course/Create
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         [HttpPost]
         public ActionResult Create(Course course)
         {
+            course.UserId = AccountController.GetUserGuid();
             if (ModelState.IsValid)
             {
                 _db.Courses.AddObject(course);
@@ -52,19 +53,24 @@ namespace StudyCourseEditor.Controllers
 
         //
         // GET: /Course/Edit/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Edit(int id)
         {
             Course course = _db.Courses.FirstOrDefault(c => c.ID == id);
-            return View(course);
+            if (AccountController.CanUserAccess(course)) return View(course);
+            return RedirectToAction("AccessDenied", "Account",
+                new { message = string.Format("У вас нет права редактировать курс {0}. Обратитесь к автору курса или администратору", course.Name) });
         }
 
         //
         // POST: /Course/Edit/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         [HttpPost]
         public ActionResult Edit(Course course)
         {
+            if (!AccountController.CanUserAccess(course)) return RedirectToAction("AccessDenied", "Account",
+                new { message = string.Format("У вас нет права редактировать курс {0}. Обратитесь к автору курса или администратору", course.Name) });
+
             if (ModelState.IsValid)
             {
                 _db.Courses.Attach(course);
@@ -78,20 +84,24 @@ namespace StudyCourseEditor.Controllers
 
         //
         // GET: /Course/Delete/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Delete(int id)
         {
             Course course = _db.Courses.FirstOrDefault(c => c.ID == id);
-            return View(course);
+            if (AccountController.CanUserAccess(course)) return View(course);
+            return RedirectToAction("AccessDenied", "Account",
+                new { message = string.Format("У вас нет прав удалять курс {0}. Обратитесь к автору курса или администратору", course.Name) });
         }
 
         //
         // POST: /Course/Delete/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
             Course course = _db.Courses.FirstOrDefault(c => c.ID == id);
+            if (!AccountController.CanUserAccess(course)) return RedirectToAction("AccessDenied", "Account",
+                new { message = string.Format("У вас нет прав удалять курс {0}. Обратитесь к автору курса или администратору", course.Name) });
             _db.Courses.DeleteObject(course);
             _db.SaveChanges();
             return RedirectToAction("Index");

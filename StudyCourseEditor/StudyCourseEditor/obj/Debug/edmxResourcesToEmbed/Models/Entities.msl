@@ -146,6 +146,7 @@
     <EntitySetMapping Name="Courses">
       <EntityTypeMapping TypeName="Models.Course">
         <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -155,6 +156,7 @@
     <EntitySetMapping Name="Definitions">
       <EntityTypeMapping TypeName="Models.Definition">
         <MappingFragment StoreEntitySet="Definition">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
           <ScalarProperty Name="Body" ColumnName="Body" />
           <ScalarProperty Name="Name" ColumnName="Name" />

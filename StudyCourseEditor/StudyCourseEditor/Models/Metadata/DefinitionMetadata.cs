@@ -16,10 +16,10 @@ namespace StudyCourseEditor.Models.Metadata
                 "Поле 'Название' не может содержать меньше 3 символов")]
         [StringLength(256,
             ErrorMessage = "Поле 'Название' не может превышать 256 символов")]
-        [Remote("CheckNameIsUnique", "Definition",
+       /* [Remote("CheckNameIsUnique", "Definition",
             ErrorMessage =
                 "Полное имя должно быть уникальным. Похожее определение уже есть"
-            )]
+            )]*/
         public string Name { get; set; }
 
         /// <summary>

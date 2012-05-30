@@ -28,6 +28,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Models", "FK__aspnet_Pe__PathI__68487DD7", "aspnet_Paths", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyCourseEditor.Models.aspnet_Paths), "aspnet_PersonalizationPerUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.aspnet_PersonalizationPerUser), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK__aspnet_Pe__UserI__693CA210", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyCourseEditor.Models.aspnet_Users), "aspnet_PersonalizationPerUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.aspnet_PersonalizationPerUser), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK__aspnet_Pr__UserI__38996AB5", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.aspnet_Users), "aspnet_Profile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyCourseEditor.Models.aspnet_Profile), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_Course_Teacher", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyCourseEditor.Models.aspnet_Users), "Course", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Course), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_Definition_Author", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyCourseEditor.Models.aspnet_Users), "Definition", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Definition), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_Result_User", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.aspnet_Users), "Result", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Result), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_Subject_Course", "Course", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Course), "Subject", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.Subject), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_DefTagRelation_Definition", "Definition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyCourseEditor.Models.Definition), "DefTagRelation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyCourseEditor.Models.DefTagRelation), true)]
@@ -3161,6 +3163,50 @@ namespace StudyCourseEditor.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_Course_Teacher", "Course")]
+        public EntityCollection<Course> Courses
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Course>("Models.FK_Course_Teacher", "Course");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Course>("Models.FK_Course_Teacher", "Course", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_Definition_Author", "Definition")]
+        public EntityCollection<Definition> Definitions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Definition>("Models.FK_Definition_Author", "Definition");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Definition>("Models.FK_Definition_Author", "Definition", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "FK_Result_User", "Result")]
         public EntityCollection<Result> Results
         {
@@ -3709,10 +3755,72 @@ namespace StudyCourseEditor.Models
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _UserId;
+        partial void OnUserIdChanging(Nullable<global::System.Guid> value);
+        partial void OnUserIdChanged();
 
         #endregion
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_Course_Teacher", "aspnet_Users")]
+        public aspnet_Users aspnet_Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("Models.FK_Course_Teacher", "aspnet_Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("Models.FK_Course_Teacher", "aspnet_Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Users> aspnet_UsersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("Models.FK_Course_Teacher", "aspnet_Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Users>("Models.FK_Course_Teacher", "aspnet_Users", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3865,10 +3973,72 @@ namespace StudyCourseEditor.Models
         private global::System.String _DisplayName;
         partial void OnDisplayNameChanging(global::System.String value);
         partial void OnDisplayNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _UserId;
+        partial void OnUserIdChanging(Nullable<global::System.Guid> value);
+        partial void OnUserIdChanged();
 
         #endregion
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_Definition_Author", "aspnet_Users")]
+        public aspnet_Users aspnet_Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("Models.FK_Definition_Author", "aspnet_Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("Models.FK_Definition_Author", "aspnet_Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Users> aspnet_UsersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("Models.FK_Definition_Author", "aspnet_Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Users>("Models.FK_Definition_Author", "aspnet_Users", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.

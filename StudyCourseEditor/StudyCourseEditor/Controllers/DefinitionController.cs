@@ -41,8 +41,21 @@ namespace StudyCourseEditor.Controllers
         [HttpPost]
         public ActionResult CreateAndBack(Definition definition)
         {
-            if (
-                _db.Definitions.FirstOrDefault(
+            return Create(definition, "Index");
+        }
+
+        //
+        // POST: /Definition/Create
+        [HttpParamAction]
+        [HttpPost]
+        public ActionResult CreateAndContinue(Definition definition)
+        {
+            return Create(definition, "Edit");
+        }
+
+        private ActionResult Create(Definition definition, string action)
+        {
+            if (_db.Definitions.FirstOrDefault(
                     d => d.Name.ToLower() == definition.Name.ToLower()) != null)
             {
                 ModelState.AddModelError("Name",
@@ -54,23 +67,7 @@ namespace StudyCourseEditor.Controllers
             {
                 _db.Definitions.AddObject(definition);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View("Create");
-        }
-
-        //
-        // POST: /Definition/Create
-        [HttpParamAction]
-        [HttpPost]
-        public ActionResult CreateAndContinue(Definition definition)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Definitions.AddObject(definition);
-                _db.SaveChanges();
-                return RedirectToAction("Edit", new {id = definition.ID});
+                return RedirectToAction(action, new { id = definition.ID });
             }
 
             return View("Create");
@@ -82,6 +79,12 @@ namespace StudyCourseEditor.Controllers
         public ActionResult Edit(int id)
         {
             Definition definition = _db.Definitions.Single(d => d.ID == id);
+
+            if (!AccountController.CanUserAccess(definition)) 
+            return RedirectToAction("AccessDenied", "Account",
+                new { message = string.Format("У вас нет права редактировать определение {0} ({1}). Обратитесь к автору или администратору", 
+                    definition.DisplayName, definition.Name)});
+
             var tagIds = definition.DefTagRelations.Select(x => x.TagID);
             ViewBag.Tags = _db.Tags.Where(x => tagIds.Contains(x.ID));
             return View(definition);
@@ -93,6 +96,15 @@ namespace StudyCourseEditor.Controllers
         [HttpPost]
         public ActionResult Edit(Definition definition)
         {
+
+            if (!AccountController.CanUserAccess(definition))
+                return RedirectToAction("AccessDenied", "Account",
+                    new
+                    {
+                        message = string.Format("У вас нет права редактировать определение {0} ({1}). Обратитесь к автору или администратору",
+                            definition.DisplayName, definition.Name)
+                    });
+
             if (ModelState.IsValid)
             {
                 _db.Definitions.Attach(definition);
@@ -110,6 +122,15 @@ namespace StudyCourseEditor.Controllers
         public ActionResult Delete(int id)
         {
             Definition definition = _db.Definitions.Single(d => d.ID == id);
+
+            if (!AccountController.CanUserAccess(definition))
+                return RedirectToAction("AccessDenied", "Account",
+                    new
+                    {
+                        message = string.Format("У вас нет права удалять определение {0} ({1}). Обратитесь к автору или администратору",
+                            definition.DisplayName, definition.Name)
+                    });
+            
             return View(definition);
         }
 
@@ -120,6 +141,15 @@ namespace StudyCourseEditor.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Definition definition = _db.Definitions.Single(d => d.ID == id);
+
+            if (!AccountController.CanUserAccess(definition))
+                return RedirectToAction("AccessDenied", "Account",
+                    new
+                    {
+                        message = string.Format("У вас нет права удалять определение {0} ({1}). Обратитесь к автору или администратору",
+                            definition.DisplayName, definition.Name)
+                    });
+
             _db.Definitions.DeleteObject(definition);
             _db.SaveChanges();
             return RedirectToAction("Index");

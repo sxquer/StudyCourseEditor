@@ -157,10 +157,43 @@ namespace StudyCourseEditor.Controllers
             return View();
         }
 
+        public ActionResult AccessDenied(string message)
+        {
+            ViewBag.Message = message;
+            return View();
+        }
+
 
         public static bool IsUserAdmin()
         {
             return Roles.GetRolesForUser().Contains("administrator");
+        }
+
+        public static Guid? GetUserGuid()
+        {
+            var user = Membership.GetUser();
+            if (user == null || user.ProviderUserKey == null) return null;
+            return (Guid)user.ProviderUserKey;
+        }
+
+        public static bool IsUserAuthor(Course course)
+        {
+            return course.UserId != null && course.UserId == GetUserGuid();
+        }
+
+        public static bool IsUserAuthor(Definition definition)
+        {
+            return definition.UserId != null && definition.UserId == GetUserGuid();
+        }
+
+        public static bool CanUserAccess(Course course)
+        {
+            return IsUserAdmin() || IsUserAuthor(course);
+        }
+
+        public static bool CanUserAccess(Definition definition)
+        {
+            return IsUserAdmin() || IsUserAuthor(definition);
         }
 
         #region Status Codes

@@ -72,8 +72,6 @@ namespace StudyCourseEditor.Controllers
 
             double difficultyShift = 0.2 + (float) 2 / testData.ItemsTaken;
 
-            var test = collection["Answers"];
-
             bool answerIsCorrect = CheckAnswerIsCorrect(question, collection["Answers"]);
             QuestionController.AddAttempt(testData.CurrentQuestionId, answerIsCorrect);
 

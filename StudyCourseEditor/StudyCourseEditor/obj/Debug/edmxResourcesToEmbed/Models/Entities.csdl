@@ -63,6 +63,14 @@
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
     </AssociationSet>
+    <AssociationSet Name="FK_Course_Teacher" Association="Models.FK_Course_Teacher">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Definition_Author" Association="Models.FK_Definition_Author">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Definition" EntitySet="Definitions" />
+    </AssociationSet>
     <AssociationSet Name="FK_Result_User" Association="Models.FK_Result_User">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Result" EntitySet="Results" />
@@ -227,6 +235,8 @@
     <NavigationProperty Name="aspnet_Membership" Relationship="Models.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
     <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="Models.FK__aspnet_Pe__UserI__693CA210" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
     <NavigationProperty Name="aspnet_Profile" Relationship="Models.FK__aspnet_Pr__UserI__38996AB5" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
+    <NavigationProperty Name="Courses" Relationship="Models.FK_Course_Teacher" FromRole="aspnet_Users" ToRole="Course" />
+    <NavigationProperty Name="Definitions" Relationship="Models.FK_Definition_Author" FromRole="aspnet_Users" ToRole="Definition" />
     <NavigationProperty Name="Results" Relationship="Models.FK_Result_User" FromRole="aspnet_Users" ToRole="Result" />
     <NavigationProperty Name="aspnet_Roles" Relationship="Models.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
   </EntityType>
@@ -257,6 +267,8 @@
     <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Name" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
     <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="UserId" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Models.FK_Course_Teacher" FromRole="Course" ToRole="aspnet_Users" />
     <NavigationProperty Name="Subjects" Relationship="Models.FK_Subject_Course" FromRole="Course" ToRole="Subject" />
   </EntityType>
   <EntityType Name="Definition">
@@ -267,6 +279,8 @@
     <Property Type="String" Name="Name" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
     <Property Type="String" Name="Body" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+    <Property Type="Guid" Name="UserId" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Models.FK_Definition_Author" FromRole="Definition" ToRole="aspnet_Users" />
     <NavigationProperty Name="DefTagRelations" Relationship="Models.FK_DefTagRelation_Definition" FromRole="Definition" ToRole="DefTagRelation" />
     <NavigationProperty Name="Examples" Relationship="Models.FK_Example_Definition" FromRole="Definition" ToRole="Example" />
   </EntityType>
@@ -481,6 +495,30 @@
         <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="aspnet_Profile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Teacher">
+    <End Type="Models.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
+    <End Type="Models.Course" Role="Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Definition_Author">
+    <End Type="Models.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
+    <End Type="Models.Definition" Role="Definition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Definition">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
