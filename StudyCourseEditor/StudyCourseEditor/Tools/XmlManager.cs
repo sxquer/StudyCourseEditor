@@ -6,15 +6,15 @@ using System.Xml.Serialization;
 namespace StudyCourseEditor.Tools
 {
     /// <summary>
-    /// Класс-обертка для работы с XML
+    /// Wrap around XML
     /// </summary>
     public static class XmlManager
     {
         /// <summary>
-        /// Преобразует объекты в XML-строку (UTF-16)
+        /// Serialize object into UTF-16 string
         /// </summary>
-        /// <param name="objToConvert">Объект, который необходимо преобразовать</param>
-        /// <returns>XML-строка</returns>
+        /// <param name="objToConvert"></param>
+        /// <returns></returns>
         public static string SerializeObjectUTF16<T>(T objToConvert)
         {
             var writer = new StringWriter();
@@ -24,10 +24,10 @@ namespace StudyCourseEditor.Tools
         }
 
         /// <summary>
-        /// Преобразует объекты в XML-строку (UTF-8)
+        /// Serialize object into UTF-8 string
         /// </summary>
-        /// <param name="objToConvert">Объект, который необходимо преобразовать</param>
-        /// <returns>XML-строка</returns>
+        /// <param name="objToConvert"></param>
+        /// <returns></returns>
         public static string SerializeObjectUTF8<T>(T objToConvert)
         {
             var serializer = new XmlSerializer(typeof (T));
@@ -43,16 +43,13 @@ namespace StudyCourseEditor.Tools
         }
 
         /// <summary>
-        /// Преобразует объекты с XML-строку
+        /// Deserialize objects
         /// </summary>
-        /// <param name="xmlString">XML-строка, из которой будет восстановлен объект</param>
-        /// <returns>Распакованный экземпляр заданного класса</returns>
+        /// <param name="xmlString"></param>
+        /// <returns></returns>
         public static T DeserializeObject<T>(string xmlString)
         {
-            return
-                (T)
-                new XmlSerializer(typeof (T)).Deserialize(
-                    new StringReader(xmlString));
+            return (T) new XmlSerializer(typeof (T)).Deserialize(new StringReader(xmlString));
         }
     }
 }

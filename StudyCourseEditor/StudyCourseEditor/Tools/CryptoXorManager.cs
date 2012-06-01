@@ -1,5 +1,8 @@
 ﻿namespace StudyCourseEditor.Tools
 {
+    /// <summary>
+    /// Simple XOR cripto class
+    /// </summary>
     public class CryptoXorManager
     {
         public static string Process(string text, int code)

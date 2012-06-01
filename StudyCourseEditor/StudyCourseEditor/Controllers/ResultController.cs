@@ -9,10 +9,15 @@ using StudyCourseEditor.Models;
 
 namespace StudyCourseEditor.Controllers
 { 
+    /// <summary>
+    /// This controller will handle results
+    /// </summary>
     public class ResultController : Controller
     {
-        private Entities db = new Entities();
-
+        /// <summary>
+        /// Add test result to database
+        /// </summary>
+        /// <param name="result">Result instance</param>
         public static void Add(Result result)
         {
             var db = new Entities();

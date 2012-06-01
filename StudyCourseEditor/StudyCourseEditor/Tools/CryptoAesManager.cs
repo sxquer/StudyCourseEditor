@@ -6,7 +6,7 @@ using System.Text;
 namespace StudyCourseEditor.Tools
 {
     /// <summary>
-    /// Класс AES шифрования
+    /// AES Cryptography class
     /// </summary>
     public static class CryptoAesManager
     {

@@ -15,13 +15,17 @@
 <script src="@Url.Content("~/Scripts/noty/connectAll.js")" type="text/javascript" ></script>
 <script src="@Url.Content("~/Scripts/pages/examples.js")" type="text/javascript" ></script>
 <script src="@Url.Content("~/Scripts/pages/tags.js")" type="text/javascript" ></script>
-
+<script src="@Url.Content("~/Scripts/pages/definitions.js")" type="text/javascript" ></script>
+@*
 @using (Ajax.BeginForm(new AjaxOptions
                                              {
                                                  OnFailure = "DefinitionEditFailure",
                                                  OnSuccess = "DefinitionEditSuccess",
                                                  HttpMethod = "GET"
-                                             })) {
+                                             })) {*@
+@using (Html.BeginForm())
+{
+
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Definition</legend>
@@ -78,8 +82,8 @@
                                                                                          }))
                     {
                         @Html.TextBox("Example", example.Value)
-                        <input type="submit" name="Update" value="Сохранить"/>
-                        <input type="submit" name="Delete" value="Удалить"/>
+                        <input type="submit" name="Update" value=""/>
+                        <input type="submit" name="Delete" value=""/>
                     }
                 </div>
 
@@ -95,7 +99,7 @@
                                                                                                          }))
             {
                 @Html.TextBox("Example", "")
-                <input type="submit" name="Create" value="Добавить"/>
+                <input type="submit" name="Create" value=""/>
             }
         </div>
     </div>
@@ -115,8 +119,8 @@
                                                                                          }))
                     {
                         @Html.TextBox("Example", example.Value)
-                        <input type="submit" name="Update" value="Сохранить"/>
-                        <input type="submit" name="Delete" value="Удалить"/>
+                        <input type="submit" name="Update" value=""/>
+                        <input type="submit" name="Delete" value=""/>
                     }
                 </div>
 
@@ -132,7 +136,7 @@
                                                                                                                                }))
             {
                 @Html.TextBox("Example", "")
-                <input type="submit" name="Create" value="Добавить"/>
+                <input type="submit" name="Create" value=""/>
             }
         </div>
     </div>
@@ -152,7 +156,7 @@
                                                                                                              }))
                     {
                         @tag.Name
-                        <input type="submit" name="RemoveFromDefinition" value="Удалить"/>
+                        <input type="submit" name="RemoveFromDefinition" value=""/>
                     }
                 </div>
 
@@ -168,7 +172,7 @@
                                                                                              }))
             {
                 @Html.TextBox("tagName", "")
-                <input type="submit" name="AddToDefinition" value="Добавить"/>
+                <input type="submit" name="AddToDefinition" value=""/>
             }
         </div>
     </div>
@@ -189,8 +193,8 @@
                                                                                                }))
     {
         @Html.TextBox("Example", "value_placeholder")
-        <input type="submit" name="Update" value="Сохранить"/>
-        <input type="submit" name="Delete" value="Удалить"/>
+        <input type="submit" name="Update" value=""/>
+        <input type="submit" name="Delete" value=""/>
     }
 </div>
 
@@ -204,6 +208,6 @@
                                                                             }))
     {
         @:value_placeholder
-        <input type="submit" name="RemoveFromDefinition" value="Удалить"/>
+        <input type="submit" name="RemoveFromDefinition" value=""/>
     }
 </div>

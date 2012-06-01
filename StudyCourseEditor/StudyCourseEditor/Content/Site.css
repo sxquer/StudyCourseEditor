@@ -206,10 +206,7 @@ select {
     color: #444;
 }
 
-input[type="submit"] {
-    font-size: 1.2em;
-    padding: 5px;
-}
+
 
 /* TABLE
 ----------------------------------------------------------*/
@@ -325,12 +322,38 @@ div#title {
 
 .examples, #tags{
     float: left;
-    width: 40%;
+    width: 35%;
     border: red 1px dashed;
+    padding: 5px;
+    margin: 5px;
 }
 
 #tags {
     width:19%
+}
+
+input[name="Create"], input[name="AddToDefinition"], input[name="Delete"], input[name="RemoveFromDefinition"], input[name="Update"] {
+    width: 27px;
+    height: 27px;
+    padding: 5px;
+    background-color: white;
+}
+
+input[name="Create"], input[name="AddToDefinition"] {
+    background-image: url("/Content/img/add.png");
+}
+
+input[name="Delete"], input[name="RemoveFromDefinition"] {
+    background-image: url("/Content/img/delete.png");
+}
+
+input[name="Update"] {
+    background-image: url("/Content/img/save.png");
+}
+
+
+input[name="tagName"] {
+    width: 160px;
 }
 
 /*Textbook > Subject

@@ -14,11 +14,11 @@ namespace StudyCourseEditor.Tools
         private static readonly Entities Db = new Entities();
 
         /// <summary>
-        /// 	Возвращает сгенерированный вопрос по заданному шаблону и сиду
+        /// Returns GeneratedQuestion 
         /// </summary>
-        /// <param name = "templateId">ID шаблона</param>
-        /// <param name = "seed">Сид</param>
-        /// <returns>Сгенерированный вопрос</returns>
+        /// <param name = "templateId">Template id</param>
+        /// <param name = "seed">Random seed</param>
+        /// <returns></returns>
         public static GeneratedQuestion Generate(int templateId, int seed)
         {
             var result = new GeneratedQuestion();

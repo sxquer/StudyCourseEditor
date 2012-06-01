@@ -7,9 +7,19 @@ using StudyCourseEditor.Models;
 
 namespace StudyCourseEditor.Tools
 {
+    /// <summary>
+    /// Handles test session in database
+    /// </summary>
     public static class TestSessionManager
     {
         private static Entities db = new Entities();
+        
+        /// <summary>
+        /// Save session
+        /// </summary>
+        /// <param name="data">Test data</param>
+        /// <param name="sessionId">Session id</param>
+        /// <returns></returns>
         public static int Write(string data, int sessionId)
         {
             
@@ -34,12 +44,21 @@ namespace StudyCourseEditor.Tools
             }
         }
 
+        /// <summary>
+        /// Gets session from database
+        /// </summary>
+        /// <param name="sessionId">Session id</param>
+        /// <returns></returns>
         public static string Read(int sessionId)
         {
             var session = db.TestSessions.FirstOrDefault(x => x.ID == sessionId);
             return (session != null) ? session.ObjectData : null;
         }
 
+        /// <summary>
+        /// Remove session from database
+        /// </summary>
+        /// <param name="sessionId">Session id</param>
         public static void Remove(int sessionId)
         {
             var session = db.TestSessions.FirstOrDefault(x => x.ID == sessionId);

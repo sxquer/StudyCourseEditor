@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web.Mvc;
 using StudyCourseEditor.Extensions;
 using StudyCourseEditor.Models;
-using Question = StudyCourseEditor.Models.Question;
 
 namespace StudyCourseEditor.Controllers
 {
     public class QuestionController : Controller
     {
         private readonly Entities _db = new Entities();
+
+        #region CRUD
 
         //
         // GET: /Question/
@@ -46,16 +47,7 @@ namespace StudyCourseEditor.Controllers
         [HttpPost]
         public ActionResult CreateAndBack(Question question)
         {
-            if (ModelState.IsValid)
-            {
-                _db.Questions.AddObject(question);
-                _db.SaveChanges();
-                return RedirectToAction("Edit", "Subject",
-                                        new {id = question.SubjectID});
-            }
-
-            ViewBag.Types = GetQuestionTypes();
-            return View("Create");
+            return Create(question, "Subject");
         }
 
         //
@@ -64,12 +56,23 @@ namespace StudyCourseEditor.Controllers
         [HttpPost]
         public ActionResult CreateAndContinue(Question question)
         {
+            return Create(question, "Question");
+        }
+
+        /// <summary>
+        /// Creates question
+        /// </summary>
+        /// <param name="question"></param>
+        /// <param name="controller">Controller name for redirection</param>
+        /// <returns></returns>
+        private ActionResult Create(Question question, string controller)
+        {
             if (ModelState.IsValid)
             {
                 _db.Questions.AddObject(question);
                 _db.SaveChanges();
-                return RedirectToAction("Edit", "Question",
-                                        new {id = question.ID});
+                return RedirectToAction("Edit", controller,
+                                        new { id = question.ID });
             }
 
             ViewBag.Types = GetQuestionTypes();
@@ -95,10 +98,8 @@ namespace StudyCourseEditor.Controllers
             if (ModelState.IsValid)
             {
                 _db.Questions.Attach(question);
-                _db.ObjectStateManager.ChangeObjectState(question,
-                                                         EntityState.Modified);
+                _db.ObjectStateManager.ChangeObjectState(question,EntityState.Modified);
                 _db.SaveChanges();
-                //return RedirectToAction("Edit", "Subject",new {id = question.SubjectID});
             }
             ViewBag.Types = GetQuestionTypes();
             return View(question);
@@ -128,16 +129,32 @@ namespace StudyCourseEditor.Controllers
             return RedirectToAction("Index");
         }
 
+        #endregion
+
+        /// <summary>
+        /// Returns SelectList of qustion types
+        /// </summary>
+        /// <returns></returns>
         private SelectList GetQuestionTypes()
         {
             return new SelectList(_db.QuestionTypes, "ID", "Name");
         }
 
+        /// <summary>
+        /// Get question or null by id
+        /// </summary>
+        /// <param name="id">Question id</param>
+        /// <returns></returns>
         public static Question GetById(int id)
         {
             return new Entities().Questions.FirstOrDefault(x => x.ID == id);
         }
 
+        /// <summary>
+        /// Saves information about student's results on specific question
+        /// </summary>
+        /// <param name="questionId">Question id</param>
+        /// <param name="isCorrect">Answer is correct</param>
         public static void AddAttempt(int questionId, bool isCorrect)
         {
             var db = new Entities();
@@ -153,6 +170,11 @@ namespace StudyCourseEditor.Controllers
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Returns ajax representation of question type description
+        /// </summary>
+        /// <param name="typeID">Question type id</param>
+        /// <returns></returns>
         public ActionResult QuestionTypeAjaxHelp(int typeID)
         {
             var type = _db.QuestionTypes.FirstOrDefault(qt => qt.ID == typeID);

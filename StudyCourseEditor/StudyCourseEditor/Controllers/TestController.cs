@@ -18,7 +18,7 @@ namespace StudyCourseEditor.Controllers
 
         
         /// <summary>
-        /// Отображает тест для пользователя
+        /// This method delivers test data to users 
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
@@ -30,81 +30,105 @@ namespace StudyCourseEditor.Controllers
             ViewBag.QuestionToken = testData.GetQuestionHash();
             ViewBag.TestData = testData;
 
-            return View(TemplateManager.Generate(testData.CurrentQuestionId,
-                                              testData.TestSeed));
+            return View(TemplateManager.Generate(testData.CurrentQuestionId, testData.TestSeed));
         }
 
+        /// <summary>
+        /// Action redirects to Index, if nothing to process
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Process()
         {
             return RedirectToAction("Index");
         }
 
         /// <summary>
-        /// Обрабатывает информацию о тесте и введенные ответы
+        /// Process all test data
         /// </summary>
-        /// <param name="collection">Данные из формы</param>
+        /// <param name="collection">Form data from previous test page</param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult Process(FormCollection collection)
         {
+            // Geting session information
             int sessionId = 0;
             TestData testData = GetTestData(out sessionId);
 
 
-            //If bad data then finish survey
+            // If test data is bad ending survey
             if (testData == null) return RedirectToAction("End");
 
-            //If bad question token (for example student are trying to answer question previously cached in browser) redirect to last question
+            // If bad question token (for example student are trying to answer question previously cached in browser) redirecting to Index (will show last generated question)
             if (collection["QuestionToken"] != testData.GetQuestionHash())
                 return RedirectToAction("Index");
 
+            // Get previous question to check asnwer is correct
             GeneratedQuestion question =
                 TemplateManager.Generate(testData.CurrentQuestionId,
                                          testData.TestSeed);
 
+            // Remembering some nessasary data
             testData.ItemsTaken++;
             testData.TotalDifficultiesUsed += testData.CurrentQuestionDifficulty;
 
+            // TODO: Add some behaviors. For the next programmers' generation. For example different options for different test types.
+            // If amount of taken question equals amount of total questions in test, mark test as completed.
             if (testData.ItemsTaken > testData.MaxAmountOfQuestions)
             {
                 testData.TestCompleted = true;
             }
 
+            // Calculating the amount that will change the difficulty
             double difficultyShift = 0.2 + (float) 2 / testData.ItemsTaken;
 
+            // Checking answer is correct
             bool answerIsCorrect = CheckAnswerIsCorrect(question, collection["Answers"]);
+            
+            // Saving to question information about its own statistic 
             QuestionController.AddAttempt(testData.CurrentQuestionId, answerIsCorrect);
 
+            // Adding data to 'ResultGraph'
             testData.AddPointToResultGraph(answerIsCorrect);
 
-            //Корректируем сложность следующего вопроса
+            // Correcting difficulty
             if (answerIsCorrect)
             {
-                testData.RightAnswersCount++;
                 testData.TrueDifficultyLevel += difficultyShift;
+                testData.RightAnswersCount++;
             }
             else
             {
                 testData.TrueDifficultyLevel -= difficultyShift;
             }
 
-            if (testData.CalculateError() < 0.3)
-                testData.TestCompleted = true;
+            // TODO: Make CONST optional. For the next programmers' generation
+            // Checking if measurement error lower than CONST
+            if (testData.CalculateError() < 0.3) testData.TestCompleted = true;
 
+            // Selecting next question
             Question selectedQuestion = GetQuestion(testData);
 
+            // Generates random seed, which helps to generate the same question from tamplate, if needed
             testData.TestSeed = TemplateManager.GetRandomSeed();
+
+            // Remembering next question parameters
             testData.CurrentQuestionDifficulty = selectedQuestion.Difficulty;
             testData.CurrentQuestionId = selectedQuestion.ID;
 
+            // Saving test session
             SetTestData(testData, sessionId);
 
+            // Continue test or end it depending on TestCompleted flag
             return (testData.TestCompleted) ? RedirectToAction("End") : RedirectToAction("Index");
         }
 
         /// <summary>
-        /// Стартовая страница для теста
+        /// Initialize test
         /// </summary>
+        /// <param name="subjectIds">Subject ids in which questions taking</param>
+        /// <param name="testType">Test type</param>
+        /// <param name="sourceType">See TestSourceTypes class</param>
+        /// <param name="source">Nullable id of source</param>
         /// <returns></returns>
         private ActionResult StartTest(IEnumerable<int> subjectIds, TestType testType, int sourceType, int? source)
         {
@@ -141,15 +165,16 @@ namespace StudyCourseEditor.Controllers
             testData.CurrentQuestionDifficulty = selectedQuestion.Difficulty;
             testData.CurrentQuestionId = selectedQuestion.ID;
 
-
             SetTestData(testData);
 
             return RedirectToAction("Index");
         }
 
         /// <summary>
-        /// Стартовая страница для теста
+        /// Wrap around StartTest for courses
         /// </summary>
+        /// <param name="courseId">Course id</param>
+        /// <param name="testType">Test type</param>
         /// <returns></returns>
         public ActionResult StartCourseTest(int courseId, TestType testType)
         {
@@ -157,8 +182,10 @@ namespace StudyCourseEditor.Controllers
         }
 
         /// <summary>
-        /// Стартовая страница для теста
+        /// Wrap around StartTest for subject
         /// </summary>
+        /// <param name="subjectId">Subject id</param>
+        /// <param name="testType">Test type</param>
         /// <returns></returns>
         public ActionResult StartSubjectTest(int subjectId, TestType testType)
         {
@@ -167,7 +194,7 @@ namespace StudyCourseEditor.Controllers
 
 
         /// <summary>
-        /// Обработка результатов тестирования
+        /// Final test page
         /// </summary>
         /// <returns></returns>
         public ActionResult End()
@@ -211,7 +238,7 @@ namespace StudyCourseEditor.Controllers
         /// Validate user Answer
         /// </summary>
         /// <param name="question">Question that user answered</param>
-        /// <param name="userAnswer"></param>
+        /// <param name="userAnswer">String representation of user answer</param>
         /// <returns></returns>
         private bool CheckAnswerIsCorrect(GeneratedQuestion question,
                                           string userAnswer)
@@ -247,6 +274,11 @@ namespace StudyCourseEditor.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Returns next question
+        /// </summary>
+        /// <param name="testData">Test session info</param>
+        /// <returns></returns>
         private Question GetQuestion(TestData testData)
         {
             var questionList = new List<Question>();
@@ -270,6 +302,11 @@ namespace StudyCourseEditor.Controllers
             return questionList.FirstOrDefault();
         }
 
+        /// <summary>
+        /// Builds array of preferred difficulties for next question from best to worse
+        /// </summary>
+        /// <param name="realDifficulty">Calculated optimal difficulty for next question</param>
+        /// <returns></returns>
         private int[] GetDifficultyPriorityArray(double realDifficulty)
         {
             var result = new int[10];
@@ -299,6 +336,12 @@ namespace StudyCourseEditor.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Saves test data
+        /// </summary>
+        /// <param name="data">Session data</param>
+        /// <param name="sessionId">Session id (needed if data stores in database)</param>
+        /// <param name="saveToCookie">'True' to make data stored in cookie</param>
         private void SetTestData(TestData data, int sessionId = 0, bool saveToCookie = false)
         {
             
@@ -331,10 +374,10 @@ namespace StudyCourseEditor.Controllers
         }
 
         /// <summary>
-        /// ПReturn test data
+        /// Returns test data
         /// </summary>
         /// <param name="databaseRecordId">Returns ID for records are storing in Data Base</param>
-        /// <param name="getFromCookie">Where data're storing?</param>
+        /// <param name="getFromCookie">'True' to get data from cookie rather then database</param>
         /// <returns></returns>
         private TestData GetTestData(out int databaseRecordId, bool getFromCookie = false)
         {
@@ -389,6 +432,11 @@ namespace StudyCourseEditor.Controllers
             return XmlManager.DeserializeObject<TestData>(data);
         }
 
+
+        /// <summary>
+        /// Clears session data
+        /// </summary>
+        /// <param name="clearDataBaseRecord">True to clean data from db</param>
         private void ClearTestData(bool clearDataBaseRecord = true)
         {
             HttpCookie testInfo = Request.Cookies["TestInfo"];
@@ -402,7 +450,7 @@ namespace StudyCourseEditor.Controllers
                     TestSessionManager.Remove(id);
 
                 }
-                catch (Exception ex) { }
+                catch { }
                 
                 testInfo.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(testInfo);
@@ -416,6 +464,11 @@ namespace StudyCourseEditor.Controllers
             
         }
 
+        /// <summary>
+        /// Error page
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public ActionResult Error(string message)
         {
             ViewBag.Message = message;

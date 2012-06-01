@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using StudyCourseEditor.Extensions;
 using StudyCourseEditor.Models;
@@ -135,12 +133,21 @@ namespace StudyCourseEditor.Controllers
             return Json(ajaxResponse);
         }
 
+        /// <summary>
+        /// Check if example body is correct
+        /// </summary>
+        /// <param name="body"></param>
         private void CheckExampleBody(string body)
         {
             if (string.IsNullOrWhiteSpace(body))
                 throw new ExampleAjaxException(ExampleAjaxMessages.EMPTY_BODY);
         }
 
+
+        /// <summary>
+        /// Check if example is not null
+        /// </summary>
+        /// <param name="example"></param>
         private void CheckExamlpe(Example example)
         {
             if (example == null)

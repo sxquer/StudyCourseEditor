@@ -55,11 +55,9 @@ namespace StudyCourseEditor.Controllers
 
         private ActionResult Create(Definition definition, string action)
         {
-            if (_db.Definitions.FirstOrDefault(
-                    d => d.Name.ToLower() == definition.Name.ToLower()) != null)
+            if (_db.Definitions.FirstOrDefault(d => d.Name.ToLower() == definition.Name.ToLower()) != null)
             {
-                ModelState.AddModelError("Name",
-                                         "Полное имя должно быть уникальным. Похожее определение уже есть");
+                ModelState.AddModelError("Name","Полное имя должно быть уникальным. Похожее определение уже есть");
                 return View("Create");
             }
 
@@ -108,8 +106,7 @@ namespace StudyCourseEditor.Controllers
             if (ModelState.IsValid)
             {
                 _db.Definitions.Attach(definition);
-                _db.ObjectStateManager.ChangeObjectState(definition,
-                                                        EntityState.Modified);
+                _db.ObjectStateManager.ChangeObjectState(definition, EntityState.Modified);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -163,11 +160,8 @@ namespace StudyCourseEditor.Controllers
         /// <returns>Json representation</returns>
         public ActionResult CheckNameIsUnique(string name)
         {
-            return
-                Json(
-                    _db.Definitions.FirstOrDefault(
-                        d => d.Name.ToLower() == name.ToLower()) == null,
-                    JsonRequestBehavior.AllowGet);
+            return Json(_db.Definitions.FirstOrDefault(d => d.Name.ToLower() == name.ToLower()) == null,
+                        JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

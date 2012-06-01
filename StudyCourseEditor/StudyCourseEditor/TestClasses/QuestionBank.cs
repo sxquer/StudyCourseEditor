@@ -52,7 +52,10 @@ namespace StudyCourseEditor.TestClasses
             return candidates[new Random().Next(candidates.Count - 1)];
         }
 
-
+        /// <summary>
+        /// Returns random question
+        /// </summary>
+        /// <returns></returns>
         public int GetRandomQuestion()
         {
             var candidates = FlatQuestionList;
@@ -61,6 +64,12 @@ namespace StudyCourseEditor.TestClasses
             return candidates[new Random().Next(candidates.Count - 1)];
         }
 
+
+        /// <summary>
+        /// Removes question from bank
+        /// </summary>
+        /// <param name="id">Question id</param>
+        /// <param name="difficulty">Difficulty level. If 0, Qustion searching in entire bank</param>
         public void RemoveQuestion(int id, int difficulty = 0)
         {
             if (difficulty > 0) 
@@ -75,6 +84,11 @@ namespace StudyCourseEditor.TestClasses
 
         }
 
+        /// <summary>
+        /// Gets And Removes question from bank with specidied difficulty
+        /// </summary>
+        /// <param name="difficulty">Necessary difficulty level</param>
+        /// <returns></returns>
         public int GetAndRemove(int difficulty)
         {
             int result = GetQuestion(difficulty);
@@ -83,6 +97,10 @@ namespace StudyCourseEditor.TestClasses
             return result;
         }
 
+        /// <summary>
+        /// Gets And Removes question from bank
+        /// </summary>
+        /// <returns></returns>
         public int RandomGetAndRemove()
         {
             int result = GetRandomQuestion();
@@ -91,12 +109,18 @@ namespace StudyCourseEditor.TestClasses
             return result;
         }
 
+        /// <summary>
+        /// Returns question list with specified difficulty level
+        /// </summary>
+        /// <param name="difficulty">Difficulty level</param>
+        /// <returns></returns>
         public List<int> GetQuestionList(int difficulty)
         {
             return Questions[difficulty - 1];
         }
 
     }
+
 
     public class EmptyDifficultyException : Exception
     {

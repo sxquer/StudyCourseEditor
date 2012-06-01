@@ -8,6 +8,7 @@ namespace StudyCourseEditor.Controllers
 {
     public class AccountController : Controller
     {
+        #region Auto Generated
         //
         // GET: /Account/LogOn
 
@@ -157,18 +158,12 @@ namespace StudyCourseEditor.Controllers
             return View();
         }
 
-        public ActionResult AccessDenied(string message)
-        {
-            ViewBag.Message = message;
-            return View();
-        }
+        #endregion
 
-
-        public static bool IsUserAdmin()
-        {
-            return Roles.GetRolesForUser().Contains("administrator");
-        }
-
+        /// <summary>
+        /// Returns user's unique guid
+        /// </summary>
+        /// <returns></returns>
         public static Guid? GetUserGuid()
         {
             var user = Membership.GetUser();
@@ -176,25 +171,68 @@ namespace StudyCourseEditor.Controllers
             return (Guid)user.ProviderUserKey;
         }
 
+        #region User Permissions
+        /// <summary>
+        /// Access denied page
+        /// </summary>
+        /// <param name="message">Cause of rejection</param>
+        /// <returns></returns>
+        public ActionResult AccessDenied(string message)
+        {
+            ViewBag.Message = message;
+            return View();
+        }
+
+        /// <summary>
+        /// Check if current user is admin
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsUserAdmin()
+        {
+            return Roles.GetRolesForUser().Contains("administrator");
+        }
+
+
+        /// <summary>
+        /// Check if user is course author
+        /// </summary>
+        /// <param name="course"></param>
+        /// <returns></returns>
         public static bool IsUserAuthor(Course course)
         {
             return course.UserId != null && course.UserId == GetUserGuid();
         }
 
+        /// <summary>
+        /// Check if user is definition author
+        /// </summary>
+        /// <param name="definition"></param>
+        /// <returns></returns>
         public static bool IsUserAuthor(Definition definition)
         {
             return definition.UserId != null && definition.UserId == GetUserGuid();
         }
 
+        /// <summary>
+        /// Check if user has edit rights for course
+        /// </summary>
+        /// <param name="course"></param>
+        /// <returns></returns>
         public static bool CanUserAccess(Course course)
         {
             return IsUserAdmin() || IsUserAuthor(course);
         }
 
+        /// <summary>
+        /// Check if user has edit rights for definition
+        /// </summary>
+        /// <param name="definition"></param>
+        /// <returns></returns>
         public static bool CanUserAccess(Definition definition)
         {
             return IsUserAdmin() || IsUserAuthor(definition);
         }
+        #endregion
 
         #region Status Codes
 
@@ -210,44 +248,43 @@ namespace StudyCourseEditor.Controllers
 
                 case MembershipCreateStatus.DuplicateEmail:
                     return
-                        "A user name for that e-mail address already exists. Please enter a different e-mail address.";
+                        "Пользователь с таким email адресом уже существует. Пожалуйста, выбирите другой.";
 
                 case MembershipCreateStatus.InvalidPassword:
                     return
-                        "The password provided is invalid. Please enter a valid password value.";
+                        "Введен некорректный пароль. Попробуйте другой.";
 
                 case MembershipCreateStatus.InvalidEmail:
                     return
-                        "The e-mail address provided is invalid. Please check the value and try again.";
+                        "Введен некорретный email адрес. Попробуйте другой.";
 
                 case MembershipCreateStatus.InvalidAnswer:
                     return
-                        "The password retrieval answer provided is invalid. Please check the value and try again.";
+                        "Ответ задан не верно. Проверьте значение и попробуйте снова.";
 
                 case MembershipCreateStatus.InvalidQuestion:
                     return
-                        "The password retrieval question provided is invalid. Please check the value and try again.";
+                        "Вопрос задан не верно. Проверьте значение и попробуйте снова.";
 
                 case MembershipCreateStatus.InvalidUserName:
                     return
-                        "The user name provided is invalid. Please check the value and try again.";
+                        "Недопустимое имя пользователя. Проверьте значение и попробуйте снова.";
 
                 case MembershipCreateStatus.ProviderError:
                     return
-                        "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                        "Произошла ошибки при попытке связаться с системой авторизации. Попробуйте позже. Если ошибка повторится, обратитесь к администратору.";
 
                 case MembershipCreateStatus.UserRejected:
                     return
-                        "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                        "Запрос за создание пользователя был отменен. Попробуйте позже. Если проблема повторится, обратитесь к администратору.";
 
                 default:
                     return
-                        "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                        "Произошла неизвестная ошибка. Попробуйте позже. Если проблема повторится, обратитесь к администратору..";
             }
         }
 
         #endregion
-
-        //TODO: Перевести Status Codes
+        
     }
 }

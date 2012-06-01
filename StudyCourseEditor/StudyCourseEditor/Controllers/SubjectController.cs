@@ -9,6 +9,7 @@ namespace StudyCourseEditor.Controllers
     {
         private readonly Entities _db = new Entities();
 
+        #region CRUD
         //
         // GET: /Subject/
 
@@ -104,6 +105,8 @@ namespace StudyCourseEditor.Controllers
                                         new {id = subject.CourseID});
             return RedirectToAction("Index");
         }
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {

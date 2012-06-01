@@ -15,13 +15,10 @@ namespace StudyCourseEditor.Extensions
                                          string actionName,
                                          MethodInfo methodInfo)
         {
-            if (actionName.Equals(methodInfo.Name,
-                                  StringComparison.InvariantCultureIgnoreCase))
+            if (actionName.Equals(methodInfo.Name,StringComparison.InvariantCultureIgnoreCase))
                 return true;
 
-            if (
-                !actionName.Equals("Action",
-                                   StringComparison.InvariantCultureIgnoreCase))
+            if (!actionName.Equals("Action", StringComparison.InvariantCultureIgnoreCase))
                 return false;
 
             HttpRequestBase request =

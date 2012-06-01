@@ -80,8 +80,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IQuestionGenerator.cs" />
+    <Content Include="Content\img\add.png" />
+    <Content Include="Content\img\delete.png" />
     <Content Include="Content\img\help.png" />
+    <Content Include="Content\img\save.png" />
     <Content Include="README.txt" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -180,6 +182,7 @@
     <Content Include="Scripts\noty\js\jquery.noty.js" />
     <Content Include="Scripts\noty\js\promise.js" />
     <Content Include="Scripts\noty\LICENSE.txt" />
+    <Content Include="Scripts\pages\definitions.js" />
     <Content Include="Scripts\pages\examples.js" />
     <Content Include="Scripts\pages\questions.js" />
     <Content Include="Scripts\pages\tags.js" />
@@ -504,16 +507,6 @@
     <Content Include="Views\Definition\Create.cshtml" />
     <Content Include="Views\Definition\Edit.cshtml" />
     <Content Include="Views\Definition\Delete.cshtml" />
-    <Content Include="Views\Result\Index.cshtml" />
-    <Content Include="Views\Result\Details.cshtml" />
-    <Content Include="Views\Result\Create.cshtml" />
-    <Content Include="Views\Result\Edit.cshtml" />
-    <Content Include="Views\Result\Delete.cshtml" />
-    <Content Include="Views\Example\Index.cshtml" />
-    <Content Include="Views\Example\Details.cshtml" />
-    <Content Include="Views\Example\Create.cshtml" />
-    <Content Include="Views\Example\Edit.cshtml" />
-    <Content Include="Views\Example\Delete.cshtml" />
     <Content Include="Views\Tag\Index.cshtml" />
     <Content Include="Views\Tag\Details.cshtml" />
     <Content Include="Views\Tag\Create.cshtml" />

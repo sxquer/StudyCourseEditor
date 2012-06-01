@@ -110,6 +110,11 @@ namespace StudyCourseEditor.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Returns Course or null by course id
+        /// </summary>
+        /// <param name="id">Course id</param>
+        /// <returns></returns>
         public static Course GetById(int id)
         {
             return new Entities().Courses.FirstOrDefault(c => c.ID == id);
