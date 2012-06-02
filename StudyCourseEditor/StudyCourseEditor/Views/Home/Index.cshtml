@@ -1,11 +1,8 @@
-﻿@using StudyCourseEditor.TestClasses
-@{
+﻿@{
     ViewBag.Title = "Главная";
 }
 
 <h2>@ViewBag.Message</h2>
 
-<p>
-    @Html.ActionLink("Математика", "StartCourseTest", "Test", new { courseId = 3, testType = TestType.Adaptive }, null) <br/>
-    @Html.ActionLink("Музыка", "StartCourseTest", "Test", new { courseId = 4, testType = TestType.Adaptive }, null)
-</p>
+Добро пожаловать в Редкатор учебных курсов.
+Перейдите в раздел "Учебник", чтобы ознакомиться с доступными курсами.
