@@ -1,10 +1,25 @@
-﻿@{
+﻿@using StudyCourseEditor.Controllers
+@{
     ViewBag.Title = "FinishExam";
+
+    var testDataIsSet = ViewBag.TestData != null;
+
+    var measure = testDataIsSet ? Math.Round(ViewBag.TestData.CalculateMeasure(), 2) : string.Empty;
+    var error = testDataIsSet ? Math.Round(ViewBag.TestData.CalculateError(), 2) : string.Empty;
+    var taken = testDataIsSet ? ViewBag.TestData.ItemsTaken : string.Empty;
+    var total = testDataIsSet ? ViewBag.TestData.MaxAmountOfQuestions : string.Empty;
+    var right = testDataIsSet ? ViewBag.TestData.RightAnswersCount : string.Empty;
+
 }
+
+<script src="@Url.Content("~/Scripts/graphics/jquery.jqplot.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/graphics/jqplot.canvasAxisLabelRenderer.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/graphics/jqplot.canvasTextRenderer.min.js")" type="text/javascript"></script>
+<link href="@Url.Content("~/Scripts/graphics/jquery.jqplot.min.css")" rel="stylesheet" type="text/css" />
 
 @if (ViewBag.TestCompleted)
 {
-    <h2>Тест пройден. Вы набрали @ViewBag.Score</h2>
+    <h2>Тест пройден. Вы набрали @Math.Round(ViewBag.Score, 2)</h2>
     if (ViewBag.ResultSaved)
         {
             <div>
@@ -16,3 +31,67 @@ else
 {
     <h2>Тест был прерван</h2>
 }
+
+
+
+    <h3>Информация о тесте</h3>
+    <div>Текущая оценка знаний: @measure +/- @error</div>
+    <div>Ответов дано (максимальное число вопросов): @taken (@total)</div>
+    <div>Из них правильных: @right </div>
+    
+
+
+<br/>
+<div style="width: 900px; height: 500px" id="graph"></div>
+@if (testDataIsSet)
+{
+    <script type="text/javascript">
+        var data = "@ViewBag.TestData.ResultGraph";
+
+        var pairs = data.split(';');
+        var finishData = Array();
+
+        for (var i = 0; i < pairs.length - 1; i++) {
+            finishData[i] = pairs[i].split("_")[0];
+        }
+
+        var rdf = "@ViewBag.TestData.RDF";
+        var trueValues = rdf.split(";");
+        trueValues.pop();
+
+        $(document).ready(function () {
+            var plot = $.jqplot('graph', [finishData, trueValues], {
+
+                title: 'График прохождения теста',
+                series: [
+                      {
+                          // Change our line width and use a diamond shaped marker.
+                          lineWidth: 2
+                      },
+                      {
+                          showLine: false,
+                          markerOptions: { size: 12, style: "x", color: "FB0404" }
+                      }
+                  ],
+                axes: {
+                    xaxis: {
+                        label: "Номер вопроса",
+                        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                        min: 0,
+                        max: finishData.length + 1,
+                        numberTicks: finishData.length + 2
+                    },
+                    yaxis: {
+                        label: "Сложность",
+                        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                        min: 0,
+                        max: 11,
+                        numberTicks: 12
+                    }
+                }
+            });
+        });
+
+    </script>      
+}
+

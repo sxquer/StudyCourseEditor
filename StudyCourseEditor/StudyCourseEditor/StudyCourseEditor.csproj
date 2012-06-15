@@ -84,6 +84,7 @@
     <Content Include="Content\img\delete.png" />
     <Content Include="Content\img\help.png" />
     <Content Include="Content\img\save.png" />
+    <Content Include="Scripts\graphics\jquery.jqplot.min.css" />
     <Content Include="README.txt" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -118,6 +119,11 @@
     <Compile Include="TestClasses\QuestionBank.cs" />
     <Compile Include="TestClasses\TestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Scripts\graphics\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Scripts\graphics\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Scripts\graphics\jquery.jqplot.min.js" />
+    <Content Include="Scripts\graphics\morris.min.js" />
+    <Content Include="Scripts\graphics\raphael-min.js" />
     <Content Include="Scripts\noty\connectAll.js" />
     <Content Include="Scripts\pages\answers.js" />
     <Compile Include="TestClasses\TestSourceType.cs" />

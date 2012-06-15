@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Xml.Serialization;
 using StudyCourseEditor.Tools;
 
@@ -106,6 +107,12 @@ namespace StudyCourseEditor.TestClasses
         public string ResultGraph { get; set; }
 
         /// <summary>
+        /// Temporary data. RealDifficultyGraph - RDF
+        /// </summary>
+        [XmlElement(ElementName = "RDF")]
+        public string RDF { get; set; }
+
+        /// <summary>
         /// Returns question hash
         /// </summary>
         /// <returns></returns>
@@ -173,6 +180,11 @@ namespace StudyCourseEditor.TestClasses
         {
             ResultGraph += CurrentQuestionDifficulty + "_" +
                            ((answerIsCorrect) ? 1 : 0) + ";";
+        }
+
+        public void AddPointToRDF()
+        {
+            RDF += Math.Round(TrueDifficultyLevel, 1).ToString(CultureInfo.InvariantCulture).Replace(",", ".") + ";";
         }
     }
 }

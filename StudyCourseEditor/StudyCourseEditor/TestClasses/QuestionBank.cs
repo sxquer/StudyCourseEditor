@@ -49,7 +49,7 @@ namespace StudyCourseEditor.TestClasses
         {
             var candidates = GetQuestionList(difficulty);
             if (candidates.Count < 1) return -1;
-            return candidates[new Random().Next(candidates.Count - 1)];
+            return candidates[new Random().Next(candidates.Count)];
         }
 
         /// <summary>

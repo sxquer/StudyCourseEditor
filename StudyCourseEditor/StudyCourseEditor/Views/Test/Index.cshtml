@@ -1,4 +1,5 @@
-﻿@model StudyCourseEditor.TestClasses.GeneratedQuestion
+﻿@using StudyCourseEditor.Controllers
+@model StudyCourseEditor.TestClasses.GeneratedQuestion
 
 @{
     ViewBag.Title = "Отвечай немедля на вопрос!";
@@ -6,7 +7,7 @@
     var type = Model.QuestionType;
 }
 
-<div>@Model.Body</div>
+<div>@Html.Raw(Model.Body)</div>
 
 @using (Html.BeginForm("Process", "Test"))
 {
@@ -43,13 +44,16 @@
     </p>
 }
 
-@*
-<div>@ViewBag.TestData.CurrentQuestionDifficulty / @ViewBag.TestData.TrueDifficultyLevel</div>
-<div>***********************************************</div>
-<div>@ViewBag.TestData.CalculateMeasure()</div>
-<div>@ViewBag.TestData.CalculateError()</div>
-<div>@ViewBag.TestData.ItemsTaken</div>
-
-<div>Type: @Model.QuestionType</div> *@
-
 @Html.ActionLink("Покинуть тест", "End", "Test")
+
+<br/>
+@if (AccountController.IsUserAdmin())
+{
+    <h3>Отладочная информация (отображается только для администраторов)</h3>
+    <div>Сложность (вопроса / теоретическая): @ViewBag.TestData.CurrentQuestionDifficulty / @ViewBag.TestData.TrueDifficultyLevel</div>
+    <div>Текущая оценка знаний: @ViewBag.TestData.CalculateMeasure()</div>
+    <div>Текущая ошибка измерения: @ViewBag.TestData.CalculateError()</div>
+    <div>Ответов дано: @ViewBag.TestData.ItemsTaken</div>
+    <div>Тип вопроса: @Model.QuestionType</div>
+}
+

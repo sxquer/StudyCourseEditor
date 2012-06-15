@@ -73,7 +73,7 @@ namespace StudyCourseEditor.Controllers
 
             // TODO: Add some behaviors. For the next programmers' generation. For example different options for different test types.
             // If amount of taken question equals amount of total questions in test, mark test as completed.
-            if (testData.ItemsTaken > testData.MaxAmountOfQuestions)
+            if (testData.ItemsTaken >= testData.MaxAmountOfQuestions)
             {
                 testData.TestCompleted = true;
             }
@@ -89,21 +89,30 @@ namespace StudyCourseEditor.Controllers
 
             // Adding data to 'ResultGraph'
             testData.AddPointToResultGraph(answerIsCorrect);
-
+            // TODO: Temperory method for statistics. (Re)move
+            testData.AddPointToRDF();
+            
             // Correcting difficulty
             if (answerIsCorrect)
             {
                 testData.TrueDifficultyLevel += difficultyShift;
+                if (testData.TrueDifficultyLevel > 10)
+                    testData.TrueDifficultyLevel = 10;
+                
                 testData.RightAnswersCount++;
             }
             else
             {
                 testData.TrueDifficultyLevel -= difficultyShift;
+                if (testData.TrueDifficultyLevel < 1)
+                    testData.TrueDifficultyLevel = 1;
             }
+
+            
 
             // TODO: Make CONST optional. For the next programmers' generation
             // Checking if measurement error lower than CONST
-            if (testData.CalculateError() < 0.3) testData.TestCompleted = true;
+            if (testData.CalculateError() <= 0.5) testData.TestCompleted = true;
 
             // Selecting next question
             Question selectedQuestion = GetQuestion(testData);
@@ -137,7 +146,7 @@ namespace StudyCourseEditor.Controllers
             var questionBank = new QuestionBank();
             var questions =
                 _db.Questions.Where(
-                    x => subjectIds.Contains(x.SubjectID) && x.IsPublished);
+                    x => subjectIds.Contains(x.SubjectID) && x.IsPublished && x.Answers.Any());
 
             if (!questions.Any()) return RedirectToAction("Error", new {message = "Для теста не найдено ни одного вопроса. Обратитесь к администратору."});
 
@@ -200,19 +209,21 @@ namespace StudyCourseEditor.Controllers
         public ActionResult End()
         {
             int sessionDBId;
-            TestData data = GetTestData(out sessionDBId);
+            TestData testData = GetTestData(out sessionDBId);
             ViewBag.ResultSaved = false;
             ViewBag.TestCompleted = false;
-            
+
+            ViewBag.TestData = testData;
+
             ClearTestData();
-            if (data == null) return View();
+            if (testData == null) return View();
             
 
-            var score = data.CalculateMeasure();
+            var score = testData.CalculateMeasure();
             ViewBag.Score = score;
-            ViewBag.TestCompleted = data.TestCompleted;
+            ViewBag.TestCompleted = testData.TestCompleted;
 
-            if (!data.TestCompleted) return View();
+            if (!testData.TestCompleted) return View();
             
 
             var user = Membership.GetUser();
@@ -220,17 +231,17 @@ namespace StudyCourseEditor.Controllers
             {
                 var result = new Result
                 {
-                    Source = data.Source,
-                    SourceType = data.SourceType,
+                    Source = testData.Source,
+                    SourceType = testData.SourceType,
                     Date = TimeManager.GetCurrentTime(),
                     UserId = (Guid)user.ProviderUserKey,
                     Measure = score,
-                    ResultGraph = data.ResultGraph,
+                    ResultGraph = testData.ResultGraph,
                 };
                 ResultController.Add(result);
                 ViewBag.ResultSaved = true;
             }
-            
+
             return View();
         }
 
@@ -281,25 +292,17 @@ namespace StudyCourseEditor.Controllers
         /// <returns></returns>
         private Question GetQuestion(TestData testData)
         {
-            var questionList = new List<Question>();
-
-            int[] priorityArray =
-                GetDifficultyPriorityArray(testData.TrueDifficultyLevel);
+            int[] priorityArray = GetDifficultyPriorityArray(testData.TrueDifficultyLevel);
 
             int i = 0;
-            while (questionList.Count == 0 && i < 10)
+            int nextQuestionId = -1;
+            while (nextQuestionId == -1 && i < 10)
             {
-                int dif = priorityArray[i];
-                questionList =
-                    _db.Questions.Where(
-                        x =>
-                        x.Difficulty == dif &&
-                        (testData.SubjectsIds.Contains(x.SubjectID))).ToList
-                        ();
+                nextQuestionId = testData.QuestionBank.GetQuestion(priorityArray[i]);
                 if (++i >= 10) throw new Exception("Нет подходящих вопросов");
             }
 
-            return questionList.FirstOrDefault();
+            return QuestionController.GetById(nextQuestionId);
         }
 
         /// <summary>
@@ -472,6 +475,8 @@ namespace StudyCourseEditor.Controllers
         public ActionResult Error(string message)
         {
             ViewBag.Message = message;
+
+
             return View("Error");
         }
     }
