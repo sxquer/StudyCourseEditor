@@ -71,12 +71,7 @@ namespace StudyCourseEditor.Controllers
             testData.ItemsTaken++;
             testData.TotalDifficultiesUsed += testData.CurrentQuestionDifficulty;
 
-            // TODO: Add some behaviors. For the next programmers' generation. For example different options for different test types.
-            // If amount of taken question equals amount of total questions in test, mark test as completed.
-            if (testData.ItemsTaken >= testData.MaxAmountOfQuestions)
-            {
-                testData.TestCompleted = true;
-            }
+            
 
             // Calculating the amount that will change the difficulty
             double difficultyShift = 0.2 + (float) 2 / testData.ItemsTaken;
@@ -112,7 +107,23 @@ namespace StudyCourseEditor.Controllers
 
             // TODO: Make CONST optional. For the next programmers' generation
             // Checking if measurement error lower than CONST
-            if (testData.CalculateError() <= 0.5) testData.TestCompleted = true;
+            var error = testData.CalculateError();
+            var measure = testData.CalculateMeasure();
+            if (error <= 0.5) testData.TestCompleted = true;
+            if (measure + error <= 1 || measure - error >= 10) testData.TestCompleted = true;
+
+            //Check for test min length
+            // TODO: Add some behaviors. For the next programmers' generation. For example different options for different test types.
+            // If amount of taken question equals amount of total questions in test, mark test as completed.
+            if (testData.ItemsTaken >= testData.MaxAmountOfQuestions)
+            {
+                testData.TestCompleted = true;
+            }
+            // TODO: Add min length to test data
+            else if (testData.ItemsTaken < 10)
+            {
+                testData.TestCompleted = false;
+            }
 
             // Selecting next question
             Question selectedQuestion = GetQuestion(testData);
